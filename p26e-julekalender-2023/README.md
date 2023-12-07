@@ -140,6 +140,7 @@ logikken i løsningen er å filtere på norge, siden busstoppet var rett med res
 
 <img alt="Resultat over norge" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo2.png">
 <img alt="Drøbak sentrum" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo1.png">
+
 ```
 PST{FROGN BIBLIOTEK}
 ```
