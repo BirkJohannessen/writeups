@@ -91,7 +91,9 @@ Vi trenger at du rekonstruerer sleden så fort som mulig!
 📎 pinneved.txt
 ```
 
-pinneved.py leser en fil "slede.txt", gjør endel operasjoner på filen og gjør en output til pinneved.txt. Det er enkle operasjoner som blir utført i scriptet som gjør at vi kan reversere rekkefølgen scriptet kjører i på pinneved.txt.
+Her får vi to filer, et python script og en fil med pinneved - uleslig data.
+
+pinneved.py:
 
 ```
 """TEMMELIG HEMMELIG"""
@@ -121,10 +123,12 @@ pinneved = [str(eksplosjon[i]) for i in reversed(otp)]
 with open("pinneved.txt", "w") as file:
     file.write(''.join(pinneved))
 ```
- 
-pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i filen som ASCII verdien to ned, og "scrambler" rekkefølgen på verdiene i otp tabellen.
 
-strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier opp. nøkkelen her er å mappe otp listen til indexen av verdien i listen for å få riktig rekkefølge på de 24 bitene.
+pinneved.py leser en fil "slede.txt", gjør endel operasjoner på filen og gjør en output til pinneved.txt. Det er enkle operasjoner som blir utført i scriptet som gjør at vi kan reversere rekkefølgen scriptet kjører i på pinneved.txt.
+ 
+pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i filen som ASCII verdien to opp, og "scrambler" rekkefølgen på verdiene i otp tabellen.
+
+strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier ned. nøkkelen her er å mappe otp listen til indexen av den originale rekkefølgen (range(0, 24)) for å få riktig rekkefølge på de 24 bitene.
 
 ```
 otp = [23, 2, 0, 5, 13, 16, 22, 7, 9, 4, 19, 21, 18, 10, 20, 11, 12, 14, 6, 1, 3, 8, 17, 15]
