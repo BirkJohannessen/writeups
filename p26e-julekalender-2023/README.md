@@ -92,13 +92,64 @@ Vi trenger at du rekonstruerer sleden så fort som mulig!
 ```
 
 pinneved.py leser en fil "slede.txt", gjør endel operasjoner på filen og gjør en output til pinneved.txt. Det er enkle operasjoner som blir utført i scriptet som gjør at vi kan reversere rekkefølgen scriptet kjører i på pinneved.txt.
+
+```
+"""TEMMELIG HEMMELIG"""
+"""Sør-Polar Sikkerhetstjeneste"""
+"""Høyeksplosivt script for tilintetgjørelse av Julenissens slede"""
+
+
+otp = [23, 2, 0, 5, 13, 16, 22, 7, 9, 4, 19, 21, 18, 10, 20, 11, 12, 14, 6, 1, 3, 8, 17, 15]
+
+def explode(input, antall):
+    størrelse = len(input) // antall
+    fragmenter = []
+    
+    for i in range(0, len(input), størrelse):
+        fragment = input[i:i+størrelse]
+        fragmenter.append(fragment)
+    
+    return fragmenter
+
+with open("slede.txt", "r") as file:
+    slede = file.read()
+
+bang = explode(slede, 24)
+eksplosjon = [''.join([chr(ord(c) + 2) for c in fragment]) for fragment in bang]
+pinneved = [str(eksplosjon[i]) for i in reversed(otp)]
+
+with open("pinneved.txt", "w") as file:
+    file.write(''.join(pinneved))
+```
  
 pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i filen som ASCII verdien to ned, og "scrambler" rekkefølgen på verdiene i otp tabellen.
 
 strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier opp. nøkkelen her er å mappe otp listen til indexen av verdien i listen for å få riktig rekkefølge på de 24 bitene.
 
 ```
-placeholder script
+otp = [23, 2, 0, 5, 13, 16, 22, 7, 9, 4, 19, 21, 18, 10, 20, 11, 12, 14, 6, 1, 3, 8, 17, 15]
+otp.reverse();
+otpreversed = list(map(lambda x: otp.index(x), range(0, 24)))
+
+def explode(input, antall):
+    størrelse = len(input) // antall
+    fragmenter = []
+    
+    for i in range(0, len(input), størrelse):
+        fragment = input[i:i+størrelse]
+        fragmenter.append(fragment)
+    
+    return fragmenter
+
+with open("pinneved.txt", "r") as file:
+    pinneved = file.read()
+
+bang = explode(pinneved, 24)
+eksplosjon = [''.join([chr(ord(c) - 2) for c in fragment]) for fragment in bang]
+pinneved = [str(eksplosjon[i]) for i in otpreversed]
+
+with open("slede.txt", "w") as file:
+    file.write(''.join(pinneved))
 ```
 
 <img alt="pinneved reversert" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/pinneved.png">
