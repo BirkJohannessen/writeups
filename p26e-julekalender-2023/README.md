@@ -213,6 +213,8 @@ PE‍PPERKAKER {
 
 Som en stolt vim entuiast limte jeg denne oppskriften inn i et buffer - Og der var svaret umiddelbart. Vim encoder ikke spesialbytes som andre teksteditorer, men printer de i <> format. Svaret var samlingen av bokstaven etter <200d> byten som vist på bilde.
 
+<img alt="<200d>" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/06kaker/kake.png">
+
 ```
 PST{pepperkakerermotbydelige}
 ```
