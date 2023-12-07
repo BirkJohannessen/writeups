@@ -136,7 +136,7 @@ Svar meg med navnet på møtestedet og på formen PST{BERGEN LUFTHAVN}
 
 Geolokasjon / OSINT verktøy er noe jeg aldri har tatt i bruk. Som hintet i vrevet fra Tastefinger kan man bruke Overpass Turbo til å finne en lokasjon som passer beskrivelsen i meldingen.
 
-Overpass Turbo "kodesnutten" her finner to lokasjoner, som er god nok filtrering til å se at Drøbak sentrum er hvor møte er. Nøyaktig på frogner bibliotek.
+Overpass Turbo "kodesnutten" her finner to lokasjoner, som er god nok filtrering til å se at Drøbak sentrum er hvor møte er.
 ```
 area
   ["ISO3166-1"="NO"]
@@ -155,6 +155,7 @@ logikken i løsningen er å filtere på norge, siden busstoppet var rett med res
 
 <img alt="Drøbak sentrum" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo1.png">
 
+Nøyaktig på frogn bibliotek.
 ```
 PST{FROGN BIBLIOTEK}
 ```
@@ -211,9 +212,9 @@ PE‍PPERKAKER {
 }
 ```
 
-Som en stolt vim entuiast limte jeg denne oppskriften inn i et buffer - Og der var svaret umiddelbart. Vim encoder ikke spesialbytes som andre teksteditorer, men printer de i <> format. Svaret var samlingen av bokstaven etter <200d> byten som vist på bilde.
+Som en stolt vim entuiast limte jeg denne oppskriften inn i et buffer jeg hadde åpent - Og der var svaret umiddelbart. Vim encoder ikke spesialbytes som andre teksteditorer, men printer de i <> format. Svaret var samlingen av bokstaven etter <200d> byten som vist på bilde.
 
-<img alt="<200d>" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/06kaker/kake.png">
+<img alt="200d" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/06kaker/kake.png">
 
 ```
 PST{pepperkakerermotbydelige}
