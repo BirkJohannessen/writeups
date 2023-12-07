@@ -121,6 +121,7 @@ Svar meg med navnet på møtestedet og på formen PST{BERGEN LUFTHAVN}
 
 - Tastefinger
 ```
+
 Geolokasjon / OSINT verktøy er noe jeg aldri har tatt i bruk. Som hintet i vrevet fra Tastefinger kan man bruke Overpass Turbo til å finne en lokasjon som passer beskrivelsen i meldingen.\
 Overpass Turbo "kodesnutten" her finner to lokasjoner, som er god nok filtrering til å se at Drøbak sentrum er hvor møte er. Nøyaktig på frogner bibliotek.
 ```
@@ -137,6 +138,8 @@ out;
 ```
 logikken i løsningen er å filtere på norge, siden busstoppet var rett med resturant (30 meter magic guess), titalls meter til fontenen (90m med litt slark fra resturanten) som igjen var 50m unna biblioteket.
 
+<img alt="" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo2">
+<img alt="" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo1">
 ```
 PST{FROGN BIBLIOTEK}
 ```
