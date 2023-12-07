@@ -138,8 +138,8 @@ out;
 ```
 logikken i løsningen er å filtere på norge, siden busstoppet var rett med resturant (30 meter magic guess), titalls meter til fontenen (90m med litt slark fra resturanten) som igjen var 50m unna biblioteket.
 
-<img alt="" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo2">
-<img alt="" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo1">
+<img alt="Resultat over norge" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo2.png">
+<img alt="Drøbak sentrum" src="https://github.com/BirkJohannessen/writeups/tree/master/p26e-julekalender-2023/05mulvarpjakt/turbo1.png">
 ```
 PST{FROGN BIBLIOTEK}
 ```
