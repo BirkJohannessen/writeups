@@ -91,6 +91,18 @@ Vi trenger at du rekonstruerer sleden så fort som mulig!
 📎 pinneved.txt
 ```
 
+pinneved.py leser en fil "slede.txt", gjør endel operasjoner på filen og gjør en output til pinneved.txt. Det er enkle operasjoner som blir utført i scriptet som gjør at vi kan reversere rekkefølgen scriptet kjører i på pinneved.txt.
+ 
+pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i filen som ASCII verdien to ned, og "scrambler" rekkefølgen på verdiene i otp tabellen.
+
+strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier opp. nøkkelen her er å mappe otp listen til indexen av verdien i listen for å få riktig rekkefølge på de 24 bitene.
+
+```
+placeholder script
+```
+
+<img alt="pinneved reversert" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/pinneved.png">
+
 ```
 PST{ASCII_art_er_kult}
 ```
@@ -122,7 +134,8 @@ Svar meg med navnet på møtestedet og på formen PST{BERGEN LUFTHAVN}
 - Tastefinger
 ```
 
-Geolokasjon / OSINT verktøy er noe jeg aldri har tatt i bruk. Som hintet i vrevet fra Tastefinger kan man bruke Overpass Turbo til å finne en lokasjon som passer beskrivelsen i meldingen.\
+Geolokasjon / OSINT verktøy er noe jeg aldri har tatt i bruk. Som hintet i vrevet fra Tastefinger kan man bruke Overpass Turbo til å finne en lokasjon som passer beskrivelsen i meldingen.
+
 Overpass Turbo "kodesnutten" her finner to lokasjoner, som er god nok filtrering til å se at Drøbak sentrum er hvor møte er. Nøyaktig på frogner bibliotek.
 ```
 area
