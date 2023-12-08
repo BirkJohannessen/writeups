@@ -19,6 +19,7 @@ Under etterforskningen av hendelsen på jule-verkstedet har vi oppdaget noe rart
 Første dagen som alvebetjent "helf" gikk jeg litt full kodeknekkemodus med rot-13 og feilet ganske fort. Som tittel, brev og avsender hinter til, er dette telefonrelatert, spesifikt de gamle NOKIA-type telefon med 12~ knapper, blant annet 0-9 som representerer det første tallet i meldingen, og antall ganger det skap trykkes blir mappet til en bokstav. Husker eda når det var "inn" å være rask på disse. \
 resultatet blir da:
 
+FLAGG
 ```
 PST{SYSTEM INFISERT GRUNKER INCOMING}
 ```
@@ -39,9 +40,13 @@ Over natten har det vært store utfordringer knyttet til en av maskinene i verks
 📎Bilde
 ```
 Bildet viser noen ødelagte leketøy, men det som stikker seg ut er bokstaver på firkantet fargebakgrunn. Det viser seg å være en "åpnet" rubikskube. Strategien var da å finne ut hvordan denne kuben så ut som "løst". Jeg har aldri løst en rubiks kube med strategi, men jeg vet fra barndommen at det går ann å demontere en og så "pusle" de tilbake. Med tunga rett i munnen la jeg ut seks post-it lapper og manuelt løste kuben, samlet de på en stor firkantet matboks og løsningen kunne man lese fra { til }, og Rød side hadde PST (og litt blank data):
+
+FLAGG
 ```
 PST{løste_du_denne_som_puslespill_eller_kube?:)}
 ```
+
+da landet vi 10p med 20 totalt.
 
 ```
 Her var det mye røre! Bra du klarte å finne ut av det!
@@ -65,9 +70,13 @@ Det er ubeskrivelig viktig at vi får åpnet denne filen igjen umiddelbart, da J
 
 placeholder
 
+FLAGG
 ```
 KRIPOS{Husk å se etter spor i snøen!}
 ```
+
+da landet vi 10p med 30 totalt.
+
 
 ```
 Flott!
@@ -158,9 +167,12 @@ with open("slede.txt", "w") as file:
 
 <img alt="pinneved reversert" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/pinneved.png">
 
+FLAGG
 ```
 PST{ASCII_art_er_kult}
 ```
+
+da landet vi 10p med 40 totalt.
 
 ```
 Et faktisk kunstverk! Godt jobbet!
@@ -211,9 +223,13 @@ logikken i løsningen er å filtere på norge, siden busstoppet var rett med res
 <img alt="Drøbak sentrum" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo1.png">
 
 Nøyaktig på frogn bibliotek.
+
+FLAGG
 ```
 PST{FROGN BIBLIOTEK}
 ```
+
+da landet vi 10p med 50 totalt.
 
 ```
 Ypperlig! Nå har vi dem! :)
@@ -271,9 +287,12 @@ Som en stolt vim entuiast limte jeg denne oppskriften inn i et buffer jeg hadde 
 
 <img alt="200d" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/06kaker/kake.png">
 
+FLAGG
 ```
 PST{pepperkakerermotbydelige}
 ```
+
+da landet vi 10p med 60 totalt.
 
 ```
 Hvordan kan man ikke like pepperkaker?!
@@ -299,12 +318,17 @@ C = 0x755040806d1d699c76cf2b3fffc28ad8831a8667e1b064297a43733b89f6272483a5a728b7
 Med litt hint fra meldingen (Ronny, Shahana og Ada - RSA) er dette verdier i RSA algoritmen.\
 Min løsning for dekryptering var med [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool) med N og E som parametere, og C som ciphertext.
 ```
-./RsaCtfTool.py -n 0x5993c05eac819aa17ae7e4e4b9f75b2d6fdbaec913e0b2d6f4ba585a991b62279ed9ac53aeadee3327321e02c0c06ecda184952df5d1cc8b3024643c0afdd9bbd52bf2d830f54d6e59e76844394eb0ffc498995dd270b9b95bf1614984472a3ef12d8c1bad64529be7b638c5d0fccf61c5ac2ab4564e5215748eb2533d4d949afd9486426dbf0c06a07c2c0f6d482e4f8cf3052e6ab9df20878b747936d590c3b8bb0219a378cbec03baee4ea8d0641c57bcc18706bbe92c3f2d7569c424062d9b79464958419b4000e3e31c077bba27ef2fc6ed15b7ebdcdb41d1cbf7708737e200904015d341ef94c537a916f1fec61e0b1bf64762e5a97bafdde290b939c3 -e 3 --decrypt 0x755040806d1d699c76cf2b3fffc28ad8831a8667e1b064297a43733b89f6272483a5a728b725d02b069f8fc65eb51d89ce9133df8f5f2d5e13f63c5423021eb2b56eeb91b11d78717528dfce169450a08d40f5ab451c8ac1f8c6875cffbd4d70259d436ed70baeae37b9bdafc5965
+./RsaCtfTool.py -n 0x5993c05eac819aa17ae7e4e4b9f75b2d6fdbaec913e0b2d6f4ba585a991b62279ed9ac53aeadee3327321e02c0c06ecda184952df5d1cc8b3024643c0afdd9bbd52bf2d830f54d6e59e76844394eb0ffc498995dd270b9b95bf1614984472a3ef12d8c1bad64529be7b638c5d0fccf61c5ac2ab4564e5215748eb2533d4d949afd9486426dbf0c06a07c2c0f6d482e4f8cf3052e6ab9df20878b747936d590c3b8bb0219a378cbec03baee4ea8d0641c57bcc18706bbe92c3f2d7569c424062d9b79464958419b4000e3e31c077bba27ef2fc6ed15b7ebdcdb41d1cbf7708737e200904015d341ef94c537a916f1fec61e0b1bf64762e5a97bafdde290b939c3 \
+ -e 3 \
+--decrypt 0x755040806d1d699c76cf2b3fffc28ad8831a8667e1b064297a43733b89f6272483a5a728b725d02b069f8fc65eb51d89ce9133df8f5f2d5e13f63c5423021eb2b56eeb91b11d78717528dfce169450a08d40f5ab451c8ac1f8c6875cffbd4d70259d436ed70baeae37b9bdafc5965
 ```
 
+FLAGG
 ```
 NSM{af0dbd13cee45990593c182b213f978d}
 ```
+
+da landet vi 10p med 70 totalt.
 
 ```
 Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på denne her, men bra du fikk det til!
