@@ -322,6 +322,44 @@ Skjermen på en av datamaskinene på NISSENS verksted ble plutselig dekket av ma
 
 📎mistenkelig_beslag.zip
 ```
+```
+red@red:~/personal/writeups/p26e-julekalender-2023/08ransomware$ 7z e mistenkelig_beslag.zip
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,16 CPUs AMD Ryzen 7 5800X 8-Core Processor              (A20F12),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 923323 bytes (902 KiB)
+
+Extracting archive: mistenkelig_beslag.zip
+--
+Path = mistenkelig_beslag.zip
+Type = zip
+Physical Size = 923323
+
+
+Would you like to replace the existing file:
+  Path:     ./flagg.kryptert
+  Size:     1538 bytes (2 KiB)
+  Modified: 2023-11-09 14:44:04
+with the file from archive:
+  Path:     flagg.kryptert
+  Size:     1538 bytes (2 KiB)
+  Modified: 2023-11-09 14:44:03
+? (Y)es / (N)o / (A)lways / (S)kip all / A(u)to rename all / (Q)uit? y
+
+
+Enter password (will not be echoed):
+Everything is Ok
+
+Files: 2
+Size:       1873410
+Compressed: 923323
+red@red:~/personal/writeups/p26e-julekalender-2023/08ransomware$ ls
+flagg.kryptert  mistenkelig_beslag.zip  wuauclt.exe
+
+
+```
 
 FLAGG
 ```
