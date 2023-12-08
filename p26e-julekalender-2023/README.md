@@ -312,7 +312,25 @@ Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på den
 ```
 
 
-## 8. Desember
+## 8. Desember - ransomware
+
+
+```
+Skjermen på en av datamaskinene på NISSENS verksted ble plutselig dekket av mange meldinger om at viktige filer var blitt kryptert. Et team av alver klarte å finne igjen denne filen sammen med en høyst mistenkelig fil, men klarer ikke å dekryptere filen. De har delt filene i et ZIP-arkiv med infected som passord. Klarer du å få tilbake den viktige filen?
+
+- Tastefinger
+
+📎mistenkelig_beslag.zip
+```
+
+FLAGG
+```
+placeholder flagg
+```
+
+```
+placeholder response
+```
 
 
 ## 9. Desember
