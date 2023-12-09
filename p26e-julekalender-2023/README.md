@@ -395,8 +395,47 @@ placeholder response
 ```
 
 
-## 9. Desember
+## 9. Desember - Kronolokalisering
 
+```
+Gjennom et beslag har vi fått tak i et papirark. På den ene siden står det “Oppmøtested for den topphemmelige sydpolinfiltrasjonen 2023, rekognosering 23. november”. På den andre siden av arket er det et bilde. For å kunne hente inn overvåkingsbilder og identifisere hvem som har planlagt arrangementet trenger vi det nøyaktige tidspunktet bildet er tatt.
+
+Send meg svar på denne eposten som KRIPOS{tidspunkt}, f.eks. KRIPOS{23:35}, rundet av til nærmeste fem minutter.
+
+- Mellomleder
+
+📎 bilde.jpeg
+```
+
+Bilde som er vedlagt i meldingen er i lav kvalitet og er vanskelig å tyde hva som står på bygningen.
+
+<img alt="vedlagt bilde" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/09kronolokalisering/bilde.jpeg">
+
+Men med et reverse image google søk finner man fort ut dette er Interpol HQ i Haag, Nederland.
+
+<img alt="høyre fremre side av bygingen er hvor bildet er tatt" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/09kronolokalisering/overview.png">
+
+Solen er nøkkelen for å finne ut hva klokka var da bildet ble tatt. Da kan vi bruke vinkelen venstre bygning beskygger høyre for å finne hvor sola stod på himmelen den 23. November.
+
+Her kan man bruke verktøy som [sunearthtools](https://www.sunearthtools.com) - vi setter kooridnatene der bygningen blir skygget på 
+
+52.09304334129273, 4.282084778166853
+
+
+Nøyaktige estimeringen med dette verktøyet ble gjort med linjal for å line opp sol mot skygge, og vi havner på kl 13:20 justert for UTC+1.
+
+
+<img alt="" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/09kronolokalisering/sunangle.png">
+
+FLAGG
+```
+KRIPOS{13:20}
+```
+
+```
+Strålende! Jeg setter igang Tastefinger for å finne skurken!
+- Mellomleder
+```
 
 ## 10. Desember
 
