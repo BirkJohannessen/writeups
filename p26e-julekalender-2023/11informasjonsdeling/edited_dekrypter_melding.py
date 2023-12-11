@@ -9,6 +9,8 @@ key = bytes.fromhex("980daad49738f76b80c8fafb0673ff1ba3c5a5a81ebc62c6144a9dc1ae5
 #key5 = bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109a3c5a5a81ebc62c6144a9dc1ae5cce11980daad49738f76b80c8fafb0673ff1b")
 #key6 = bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109980daad49738f76b80c8fafb0673ff1ba3c5a5a81ebc62c6144a9dc1ae5cce11")
 #list = [key1, key2, key3, key4, key5, key6]
+listb = [bytes.fromhex("980daad49738f76b80c8fafb0673ff1b"),bytes.fromhex("a3c5a5a81ebc62c6144a9dc1ae5cce11"),bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109")]
+
 
 #for key in list:
     #for i in range(0, len(key)-1):
@@ -24,7 +26,7 @@ with open("melding.enc", "rb") as f:
         nonce = b64decode(data["nonce"])
         ciphertext = b64decode(data["ciphertext"])
         tag = b64decode(data["tag"])
-        cipher = AES.new(key, AES.MODE_GCM, nonce = nonce)
+        cipher = AES.new(listb[1], AES.MODE_GCM, nonce = nonce)
         plaintext = cipher.decrypt_and_verify(ciphertext, tag)
         print("Dekryptert melding: " + plaintext.decode('utf-8'))
     except Exception as e:
