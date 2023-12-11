@@ -516,16 +516,68 @@ Bra det ble orden på sakene!
 ```
 
 
-## 11. Desember
+## 11. Desember - Informasjonsdeling
 
 ```
+NISSENS verksted har mottatt en mystisk melding og litt kode for å dekryptere meldingen. Noen alver i førstelinjen har sett på det, og blir ikke helt kloke. De mistenker at kun denne ene hemmeligheten ikke er nok. Kanskje er det andre som sitter på mer info?
+
+- Mellomleder
+
+📎 filer.zip
+```
+```
+Heisann alle sammen!
+
+Det kom et bud innom med en pakke som vi ikke klarer å finne ut av. Budet la igjen en post-it lapp med 61d42b52b5334fe4f513c24c6da2a4251b069def05ae7c96a4152038c4b1f712 på og pakken er vedlagt i meldingen.
+- 📞 Sentralbordet
 ```
 
+Vi fikk to meldinger idag, en fra mellomleder om en fra sentralbordet til alle i NPST - skjoldet jeg valgte dag 4 (ut ifra NPST, KRIAPOS og NISM).
+Som tittelen hinter til må man samarbeide på tvers av (alv)delingene.
+
+Her bare lagde jeg noen dummy kontoer for å laste ned zipfilene til KRIAPOS og NISM. hver zip fil kommer med et passord angitt i meldingen, den er det bare å hive inn i z7 for å få hemmelighet filene:
 ```
+npst.zip:
+Hemmelighet #1
+980daad49738f76b80c8fafb0673ff1b
+
+NISM.zip:
+Hemmelighet #2
+a3c5a5a81ebc62c6144a9dc1ae5cce11
+
+KRIAPOS.zip:
+Hemmelighet #3
+fc78e6fee2138b798e1e51ed15e0a109
 ```
 
+fra filer.zip ligger melding_dekryptert.py:
 ```
+from Crypto.Cipher import AES
+from base64 import b64decode
+import json
+
+key = ???
+
+with open("melding.enc", "rb") as f:
+try:
+data = json.loads(f.read())
+nonce = b64decode(data["nonce"])
+ciphertext = b64decode(data["ciphertext"])
+tag = b64decode(data["tag"])
+cipher = AES.new(key, AES.MODE_GCM, nonce = nonce)
+plaintext = cipher.decrypt_and_verify(ciphertext, tag)
+print("Dekryptert melding: " + plaintext.decode('utf-8'))
+except (ValueError, KeyError):
+print("Oisann, noe gikk galt!")
 ```
+
+og melding.enc
+```
+{"nonce": "iGfRlHEx5cYvehl2YYZv9w==", "ciphertext": "E3nvYDlJHG7R0XBQevJEBAHmoaqOdaI1sfX64d5bF+82cvzdZXhS9IVYVmXgE72kvdkZ+h92mGZ0YLx9pX+PbPPtB/JS", "tag": "nAjcHbhnjYtwMAHSHrcHsA=="}
+```
+
+Denne AES algoritmen aksepterer bare 128, 192 og 256 bits nøkler, som ikke går opp med konkatineringen av de samlete nøklene fra NISM, KRIAPOS og NPST.
+Nøkkelen her er å gjøre en XOR operasjon på hemmelighetene i kronologisk rekkefølge og da får vi flagget
 
 FLAGG
 ```
@@ -533,6 +585,8 @@ NSM{9c7cac722d55da1dbfa13025d85efeed45e9ddea2796c0e5ea2fda81ea4de17d}
 ```
 
 ```
+Strålende samarbeid her! Flott dere får til å samarbeide på tvers sånn.
+- Mellomleder
 ```
 
 ## 12. Desember
