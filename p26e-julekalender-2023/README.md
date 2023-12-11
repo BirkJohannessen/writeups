@@ -39,14 +39,43 @@ Over natten har det vært store utfordringer knyttet til en av maskinene i verks
 
 📎Bilde
 ```
+
+<img alt="pinneved reversert" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/02scrambled/bilde.png">
+
 Bildet viser noen ødelagte leketøy, men det som stikker seg ut er bokstaver på firkantet fargebakgrunn. Det viser seg å være en "åpnet" rubikskube. Strategien var da å finne ut hvordan denne kuben så ut som "løst". Jeg har aldri løst en rubiks kube med strategi, men jeg vet fra barndommen at det går ann å demontere en og så "pusle" de tilbake. Med tunga rett i munnen la jeg ut seks post-it lapper og manuelt løste kuben, samlet de på en stor firkantet matboks og løsningen kunne man lese fra { til }, og Rød side hadde PST (og litt blank data):
+
+```
+Rød:
+R B W -- ignorer disse
+G O Y -- ignorer disse
+P S T
+
+{ L Ø
+S T E
+_ D U
+
+_ D E
+N N E
+_ S O
+
+M _ P
+U S L
+E S P
+
+I L L
+_ E L
+L E R
+
+_ K U 
+B E ?
+: ) }
+
+```
 
 FLAGG
 ```
 PST{løste_du_denne_som_puslespill_eller_kube?:)}
 ```
-
-da landet vi 10p med 20 totalt.
 
 ```
 Her var det mye røre! Bra du klarte å finne ut av det!
@@ -172,7 +201,6 @@ FLAGG
 PST{ASCII_art_er_kult}
 ```
 
-da landet vi 10p med 40 totalt.
 
 ```
 Et faktisk kunstverk! Godt jobbet!
@@ -229,7 +257,6 @@ FLAGG
 PST{FROGN BIBLIOTEK}
 ```
 
-da landet vi 10p med 50 totalt.
 
 ```
 Ypperlig! Nå har vi dem! :)
@@ -292,7 +319,6 @@ FLAGG
 PST{pepperkakerermotbydelige}
 ```
 
-da landet vi 10p med 60 totalt.
 
 ```
 Hvordan kan man ikke like pepperkaker?!
@@ -328,7 +354,6 @@ FLAGG
 NSM{af0dbd13cee45990593c182b213f978d}
 ```
 
-da landet vi 10p med 70 totalt.
 
 ```
 Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på denne her, men bra du fikk det til!
