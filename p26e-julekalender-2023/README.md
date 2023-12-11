@@ -464,6 +464,57 @@ Strålende! Jeg setter igang Tastefinger for å finne skurken!
 
 ## 10. Desember
 
+```
+De strenge alvene har skrevet ned et julekodeord, men i den ivrige sorteringen av pakker har det skjedd en horribel feil og alt er blitt rot! Ordet har blitt borte i det som ser ut som et virrvarr av tilfeldig tekst! Nå trenger de hjelp til å gjenfinne ordet. De har null peiling på hvor langt ordet er. Kan du å gjenfinne ordet?
+
+- Mellomleder
+
+📎random_text.bin
+```
+
+filen random_text.bin er ekstremt lang og uleselig, la oss ta en titt på hva som er inni den.
+
+
+viser det er ganske likt fordelt mengder med a-zA-Z0-9, inkludert endel NULL bytes. men bare en "{" og "}" vist som ascii verdier 
+
+litt frem og tilbake ender vi på dette python scripet, med god hjelp fra meldingen som "sortere", "null", "langt ord": (litt synd på de som gikk på "rot" som "ROT-13")
+
+```
+with open("random_text.bin", "rb") as f:
+    splits = f.read().split(b'\x00')
+
+    list = []
+    for n in splits:
+        if (len(n) > 0):
+            length = len(n.decode("utf-8"))
+            firstChar = n.decode("utf-8")[0]
+            obj = {"length": length,"firstChar": firstChar}
+            list.append(obj)
+
+    list.sort(key=lambda x: x["length"])
+
+    solution = ""
+    for n in list:
+        if (n["length"] < 100):
+            solution += n["firstChar"]
+
+print(solution)
+```
+
+Vi splitter filen på nullbytes, mapper på lengden av strengen mellom hver nullbyte, sorterer på lengden. vi bryr oss bare om det første tegnet i sekvensen (pga { og } er rett ved siden av nullbyte).
+de første 24 i rekkefølgen er de eneste som har unik lengde. vi printer ut og får:
+
+
+FLAGG
+```
+PST{julenisseStreng0Alv}
+```
+
+```
+Bra det ble orden på sakene!
+- Mellomleder
+```
+
 
 ## 11. Desember
 
