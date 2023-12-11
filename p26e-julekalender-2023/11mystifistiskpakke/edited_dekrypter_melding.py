@@ -2,7 +2,7 @@ from Crypto.Cipher import AES
 from base64 import b64decode
 import json
 
-key = b"980daad49738f76b80c8fafb0673ff1b"
+key = bytes.fromhex("980daad49738f76b80c8fafb0673ff1ba3c5a5a81ebc62c6144a9dc1ae5cce11fc78e6fee2138b798e1e51ed15e0a109")
 
 with open("melding.enc", "rb") as f:
     try:
