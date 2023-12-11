@@ -1,16 +1,17 @@
 from Crypto.Cipher import AES
-from base64 import b64decode
+from base64 import b64decode, b64encode
 import json
 
-#key = bytes.fromhex("980daad49738f76b80c8fafb0673ff1ba3c5a5a81ebc62c6144a9dc1ae5cce11fc78e6fee2138b798e1e51ed15e0a1090000000000000000")
 #key2 = bytes.fromhex("980daad49738f76b80c8fafb0673ff1bfc78e6fee2138b798e1e51ed15e0a109a3c5a5a81ebc62c6144a9dc1ae5cce11")
 #key3 = bytes.fromhex("a3c5a5a81ebc62c6144a9dc1ae5cce11fc78e6fee2138b798e1e51ed15e0a109980daad49738f76b80c8fafb0673ff1b")
 #key4 = bytes.fromhex("a3c5a5a81ebc62c6144a9dc1ae5cce11980daad49738f76b80c8fafb0673ff1bfc78e6fee2138b798e1e51ed15e0a109")
 #key5 = bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109a3c5a5a81ebc62c6144a9dc1ae5cce11980daad49738f76b80c8fafb0673ff1b")
 #key6 = bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109980daad49738f76b80c8fafb0673ff1ba3c5a5a81ebc62c6144a9dc1ae5cce11")
 #list = [key1, key2, key3, key4, key5, key6]
-#listb = [bytes.fromhex("980daad49738f76b80c8fafb0673ff1b"),bytes.fromhex("a3c5a5a81ebc62c6144a9dc1ae5cce11"),bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109")]
-key = bytes.fromhex("000000000000000000000000000000000000000000000000")
+#listb = [bytes.fromhex("a3c5a5a81ebc62c6144a9dc1ae5cce11"),bytes.fromhex("fc78e6fee2138b798e1e51ed15e0a109")]
+
+key = bytes.fromhex("c7b0e9826b971ed41a9c36d7bdcf9003")
+
 
 
 #for key in list:

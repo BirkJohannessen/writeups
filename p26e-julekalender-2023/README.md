@@ -518,6 +518,22 @@ Bra det ble orden på sakene!
 
 ## 11. Desember
 
+```
+```
+
+```
+```
+
+```
+```
+
+FLAGG
+```
+NSM{9c7cac722d55da1dbfa13025d85efeed45e9ddea2796c0e5ea2fda81ea4de17d}
+```
+
+```
+```
 
 ## 12. Desember
 
