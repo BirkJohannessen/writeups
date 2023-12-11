@@ -45,30 +45,27 @@ Over natten har det vært store utfordringer knyttet til en av maskinene i verks
 Bildet viser noen ødelagte leketøy, men det som stikker seg ut er bokstaver på firkantet fargebakgrunn. Det viser seg å være en "åpnet" rubikskube. Strategien var da å finne ut hvordan denne kuben så ut som "løst". Jeg har aldri løst en rubiks kube med strategi, men jeg vet fra barndommen at det går ann å demontere en og så "pusle" de tilbake. Med tunga rett i munnen la jeg ut seks post-it lapper og manuelt løste kuben, samlet de på en stor firkantet matboks og løsningen kunne man lese fra { til }, og Rød side hadde PST (og litt blank data):
 
 ```
-Rød:
-R B W -- ignorer disse
-G O Y -- ignorer disse
-P S T
+            Rød:
+            R B W -- ignorer disse
+            G O Y -- ignorer disse
+            P S T
 
-{ L Ø
-S T E
-_ D U
 
-_ D E
-N N E
-_ S O
+Blå:        Hvit:        Grønn:
+{ L Ø       _ D E        M _ P
+S T E       N N E        U S L
+_ D U       _ S O        E S P
 
-M _ P
-U S L
-E S P
 
-I L L
-_ E L
-L E R
+            Orange:
+            I L L
+            _ E L
+            L E R
 
-_ K U 
-B E ?
-: ) }
+            Gul:
+            _ K U 
+            B E ?
+            : ) }
 
 ```
 
@@ -577,7 +574,7 @@ og melding.enc
 ```
 
 Denne AES algoritmen aksepterer bare 128, 192 og 256 bits nøkler, som ikke går opp med konkatineringen av de samlete nøklene fra NISM, KRIAPOS og NPST.
-Nøkkelen her er å gjøre en XOR operasjon på hemmelighetene i kronologisk rekkefølge og da får vi flagget
+Nøkkelen her er å gjøre en XOR operasjon på hemmelighetene i kronologisk rekkefølge og bruke den nye nøkkelen (som er 128 bits) i scriptet.
 
 FLAGG
 ```
