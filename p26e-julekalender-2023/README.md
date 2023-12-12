@@ -459,7 +459,7 @@ Strålende! Jeg setter igang Tastefinger for å finne skurken!
 - Mellomleder
 ```
 
-## 10. Desember
+## 10. Desember - Alvesortering
 
 ```
 De strenge alvene har skrevet ned et julekodeord, men i den ivrige sorteringen av pakker har det skjedd en horribel feil og alt er blitt rot! Ordet har blitt borte i det som ser ut som et virrvarr av tilfeldig tekst! Nå trenger de hjelp til å gjenfinne ordet. De har null peiling på hvor langt ordet er. Kan du å gjenfinne ordet?
@@ -586,11 +586,38 @@ Strålende samarbeid her! Flott dere får til å samarbeide på tvers sånn.
 - Mellomleder
 ```
 
-## 12. Desember
+## 12. Desember - Pakkestorm
+```
+Jeg har vært på et temmelig hemmelig oppdrag og fulgt med på en server som har hatt mistenkelig oppførsel tidligere. Nå tok vi den igjen når den begynte å sende masse pakker, men selv om jeg som alle andre alver liker pakker så ble det litt for mye av det gode. Kan du finne de onde for meg?
 
+- Tastefinger
+
+📎fangede_pakker.pcap
+```
+
+Når vi åpner fangede_pakker.pcap i wireshark, er kan det legges merke til uhåndterlige mengder pakker. men det er noe struktur her..\
+Samtlige pakker har 8 eller 9 bytes i payloaden og begynner på 0b - et symbol for byte påfølgene 1ere og 0ere. det er rundt 40+- pakker til hver addresse i filen.
+
+Strategien her var først å lage et python script som samlet bytene til en streng som går til hver addresse. Men da får vi enorme mengder flagg tilbake - her må vi gjøre noe mer.
+
+Her må vi lese nøyere på oppgave teksten:
+```
+Kan du finne de onde for meg?
+```
+
+Et rask google søk viser at en ond pakke faktisk er aprilsnarr fra [2003](https://www.ietf.org/rfc/rfc3514.txt).
+Med utdypelse fra [denne](https://ctftime.org/writeup/36170) artikkelen finner vi de relevante pakkene, og samler de sammen og dekoder: 
+
+```
+PST{I_cAn_HaZ_rEciprOCaTeD_tRuzT?}
+```
+
+```
+Flott at du fant ut av det her. Jeg har gått skikkelig lei av å sitte og stirre på den serveren.
+- Tastefinger
+```
 
 ## 13. Desember
-
 
 ## 14. Desember
 
