@@ -617,8 +617,33 @@ Flott at du fant ut av det her. Jeg har gått skikkelig lei av å sitte og stirr
 - Tastefinger
 ```
 
-## 13. Desember
+## 13. Desember - GeoJettr
+```
+Ledelsen har fått dilla på GeoGjettr og jeg er med i en konkurranse, men klarer ikke finne ut av hvilken by bildet her er fra. Kan du hjelpe meg litt fort?
 
+Svar meg med KRIPOS{navn på by}.
+
+- Mellomleder
+
+📎bilde.jpg
+```
+
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13GeoJettr/bilde.png">
+
+QR-koden ser veldig interessant ut, men det er noe i veien for "Finder pattern" nede til venstre.
+Her kan man bruke verktøy som Figma til å fylle den manglende "Finder pattern" for å så scanne QR koden med mobilen.
+
+QR-koden er en lenke til å koble på WIFIen i "The state building". Google søk finner ut at dette ligger i Perth, Australia.
+
+FLAGG
+```
+KRIPOS{PERTH}
+```
+
+```
+Haha! Nå leder jeg!
+- Mellomleder
+```
 ## 14. Desember
 
 
@@ -650,3 +675,13 @@ Flott at du fant ut av det her. Jeg har gått skikkelig lei av å sitte og stirr
 
 
 ## 24. Desember
+
+## Bonus.
+
+Dag 13 kom det ut en Minesveiper spill i dashbordet. Der var det en "Berømmelsestavle". Etter en nærmere titt i nettverkstrafikken når vi leverte et minesveiper spill, går det en postrequest med tiden vår som blir registrert på tavlen.
+Dette er svakt mot et klientside http manipulasjon angrep.
+
+Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet er bare at JSON ikke encoder Infinity. Men siden JavaScript er veldig ivrig til å gjøre artimatiske kalkulasjoner med strenger kan vi sende med tidsparameter som strengen "-Infinity" og vi havner på 6. plass!
+
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13GeoJettr/bilde.png">
+
