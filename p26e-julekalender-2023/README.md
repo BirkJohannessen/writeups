@@ -663,54 +663,25 @@ Notatet inneholdt dette her:
 Send svar til meg om du finner ut av det.
 - Tastefinger
 ```
-Storlogens Konstitution og Tillægslove
-    https://archive.org/details/norskbokfortegn03unkngoog/page/n263/mode/2up
 
-(55, 1, 2, 1),
-(65, 17, 6, 3),
-(19, 3, 8, 1),
-(13, 5, 6, 2),
-(14, 11, 4, 8),
-(27, 32, 12, 2),
-(9, 7, 12, 3),
-(82, 5, 2, 8),
-(78, 3, 11, 1),
-(71, 5, 1, 8),
-(76, 1, 6, 2),
-(92, 1, 1, 1),
-(50, 2, 1, 5),
-(15, 1, 1, 1),
-(82, 16, 10, 4),
-(23, 6, 1, 1),
-(34, 16, 7, 1),
-(92, 11, 3, 2),
-(50, 5, 6, 1),
-(1, 3, 5, 12),
-(42, 2, 1, 1),
-(15, 3, 1, 3),
-(23, 8, 1, 2),
-(90, 2, 5, 1),
-(83, 1, 1, 2),
-(59, 29, 9, 4),
-(93, 4, 1, 16),
-(82, 8, 3, 5),
-(39, 1, 1, 8),
-(77, 7, 9, 1),
-(93, 8, 6, 8),
-(1, 1, 3, 6),
-(83, 10, 8, 1),
-(23, 1, 1, 1),
-(69, 2, 9, 2),
-(76, 12, 3, 4),
-(7, 1, 3, 1),
-(3, 9, 9, 2),
-(19, 1, 6, 10),
-(93, 14, 7, 5),
-(13, 31, 7, 10),
-(3, 1, 9, 2),
-(7, 2, 6, 1),
-(23, 19, 4, 3),
-(50, 6, 5, 11)
+Alle disse bøkene er tilgjengelig på nasjonal biblioteket's nettsider, men kun "Om den yngre Jernalder i Norge : 1. afdeling" er tilgjegelig uten å sende inn søknad.
+Et raskt skjekk om det går opp for PST, bekrefter teknikken her: (sidetall, linje, ord, ordnummer med startindex 1)
+
+blir til:
+```
+pstkrøllparentesbokstavjaktkrøllparentesslutt
+```
+
+FLAGG
+```
+PST{bokstavjakt}
+```
+
+```
+Da er det bare å legge snoken i jern da!
+- Tastefinger
+```
+
 
 ## 15. Desember
 
