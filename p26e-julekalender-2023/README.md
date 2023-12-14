@@ -628,7 +628,7 @@ Svar meg med KRIPOS{navn på by}.
 📎bilde.jpg
 ```
 
-<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13GeoJettr/bilde.png">
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13geogjettr/bilde.png">
 
 QR-koden ser veldig interessant ut, men det er noe i veien for "Finder pattern" nede til venstre.
 Her kan man bruke verktøy som Figma til å fylle den manglende "Finder pattern" for å så scanne QR koden med mobilen.
@@ -683,5 +683,5 @@ Dette er svakt mot et klientside http manipulasjon angrep.
 
 Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet er bare at JSON ikke encoder Infinity. Men siden JavaScript er veldig ivrig til å gjøre artimatiske kalkulasjoner med strenger kan vi sende med tidsparameter som strengen "-Infinity" og vi havner på 6. plass!
 
-<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13GeoJettr/bilde.png">
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/minesveiper-highscore.png">
 
