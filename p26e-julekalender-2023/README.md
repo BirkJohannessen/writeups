@@ -712,8 +712,9 @@ Da er det bare å legge snoken i jern da!
 
 ## 24. Desember
 
-## Bonus.
+## Bonus & Egg
 
+# Fun
 Dag 13 kom det ut en Minesveiper spill i dashbordet. Der var det en "Berømmelsestavle". Etter en nærmere titt i nettverkstrafikken når vi leverte et minesveiper spill, går det en postrequest med tiden vår som blir registrert på tavlen.
 Dette er svakt mot et klientside http manipulasjon angrep.
 
@@ -721,3 +722,7 @@ Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet
 
 <img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/minesveiper-highscore.png">
 
+# Egg 1
+Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du treffer en bombe viser alle bombene seg, og de staver: EGG{retro}.
+
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg1.png">
