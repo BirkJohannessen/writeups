@@ -683,11 +683,87 @@ Da er det bare å legge snoken i jern da!
 ```
 
 
-## 15. Desember
+## 15. Desember - Bit-Råte
+
+```
+Brukerveiledningen til en av de eldste maskinene på verkstedet har blitt borte. Heldigvis har Julenissens arkiv 1000 sikkerhetskopier av dokumentet på magnetbånd. Det viser seg at alle kopiene er kraftig angrepet av bit-råte så dokumentet må gjenoppbygges. Ifølge arkivalven så er brukerveiledningen skrevet på gammel-nordpolarsk som har samme alfabet som norsk, men inneholder ikke nye tegn som disse: {}#$[]§¤@
+
+Når du finer ut av det så send meg MD5-sjekksummen til det gjenoppbyggede dokumentet på formen PST{checksum}. Svaret er ikke versalfølsomt.
+
+- Mellomleder
+
+📎backups.zip
+```
 
 
-## 16. Desember
+rot.py
+```
+import re
+import numpy as np
 
+def isChar(c):
+    return re.search("^[^\\{\\}#\\$\\[\\]§¤@]+$", c.decode("iso-8859-1")) is not None
+
+def most_frequent(List):
+    unique, counts = np.unique(List, return_counts=True)
+    index = np.argmax(counts)
+    return unique[index]
+
+manual_matrix = [[] for _ in range(3271)]
+
+
+for num in range(0, 999):
+    file = "manual/manual.bak."
+    numstr = ""
+    if num < 10:
+        numstr = "00" + str(num)
+    elif num < 100:
+        numstr = "0" + str(num)
+    else:
+        numstr = str(num)
+
+    with open(file + numstr, "rb") as file:
+        rot = file.read()
+        for idx in range(0, len(rot)):
+            byte = rot[idx].to_bytes(1, 'little')
+            if isChar(byte):
+                manual_matrix[idx].append(byte)
+
+manualfile = []
+for list in manual_matrix:
+    manualfile.append(most_frequent(list))
+
+with open("manual.txt", "w") as file:
+    file.write(b''.join(manualfile).decode("utf-8"))
+```
+
+```
+$ python3 rot.py
+$ md5sum manual.txt 
+e32ba07d1254bafd1683b109c0fd6d6c  manual.txt
+```
+
+FLAGG
+```
+PST{e32ba07d1254bafd1683b109c0fd6d6c}
+```
+
+```
+Og jeg som trodde magnetbånd var noe en brukte for å henge opp bilder på kjøleskapet...
+- Mellomleder
+```
+## 16. Desember - Invasjon
+```
+Gjennom temmelig hemmelige innhentingsmetoder har vi fått tak i det vedlagte dokumentet som avslører den egentlige hensikten bak løsepengeangrepet: Sydpolare aktører planlegger å invadere Nordpolen for å stoppe julen én gang for alle!
+
+I dokumentet nevnes det at aktørene har plantet deep-cover agenter i blant oss, og at de har hemmelige koder for å etablere kontakt med disse. Analyser materialet og se om du klarer å avsløre de hemmelige kodene slik at vi kan få disse agentene på kroken!
+
+I mellomtiden iverksetter vi umiddelbare mottiltak for å stanse invasjonen.
+
+- Tastefinger
+
+📎aksjon_2023.zip
+```
 
 ## 17. Desember
 
