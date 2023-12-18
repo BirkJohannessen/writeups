@@ -471,8 +471,27 @@ De strenge alvene har skrevet ned et julekodeord, men i den ivrige sorteringen a
 
 filen random_text.bin er ekstremt lang og uleselig, la oss ta en titt på hva som er inni den.
 
+```
+$ xxd -p random_text.bin | fold -w 2 | sort | uniq -c | sort -nr
+  24511 4f
+  24389 38
+  24383 67
+  24362 41
+  24361 77
+  24345 55
+  24343 35
+  24341 54
+  ...
 
-viser det er ganske likt fordelt mengder med a-zA-Z0-9, inkludert endel NULL bytes. men bare en "{" og "}" vist som ascii verdier 
+  23945 4d
+  23850 49
+  23823 52
+  10024 00
+      1 7d
+      1 7b
+```
+
+viser det er ganske likt fordelt mengder med [a-zA-Z0-9], inkludert endel NULL bytes. men bare en "{" og "}" vist som ascii verdier i hex (7d, 7b) 
 
 litt frem og tilbake ender vi på dette python scripet, med god hjelp fra meldingen som "sortere", "null", "langt ord": (litt synd på de som gikk på "rot" som "ROT-13")
 
@@ -764,9 +783,12 @@ I mellomtiden iverksetter vi umiddelbare mottiltak for å stanse invasjonen.
 
 📎aksjon_2023.zip
 ```
+I aksjon_2023 ligger det en pre-merge-commit hook (git) med endel interessante sed kommandoer.
 
 ```
 ```
+
+De hemmelige kodene er base64 encodet og kan kjøres rett i terminalen.
 
 FLAGG
 ```
@@ -797,6 +819,41 @@ FLAGG
 
 ## 18. Desember
 
+```
+I riktig gamle dager hadde NISSEN flere regionskontor spredt rundt i verden. Disse kontorene fungerte både som mottak for ønskelister og distribusjonssenter for gaver. Da som nå var det ikke alle som oppførte seg like pent fram mot jul, og ifølge historiebøkene var spesielt organisasjonen PERSIUS (ledet av den onde Dr. Xerxes) stadig vekk på spion- og toktforsøk mot ett av NISSENs regionkontor. På sitt verste var det angivelig hele 300 alvebetjenter i sving for å forsvare gaver og ønskelister. De særs tapre alvene til tross, NISSEN var reelt bekymret for at viktig informasjon og gaver skulle havne på avveie. Siden den gang har derfor all julesensitiv informasjon blitt kryptert.
+
+Takket være noen alvorlige logistikkproblemer (og muligens en streik eller to) har plutselig en slik gammel melding dukket opp. Julelovens paragraf §133-syvende ledd er imidlertid krystallklar
+
+    Enhver julesensitiv informasjon må analyseres og vurderes før den avgraderes høytid.
+
+Imidlertid er det ingen av Alvene som aner hvordan denne gamle meldingen skal leses. Kan du hjelpe dem?
+
+- Mellomleder
+
+📎melding.txt
+```
+
+melding.txt inneholder rundt 4000 [a-z#%&_!\?\[\]\{\}] karakterer i cipheret.
+Krypteringsmetoden som er brukt er en [Scytale](https://en.wikipedia.org/wiki/Scytale). Med litt bruteforce finner vi 128 som "hoppet" som passer i cipherteksten. løst da med python:
+
+read.py
+```
+with open("melding.txt", "r") as file:
+    melding = file.read()
+    for idx in range(0, len(melding)):
+        if idx % 128 == 0:
+            print(melding[idx], end="")
+```
+
+FLAGG
+```
+pst{var_julenissen_kong_leonidas}
+```
+
+```
+For et funn! Dette hører jo hjemme i et museum!
+- Mellomleder
+```
 
 ## 19. Desember
 
