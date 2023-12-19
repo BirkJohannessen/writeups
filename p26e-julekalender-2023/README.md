@@ -874,6 +874,59 @@ JULESOC har nylig mottatt en speilkopi av en arbeidsstasjon lokalisert på Julen
 📎image.raw.gz
 ```
 
+```
+$ file image.raw
+image.raw: DOS/MBR boot sector; partition 1 : ID=0x83, start-CHS (0x0,32,33), end-CHS (0x19,159,6), startsector 2048, 409600 sectors; partition 2 : ID=0x83, start-CHS (0x19,159,7), end-CHS (0x4c,157,17), startsector 411648, 819200 sectors; partition 3 : ID=0x83, start-CHS (0x4c,157,18), end-CHS (0x66,28,54), startsector 1230848, 409600 sectors
+$ fdisk -l image.raw
+Disk image.raw: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x9e0c43d5
+
+Device     Boot   Start     End Sectors  Size Id Type
+image.raw1         2048  411647  409600  200M 83 Linux
+image.raw2       411648 1230847  819200  400M 83 Linux
+image.raw3      1230848 1640447  409600  200M 83 Linux
+
+$ sudo mount -o loop,offset=1048576 image.raw /mnt/p26e23/
+$ sudo umount /mnt/p26e23/
+$ sudo mount -o loop,offset=210763776 image.raw /mnt/p26e23/
+$ sudo umount /mnt/p26e23/
+$ sudo mount -o loop,offset=630194176 image.raw /mnt/p26e23/
+```
+
+offsettene er kalkulert ved start * 512 units for hver partition.
+det vi finner i partisjonene er blant annet en nissetekst og en kode. PTSen kicker inn fra dag 17, men viser seg å være en mye snillere utgave. dette er direkte indekser i filen og vi får flagget ved dette python scriptet.
+
+solution.py
+```
+pubTxt = ""
+with open("nissetekst", "r") as file:
+    pubTxt = file.read()
+
+with open("code", "r") as file:
+    key = file.read()
+    key = key.replace("[", "")
+    key = key.replace("]", "")
+    keyArray = list(map(lambda x: int(x),key.split(", ")))
+
+    for idx, key in enumerate(keyArray):
+        print(pubTxt[key], end="")
+```
+
+FLAGG
+
+```
+PST{TheGrinchWouldHateThis}
+```
+
+
+```
+Det er alltid noen som skal snike seg inn og ødelegge jula. Heldigvis har vi deg til å stoppe disse grinchene!
+- Mellomleder
+```
 ## 20. Desember
 
 
