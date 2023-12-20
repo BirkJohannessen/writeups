@@ -929,6 +929,21 @@ Det er alltid noen som skal snike seg inn og ødelegge jula. Heldigvis har vi de
 ```
 ## 20. Desember
 
+```
+Julefreden har begynt å senke seg over Nordpolen, og alvene har blitt hekta på på et retro spill. I følge noen av alvene er det visstnok mye hemmeligheter her!
+
+Et lite avbrekk i julestria må da være lov?
+
+- Tastefinger
+
+📎rudolfs_eventyr.gba
+```
+
+```
+```
+
+```
+```
 
 ## 21. Desember
 
