@@ -1,19 +1,14 @@
-pubTxt = ""
-sol = "{}\ntels dågjør?num,okfa.viph"
-lines = []
+sol = []
 with open("melding 1.txt", "r") as file:
-    pubTxt = file.read()
-    pubTxt = pubTxt.replace(" ", "").replace(",", "").replace("\n", "")
-    lines = pubTxt.split(".")
+    bytearr = file.read()
 
-
+    for byte in bytearr:
+        if byte not in sol:
+            sol.append(byte)
 
 with open("melding 2.txt", "r") as file:
     key = file.read()
-    
     keyArray = list(map(lambda x: int(x),key.split(", ")))
 
-    print(sol)
-
-    for idx, key in enumerate(keyArray):
+    for key in keyArray:
         print(sol[key], end="")
