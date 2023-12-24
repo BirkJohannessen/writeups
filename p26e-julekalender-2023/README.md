@@ -1107,8 +1107,8 @@ Forslag
 --NSM{RUDOlf_rEDDEr_jula}
 --NSM{RUDOlf_rEDDEr_julen}
 --NSM{RUDOlf rEDDEr julen}
-NSM{RUDOlf_rEDDEr_jul}
-NSM{RUDOlf rEDDEr jul}
+--NSM{RUDOlf_rEDDEr_jul}
+--NSM{RUDOlf rEDDEr jul}
 
 --NSM{RUDOlf rEDDEt dagen}
 --NSM{RUDOlf_rEDDEt_dagen}
@@ -1117,8 +1117,7 @@ NSM{RUDOlf rEDDEr jul}
 --NSM{RUDOlf_rEDDEt_jula}
 --NSM{RUDOlf_rEDDEt_julen}
 --NSM{RUDOlf_rEDDEt_jul}
-NSM{RUDOlf rEDDEt jul}
-
+--NSM{RUDOlf rEDDEt jul}
 ```
 
 No lucky. God jul rudolf.
