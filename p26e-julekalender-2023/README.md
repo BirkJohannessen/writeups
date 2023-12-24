@@ -414,14 +414,7 @@ flagg.kryptert  mistenkelig_beslag.zip  wuauclt.exe
 
 ```
 
-FLAGG
-```
-placeholder flagg
-```
-
-```
-placeholder response
-```
+Krevende reverseringsoppgave. Klarte ikke denne..
 
 
 ## 9. Desember - Kronolokalisering
@@ -792,10 +785,7 @@ I mellomtiden iverksetter vi umiddelbare mottiltak for å stanse invasjonen.
 ```
 I aksjon_2023 ligger det en pre-merge-commit hook (git) med endel interessante sed kommandoer.
 
-```
-```
-
-De hemmelige kodene er base64 encodet og kan kjøres rett i terminalen.
+De hemmelige kodene i commiten er base64 encodet og kan kjøres rett i terminalen med ```echo BASE64STRING | base64 -d```.
 
 FLAGG
 ```
@@ -818,6 +808,50 @@ Den første meldingen som ble sendt var en merkelig tekst om å telle, mens meld
 
 📎melding_1.txt
 📎melding_2.txt
+```
+Denne oppgaven kommer med en tekst om telling 
+
+melding_1.txt
+```
+{}
+
+tells det å telle, gjør det det?
+nummer en, nummer to, nummer tre,
+en rekkefølge man må se.
+
+oversikt og sekvens, en viktig oppgave i alle fall,
+hva ellers er vel vitsen med tall?
+```
+og endel tall
+
+melding_2.txt
+```
+26, 6, 3, 0, 16, 4, 8, 4, 7, 21, 19, 14, 7, 3, 4, 5, 5, 25, 16, 11, 1
+```
+Nøkkelen her er å sortere på forekomst av karakterer, omgjøre det til en liste og hente ut med index tallene som er vedlagt.
+
+Løst med python script
+
+solver.py
+```
+sol = []
+with open("melding 1.txt", "r") as file:
+    bytearr = file.read()
+
+    for byte in bytearr:
+        if byte not in sol:
+            sol.append(byte)
+
+with open("melding 2.txt", "r") as file:
+    key = file.read()
+    keyArray = list(map(lambda x: int(x),key.split(", ")))
+
+    for key in keyArray:
+        print(sol[key], end="")
+```
+```
+$ python3 solver-py
+pst{nede for telling}
 ```
 
 FLAGG
@@ -1042,6 +1076,17 @@ Vi må forsikre oss om at det ikke skjuler seg noe juks eller fanteri i arbeidet
 
 📎
 ```
+Dagens fil er en .wim fil
+
+```
+$ file juxxOgFauxtneri.wim
+juxxOgFauxtneri.wim: Windows imaging (WIM) image v1.13, reparse point fixup
+```
+Windows image kan mountes med unix verktøy, wimmountrw kan da brukes.
+```
+wimmountrw juxxOgFauxtneri.wim juxxOgFauxtneri/
+```
+Her finner vi en kryptert fil Cashflow.xlsx.encrypted og blueprint.png
 
 <img alt="blueprint" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/blueprint.png">
 
@@ -1056,6 +1101,8 @@ e24f5249
 f1283ec92
   5f77a1
 ```
+
+et annet stego verktøy som kan være nyttig er [stylesuxx](https://stylesuxx.github.io/steganography/), men gir ingen nytting infomasjon fra LSB..
 
 Etter nærmere titt på Cashflow.xlsx.encrypted er dette Base64url encodet (med - og _ replacet med + og / i Base64) og vi kan få den krypterte filen med
 
