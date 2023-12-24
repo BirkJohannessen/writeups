@@ -663,7 +663,7 @@ KRIPOS{PERTH}
 Haha! Nå leder jeg!
 - Mellomleder
 ```
-## 14. Desember
+## 14. Desember - 📖 Bokorm
 ```
 En snok vi mistenker å stå i ledetog med Pen GWYN har blitt arrestert etter å ha brutt seg inn i NordPolarBiblioteket og stjålet noen bøker. Vi mistenker at de har vært ute etter noe spesifikt, men vi blir ikke helt kloke på hva det er. Snoken ble tatt med en stabel bøker og et notat.
 
@@ -801,7 +801,7 @@ Jeg tenker vi skal vagge ned til fiskeforhandleren og se hva vi ser jeg!
 ```
 
 
-## 17. Desember
+## 17. Desember - Innebygde ord 
 ```
 Vi har snappet opp to meldinger som ble sendt til hovedobjektet i J-SAK EMBED. Vi mistenker at meldingene ikke er hva det ser ut til å være.
 
@@ -822,7 +822,7 @@ pst{nede for telling}
 Naturligvis! Nå tror jeg vi har en vektor for å få løst denne saken.
 - Tastefinger
 ```
-## 18. Desember
+## 18. Desember - Melding fra antikken
 
 ```
 I riktig gamle dager hadde NISSEN flere regionskontor spredt rundt i verden. Disse kontorene fungerte både som mottak for ønskelister og distribusjonssenter for gaver. Da som nå var det ikke alle som oppførte seg like pent fram mot jul, og ifølge historiebøkene var spesielt organisasjonen PERSIUS (ledet av den onde Dr. Xerxes) stadig vekk på spion- og toktforsøk mot ett av NISSENs regionkontor. På sitt verste var det angivelig hele 300 alvebetjenter i sving for å forsvare gaver og ønskelister. De særs tapre alvene til tross, NISSEN var reelt bekymret for at viktig informasjon og gaver skulle havne på avveie. Siden den gang har derfor all julesensitiv informasjon blitt kryptert.
@@ -860,7 +860,7 @@ For et funn! Dette hører jo hjemme i et museum!
 - Mellomleder
 ```
 
-## 19. Desember
+## 19. Desember - Hide and Seek
 
 ```
 Som følge av et stadig økende trusselbilde, spesielt ifra sydligere strøk, har Nordpolar sikkerhetstjeneste etablert en intern enhet som skal beskytte tjenestens egne digitale systemer mot angrep. Enheten består av nøye selekterte tidligere alveteknologer som har god erfaring med bekjempelse av sydpolare aktører.
@@ -927,7 +927,7 @@ PST{TheGrinchWouldHateThis}
 Det er alltid noen som skal snike seg inn og ødelegge jula. Heldigvis har vi deg til å stoppe disse grinchene!
 - Mellomleder
 ```
-## 20. Desember
+## 20. Desember - Rudolfs Eventyr
 
 ```
 Julefreden har begynt å senke seg over Nordpolen, og alvene har blitt hekta på på et retro spill. I følge noen av alvene er det visstnok mye hemmeligheter her!
@@ -939,22 +939,135 @@ Et lite avbrekk i julestria må da være lov?
 📎rudolfs_eventyr.gba
 ```
 
+Del 1:
+Det er en papirlapp, men  nesten alt av den har
+blitt revet bort.
+Paa det lille som er igjen staar det 'NSM{'.
+
+
+Del 2:
+"Jeg hoerte at en del av flagget ligger i VRAM!"
+
+<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png">
+
+
+Del 4:
+
+<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png">
+
+Oversatt fra taktilt blir dette:
+
+Del4
+EDDE
+
+FLAGG
+```
+NSM{RUDO????EDDE????????
+
+--NSM{RUDOlf rEDDEr dagen}
+--NSM{RUDOlf_rEDDEr_dagen}
+--NSM{RUDOlf rEDDEr jula}
+--NSM{RUDOlf_rEDDEr_jula}
+--NSM{RUDOlf_rEDDEr_julen}
+--NSM{RUDOlf rEDDEr julen}
+
+--NSM{RUDOlf rEDDEt dagen}
+--NSM{RUDOlf_rEDDEt_dagen}
+-- NSM{RUDOlf rEDDEt julen}
+--NSM{RUDOlf rEDDEt jula}
+NSM{RUDOlf_rEDDEt_jula}
+NSM{RUDOlf_rEDDEt_julen}
+--NSM{RUDOlf_rEDDEt_jul}
+
+NSM{RUDOlf_rEDDEr_jul}
+NSM{RUDOlf rEDDEr jul}
+```
+
+## 21. Desember - Rudolf "The Stag"'s Pepperkaker
+
+```
+Nasjonens sikkerhetsalver leter febrilsk etter sin temmelig hemmelige pepperkakeoppskrift, men det peker til at Rudolf "The Stag" kanskje har spist opp denne. Klarer du skanne "The Stag"'s kropp og lese av denne før den går sin naturlige gang og blir borte for alltid?
+- Mellomleder
+```
+
+## 22. Desember - Gaveliste endring
+```
+Hei helf,
+
+JULESOC har fått en alarm fra informasjonssystemet tilknyttet NISSENS gavelager på VALøya i Tromsø. Alarmen handlet om en uautorisert modifikasjon i databasen som styrer inventaret til lageret, og JULESOC har sendt oss databasefilene slik de forekom på tidspunktet alarmen gikk.
+
+Har du mulighet til å sjekke ut filene og finne ut hvilken rad som er blitt modifisert?
+
+📎 ALARM_JULESOC.zip
+
+Returner UUID til den modifiserte raden, f.eks. PST{6eab374e-735f-416e-bcc6-81b4b8dfc7a9}
+```
+
 ```
 ```
-
-```
-```
-
-## 21. Desember
-
-
-## 22. Desember
-
 
 ## 23. Desember
 
+```
+Hei helf,
+
+Taskforce ALV utvides stadig og trenger derfor nye lokaler, og dermed er det satt i gang en Konseptvalgsutredning.
+
+Vi har leid inn arkitektfirmaet Juxx og Fauxtneri for å bistå med forslag til nye bygg. Men i lys av aktuelle hendelser har vi innsett at vi må gå arbeidet deres litt mer i sømmene.
+
+Vi må forsikre oss om at det ikke skjuler seg noe juks eller fanteri i arbeidet deres. Vi har fått tilgang til budsjettet deres, og et utkast til et nytt bygg. Problemet er at budsjettet er kryptert, så vi får ikke lest det. Har du noen alternative løsninger?
+
+📎
+```
+
+<img alt="blueprint" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23juxogfanteri/blueprint.png">
+
+med et verktøy fra [stegonline](https://stegonline.georgeom.net/image) kan vi se på manipulerte deler av bildet. Her finner vi en kode i bakdøren
+
+<img alt="code" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23juxogfanteri/code.png">
+
+
+```
+```
+
+Etter nærmere titt på Cashflow.xlsx.encrypted er dette Base64url encodet (med - og _ replacet med + og / i Base64) og vi kan få den krypterte filen med
+
+```
+$ cat Cashflow.xlsx | basenc --base64url -d > Cashflow.xlsx.enc
+```
 
 ## 24. Desember
+```
+Hei helf,
+
+Julegavemaskinen ved nissens verksted har over en lengre periode ikke produsert annet enn smokingkledde roboter med vaggende gange. Nå har endelig maskineriet blitt reparert, men det vagger fortsatt et par titalls tusen robot-pingviner rundt i kontorene her som truer vår suverenitet over Nordpolen.
+
+Vi har vanligvis et innebygget override passord i alle brikkene våre for slike nødtilfeller, men det ser ut til at passordet har blitt endret!
+
+Undersøkelsene våre viser at noen har tuklet med maskineriet, og lastet opp ukjent fastvare til mikrokontrollerene som vanligvis styrer lekene. I tillegg var produksjonssettings-pipelinen kompromittert, hvor vi fant en ukjent enhet koblet til USART-grensesnittet som utfører den endelige konfigurasjon av mikrokontrollerene. Dessverre gikk denne enheten opp i røyk da vi prøvde å koble den fra, så den er totaldestruert.
+
+Etter noen innledende eksperimenter tror vi at disse brikkene kan være sårbare mot fault injection angrep, og KRIAPOS har latt oss få remote tilgang til elektronikk-laben deres for å jobbe videre med dette:
+
+kriapos.no
+
+Laben er allerede satt opp med en brikke som vi har tatt ut av en robot-pingvin. Se om du klarer å få tak i dataen fra denne slik at vi kan se hva override passordet har blitt satt til.
+
+Vi har delt all dataen dere trenger med de samarbeidende etatene allerede, så du vil motta disse fra din kontaktperson veldig snart.
+Svar meg på denne eposten når du finner ut av dette!
+
+```
+
+```
+Hei alle sammen!
+
+Vi har fått utdelt noen filer i forbindelse med Nisse-saken, og jeg har blitt bedt om å dele disse videre til relevant personnel. Filene ligger vedlagt.
+
+Vi fikk også denne beskjeden sammen med filene:
+
+    Vedlagt ligger den ondsinnede fastvaren som er ekstrahert fra julegavemaskinen: “mykepakkervare.bin”, samt databladet for NISSE32-brikken. Vi tror også kanskje at de har bygget videre på vår vanlige fastvare, så alvdelingen for fastepakkervare har ordnet en debug-variant av fastvaren vi vanligvis bruker: “fastepakkervare.elf”.
+
+Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. Eventuelt har vel dere teknikere kommunikasjon på tvers av etatene på discord? OBS! Ikke stol blindt på filer du mottar fra andre; dobbeltsjekk hashen i md5sum.txt og bruk gjerne en VM.
+```
 
 ## Bonus & Egg
 
