@@ -1,5 +1,12 @@
 # p26e Julekalender 2023 (PST)
 
+Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personlig writeup.
+
+
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg1.png">
+
+Julen ringer inn og den hjelpene halvalven, helf lander på 181 poeng. 
+
 ## 1. Desember - mobil-detektiven
 
 ```
@@ -938,15 +945,22 @@ Et lite avbrekk i julestria må da være lov?
 
 📎rudolfs_eventyr.gba
 ```
+Dagens oppgave kan åpnes i en gameboy advanced emulator for å spille selveste rudolf på eventyr.
+
+Funnet delflagg:
 
 Del 1:
+```
 Det er en papirlapp, men  nesten alt av den har
 blitt revet bort.
 Paa det lille som er igjen staar det 'NSM{'.
-
+```
 
 Del 2:
-"Jeg hoerte at en del av flagget ligger i VRAM!"
+
+```
+Jeg hoerte at en del av flagget ligger i VRAM!
+```
 
 <img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png">
 
@@ -957,31 +971,39 @@ Del 4:
 
 Oversatt fra taktilt blir dette:
 
+```
 Del4
 EDDE
+```
 
-FLAGG
+De andre delene krever endel reversering skills som jeg ikke har. Dette var mine "bruteforce" forsøk på flagget basert på de bitene jeg hadde:
+
 ```
 NSM{RUDO????EDDE????????
-
+```
+Forslag
+```
 --NSM{RUDOlf rEDDEr dagen}
 --NSM{RUDOlf_rEDDEr_dagen}
 --NSM{RUDOlf rEDDEr jula}
 --NSM{RUDOlf_rEDDEr_jula}
 --NSM{RUDOlf_rEDDEr_julen}
 --NSM{RUDOlf rEDDEr julen}
+NSM{RUDOlf_rEDDEr_jul}
+NSM{RUDOlf rEDDEr jul}
 
 --NSM{RUDOlf rEDDEt dagen}
 --NSM{RUDOlf_rEDDEt_dagen}
--- NSM{RUDOlf rEDDEt julen}
+--NSM{RUDOlf rEDDEt julen}
 --NSM{RUDOlf rEDDEt jula}
-NSM{RUDOlf_rEDDEt_jula}
-NSM{RUDOlf_rEDDEt_julen}
+--NSM{RUDOlf_rEDDEt_jula}
+--NSM{RUDOlf_rEDDEt_julen}
 --NSM{RUDOlf_rEDDEt_jul}
+NSM{RUDOlf rEDDEt jul}
 
-NSM{RUDOlf_rEDDEr_jul}
-NSM{RUDOlf rEDDEr jul}
 ```
+
+No lucky. God jul rudolf.
 
 ## 21. Desember - Rudolf "The Stag"'s Pepperkaker
 
@@ -989,6 +1011,8 @@ NSM{RUDOlf rEDDEr jul}
 Nasjonens sikkerhetsalver leter febrilsk etter sin temmelig hemmelige pepperkakeoppskrift, men det peker til at Rudolf "The Stag" kanskje har spist opp denne. Klarer du skanne "The Stag"'s kropp og lese av denne før den går sin naturlige gang og blir borte for alltid?
 - Mellomleder
 ```
+
+Ser ut som alle sliter med å få løst denne oppgaven på discord kanalen. Klarte noen i det hele tatt å løse hemmeligheten bak the stag?
 
 ## 22. Desember - Gaveliste endring
 ```
@@ -1003,8 +1027,7 @@ Har du mulighet til å sjekke ut filene og finne ut hvilken rad som er blitt mod
 Returner UUID til den modifiserte raden, f.eks. PST{6eab374e-735f-416e-bcc6-81b4b8dfc7a9}
 ```
 
-```
-```
+Føler bare denne oppgaven er ekstremt frustrerende. Ingen av verktøyene mine fungerer som forventet og er bare i et verktøy helvete. Men hemmeligheten om den endrete raden ligger i WAL filen (Write ahead log) som en en loggtype for sqlite.
 
 ## 23. Desember
 
@@ -1035,6 +1058,8 @@ Etter nærmere titt på Cashflow.xlsx.encrypted er dette Base64url encodet (med 
 ```
 $ cat Cashflow.xlsx | basenc --base64url -d > Cashflow.xlsx.enc
 ```
+
+Dette var så langt jeg klarte å løse oppgaven. Ble ikke noe flagg på lille julaften.
 
 ## 24. Desember
 ```
@@ -1068,6 +1093,7 @@ Vi fikk også denne beskjeden sammen med filene:
 
 Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. Eventuelt har vel dere teknikere kommunikasjon på tvers av etatene på discord? OBS! Ikke stol blindt på filer du mottar fra andre; dobbeltsjekk hashen i md5sum.txt og bruk gjerne en VM.
 ```
+Jula ringer inn, dette er tilsynelatene en veldig krevende oppgave. igjen med reversering, som ikke er min sterke side. Blir ikke julaftenpoeng av dette. merryxmas.
 
 ## Bonus & Egg
 
