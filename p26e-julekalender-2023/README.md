@@ -1045,12 +1045,16 @@ Vi må forsikre oss om at det ikke skjuler seg noe juks eller fanteri i arbeidet
 
 <img alt="blueprint" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/blueprint.png">
 
-med et verktøy fra [stegonline](https://stegonline.georgeom.net/image) kan vi se på manipulerte deler av bildet. Her finner vi en kode i bakdøren
+Med et verktøy fra [stegonline](https://stegonline.georgeom.net/image) kan vi se på manipulerte deler av bildet. Her finner vi en hex kode på blå bit pane 3 der døra er åpen på originalbilde.
 
 <img alt="code" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/code.png">
 
 
 ```
+e24f5249
+7bcf4c332
+f1283ec92
+  5f77a1
 ```
 
 Etter nærmere titt på Cashflow.xlsx.encrypted er dette Base64url encodet (med - og _ replacet med + og / i Base64) og vi kan få den krypterte filen med
