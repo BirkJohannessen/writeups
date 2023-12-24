@@ -1020,11 +1020,11 @@ Vi må forsikre oss om at det ikke skjuler seg noe juks eller fanteri i arbeidet
 📎
 ```
 
-<img alt="blueprint" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23juxogfanteri/blueprint.png">
+<img alt="blueprint" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/blueprint.png">
 
 med et verktøy fra [stegonline](https://stegonline.georgeom.net/image) kan vi se på manipulerte deler av bildet. Her finner vi en kode i bakdøren
 
-<img alt="code" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23juxogfanteri/code.png">
+<img alt="code" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/code.png">
 
 
 ```
