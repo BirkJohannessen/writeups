@@ -5,7 +5,7 @@ Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personli
 
 <img alt="scoreboard" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/scoreboard.png">
 
-Julen ringer inn og den hjelpene halvalven, helf lander på 181 poeng. 
+Julen ringer inn og den hjelpene halvalven, helf lander på 191 poeng. 
 
 ## 1. Desember - mobil-detektiven
 
