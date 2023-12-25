@@ -1144,7 +1144,25 @@ Har du mulighet til å sjekke ut filene og finne ut hvilken rad som er blitt mod
 Returner UUID til den modifiserte raden, f.eks. PST{6eab374e-735f-416e-bcc6-81b4b8dfc7a9}
 ```
 
-Føler bare denne oppgaven er ekstremt frustrerende. Ingen av verktøyene mine fungerer som forventet og er bare i et verktøy helvete. Men hemmeligheten om den endrete raden ligger i WAL filen (Write ahead log) som en en loggtype for sqlite.
+Databasefilen kommer med en WAL fil og en SHM fil. WAL fil er en loggtype som logger endringer som kommer inn i databasen. Problemet er at den logger hele "chunken" med data som en endring har forekommet i. dvs den kommer med ca 56 potensielle kandidater som flagg. Men ved litt graving kan vi kjøre
+
+```
+PRAGMA wal_checkpoint
+```
+
+i databasen for å rulle tilbake "staten" den var før walfilen ble laget.
+
+ved å kjøre en git diff --text og lime forskjellen i et [tekst sammenligningsverktøy](https://text-compare.com/) finner vi at det er "Nano Jade Mindflex" raden som har blitt endret.
+
+FLAGG
+```
+PST{9da1b2a6-5a52-41ec-8bf0-32381e054db7}
+```
+
+```
+Hm, det er noen som ikke liker Mindflex her, altså.
+Takk for hjelpen!
+```
 
 ## 23. Desember
 
