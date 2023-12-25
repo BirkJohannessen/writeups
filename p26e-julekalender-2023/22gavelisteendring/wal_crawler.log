@@ -1,7 +1,0 @@
-2023-12-23 23:11:11,023 | INFO | Starting Wal_Crawler v.0.01
-2023-12-23 23:11:11,023 | DEBUG | System linux2
-2023-12-23 23:11:11,024 | DEBUG | Version 2.7.18 (default, Jul  1 2022, 10:30:50) 
-[GCC 11.2.0]
-2023-12-23 23:11:11,024 | INFO | Identifying and parsing file header
-2023-12-23 23:11:11,025 | INFO | File signature matched.
-2023-12-23 23:11:11,025 | INFO | Processing WAL file.
