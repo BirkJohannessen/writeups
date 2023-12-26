@@ -1085,6 +1085,10 @@ Det er en papirlapp, men  nesten alt av den har
 blitt revet bort.
 Paa det lille som er igjen staar det 'NSM{'.
 ```
+DELFLAGG
+```
+NSM{
+```
 
 Del 2:
 
@@ -1094,6 +1098,10 @@ Jeg hoerte at en del av flagget ligger i VRAM!
 
 <img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png" width="600" height="600">
 
+DELFLAGG
+```
+rudo
+```
 
 Del 4:
 
@@ -1101,10 +1109,11 @@ Del 4:
 
 Oversatt fra taktilt blir dette:
 
+DELFLAGG
 ```
-Del4
-EDDE
+edde
 ```
+Del 6:
 
 Den ene alven sitter på en hemmelighet hvis vi vinner et myntkast 100 ganger på rad. ved å bruke et minneverktøy for å se på verdier som endrer seg mens vi kaster mynt finner vi ut at addresse 0x03007b04 lagrer antall kast vi har vunnet. vi bytter den om til 0x63 (99) og gjør et nytt kast med alven.
 
@@ -1116,8 +1125,8 @@ Den ene alven sitter på en hemmelighet hvis vi vinner et myntkast 100 ganger p�
 
 <img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5b.png">
 
+DELFLAGG
 ```
-Del 6
 la!}
 ```
 
