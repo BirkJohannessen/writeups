@@ -43,6 +43,8 @@ Table of Contents
   * [Bonus](#bonus)
 
 ## 1. Desember - Mobil-detektiven
+
+<a name="luke1"/>
 ```
 Her får du den første oppgaven!
 
@@ -73,6 +75,8 @@ vi får 10 poeng på tavla og en vittig melding fra tastefinger
 ```
 
 ## 2. Desember - Scrambled
+<a name="luke2"/>
+
 ```
 Over natten har det vært store utfordringer knyttet til en av maskinene i verkstedet. En serie feilproduserte leker har kommet på rullende bånd. Vi prøver å finne ut hva som har skjedd. Graver du ned i det her?
 
@@ -120,6 +124,7 @@ Her var det mye røre! Bra du klarte å finne ut av det!
 - Mellomleder
 ```
 
+<a name="luke3"/>
 ## 3. Desember - Redacted
 
 ```
@@ -181,6 +186,7 @@ Flott!
 Jeg kaller inn til et møte med Jule NISSEN og de andre påvirkede så vi kan få delt ut informasjonen igjen.
 - Mellomleder
 ```
+<a name="luke4"/>
 
 ## 4. Desember - Pinneved
 
@@ -279,7 +285,7 @@ Vi setter i gang testingen sporenstreks.
 
 
 ## 5. Desember - Mulvarpjakt
-
+<a name="luke5"/>
 
 ```
 Gjennom temmelig hemmelige innhentingsmetoder har vi fanget opp en melding om et nært forestående møte på Fastlands-Norge mellom en mistenkt kildefører som jobber for sydpolare tjenester og et ukjent objekt vi mistenker kan være en muldvarp.
