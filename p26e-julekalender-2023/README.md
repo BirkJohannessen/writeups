@@ -42,9 +42,11 @@ Table of Contents
     * [Egg 4 - Minesveiper, Pen GWYN](#egg1)
   * [Bonus](#bonus)
 
+<a name="luke1"/>
+
 ## 1. Desember - Mobil-detektiven
 
-<a name="luke1"/>
+
 ```
 Her får du den første oppgaven!
 
@@ -74,8 +76,9 @@ vi får 10 poeng på tavla og en vittig melding fra tastefinger
 - Tastefinger
 ```
 
-## 2. Desember - Scrambled
 <a name="luke2"/>
+
+## 2. Desember - Scrambled
 
 ```
 Over natten har det vært store utfordringer knyttet til en av maskinene i verkstedet. En serie feilproduserte leker har kommet på rullende bånd. Vi prøver å finne ut hva som har skjedd. Graver du ned i det her?
@@ -125,6 +128,7 @@ Her var det mye røre! Bra du klarte å finne ut av det!
 ```
 
 <a name="luke3"/>
+
 ## 3. Desember - Redacted
 
 ```
@@ -282,10 +286,9 @@ Vi setter i gang testingen sporenstreks.
 - Tastefinger
 ```
 
-
+<a name="luke5"/>
 
 ## 5. Desember - Mulvarpjakt
-<a name="luke5"/>
 
 ```
 Gjennom temmelig hemmelige innhentingsmetoder har vi fanget opp en melding om et nært forestående møte på Fastlands-Norge mellom en mistenkt kildefører som jobber for sydpolare tjenester og et ukjent objekt vi mistenker kan være en muldvarp.
@@ -335,6 +338,8 @@ PST{FROGN BIBLIOTEK}
 Ypperlig! Nå har vi dem! :)
 - Tastefinger
 ```
+
+<a name="luke6"/>
 
 ## 6. Desember - KAKER-kontroll
 
@@ -396,6 +401,7 @@ Hvordan kan man ikke like pepperkaker?!
 - Tastefinger
 ```
 
+<a name="luke7"/>
 
 ## 7. Desember - Alle gode ting er tre
 
@@ -432,6 +438,7 @@ Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på den
 - Mellomleder
 ```
 
+<a name="luke8"/>
 
 ## 8. Desember - Ransomware
 
@@ -470,6 +477,7 @@ flagg.kryptert  mistenkelig_beslag.zip  wuauclt.exe
 
 Krevende reverseringsoppgave. Klarte ikke denne..
 
+<a name="luke9"/>
 
 ## 9. Desember - Kronolokalisering
 
@@ -512,6 +520,8 @@ KRIPOS{13:20}
 Strålende! Jeg setter igang Tastefinger for å finne skurken!
 - Mellomleder
 ```
+
+<a name="luke10"/>
 
 ## 10. Desember - Alvesortering
 
@@ -585,6 +595,7 @@ Bra det ble orden på sakene!
 - Mellomleder
 ```
 
+<a name="luke11"/>
 
 ## 11. Desember - Informasjonsdeling
 
@@ -658,6 +669,7 @@ NSM{9c7cac722d55da1dbfa13025d85efeed45e9ddea2796c0e5ea2fda81ea4de17d}
 Strålende samarbeid her! Flott dere får til å samarbeide på tvers sånn.
 - Mellomleder
 ```
+<a name="luke12"/>
 
 ## 12. Desember - Pakkestorm
 ```
@@ -690,6 +702,8 @@ Flott at du fant ut av det her. Jeg har gått skikkelig lei av å sitte og stirr
 - Tastefinger
 ```
 
+<a name="luke13"/>
+
 ## 13. Desember - GeoJettr
 ```
 Ledelsen har fått dilla på GeoGjettr og jeg er med i en konkurranse, men klarer ikke finne ut av hvilken by bildet her er fra. Kan du hjelpe meg litt fort?
@@ -717,6 +731,9 @@ KRIPOS{PERTH}
 Haha! Nå leder jeg!
 - Mellomleder
 ```
+
+<a name="luke14"/>
+
 ## 14. Desember - 📖 Bokorm
 ```
 En snok vi mistenker å stå i ledetog med Pen GWYN har blitt arrestert etter å ha brutt seg inn i NordPolarBiblioteket og stjålet noen bøker. Vi mistenker at de har vært ute etter noe spesifikt, men vi blir ikke helt kloke på hva det er. Snoken ble tatt med en stabel bøker og et notat.
@@ -755,6 +772,7 @@ Da er det bare å legge snoken i jern da!
 - Tastefinger
 ```
 
+<a name="luke15"/>
 
 ## 15. Desember - Bit-Råte
 
@@ -909,6 +927,8 @@ Og jeg som trodde magnetbånd var noe en brukte for å henge opp bilder på kjø
 - Mellomleder
 ```
 
+<a name="luke16"/>
+
 ## 16. Desember - Invasjon
 ```
 Gjennom temmelig hemmelige innhentingsmetoder har vi fått tak i det vedlagte dokumentet som avslører den egentlige hensikten bak løsepengeangrepet: Sydpolare aktører planlegger å invadere Nordpolen for å stoppe julen én gang for alle!
@@ -935,6 +955,7 @@ Jeg tenker vi skal vagge ned til fiskeforhandleren og se hva vi ser jeg!
 - Tastefinger
 ```
 
+<a name="luke17"/>
 
 ## 17. Desember - Innebygde ord 
 ```
@@ -1001,6 +1022,9 @@ pst{nede for telling}
 Naturligvis! Nå tror jeg vi har en vektor for å få løst denne saken.
 - Tastefinger
 ```
+
+<a name="luke18"/>
+
 ## 18. Desember - Melding fra antikken
 
 ```
@@ -1038,6 +1062,8 @@ pst{var_julenissen_kong_leonidas}
 For et funn! Dette hører jo hjemme i et museum!
 - Mellomleder
 ```
+
+<a name="luke19"/>
 
 ## 19. Desember - Hide and Seek
 
@@ -1106,6 +1132,9 @@ PST{TheGrinchWouldHateThis}
 Det er alltid noen som skal snike seg inn og ødelegge jula. Heldigvis har vi deg til å stoppe disse grinchene!
 - Mellomleder
 ```
+
+<a name="luke20"/>
+
 ## 20. Desember - Rudolfs Eventyr
 
 ```
@@ -1189,6 +1218,8 @@ For en rebus! Tror du slo tiden min på å løse den også!
 
 Imponerende oppgave, NSM!
 
+<a name="luke21"/>
+
 ## 21. Desember - Rudolf "The Stag"'s Pepperkaker
 
 ```
@@ -1197,6 +1228,8 @@ Nasjonens sikkerhetsalver leter febrilsk etter sin temmelig hemmelige pepperkake
 ```
 
 Ser ut som alle sliter med å få løst denne oppgaven på discord kanalen. Klarte noen i det hele tatt å løse hemmeligheten bak the stag?
+
+<a name="luke22"/>
 
 ## 22. Desember - Gaveliste endring
 ```
@@ -1230,6 +1263,8 @@ PST{9da1b2a6-5a52-41ec-8bf0-32381e054db7}
 Hm, det er noen som ikke liker Mindflex her, altså.
 Takk for hjelpen!
 ```
+
+<a name="luke23"/>
 
 ## 23. Desember - KVU-dokumenter
 
@@ -1322,6 +1357,8 @@ Greit å unngå noen problemer der.
 ```
 PST skyter fra hoften. [NSM ulovlig lån.](https://www.nrk.no/nyheter/nsm-tok-opp-ulovlige-lan-1.16670810) 
 
+<a name="luke24"/>
+
 ## 24. Desember - Stopp robot-armadaen!
 ```
 Hei helf,
@@ -1356,10 +1393,14 @@ Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. 
 ```
 Jula ringer inn, dette er tilsynelatene en veldig krevende oppgave. igjen med reversering, som ikke er min sterke side. Blir ikke julaftenpoeng av dette. merryxmas.
 
+<a name="egg"/>
+
 ## Egg
 Egg er verdt 1 poeng, det ser ut fra scoretavla at det var totalt 7 egg. Eggene er tallgitt etter rekkefølgen jeg fant dem i.
 
 Dette var de jeg fant:
+
+<a name="egg1"/>
 
 ### Egg 1 - Minesveiper, Ufødt pingvin
 Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du treffer en bombe viser alle bombene seg, og de staver: EGG{retro}.
@@ -1370,6 +1411,8 @@ EGG
 ```
 egg{retro}
 ```
+
+<a name="egg2"/>
 
 ### Egg 2 - stego + nonogram
 Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
@@ -1387,6 +1430,8 @@ EGG
 ```
 egg{ruter_overalt}
 ```
+
+<a name="egg3"/>
 
 ### Egg 3 - git dangling blob
 
@@ -1471,6 +1516,8 @@ EGG
 EGG{h3ng3r 0g d1ngl3r}
 ```
 
+<a name="egg4"/>
+
 ### Egg 4 - Minesveiper, Pen GWYN
 Minesveiper spillet PEN GWYN kommer med en ekstrem langt (2x160) spill.
 Når du spillte viser det seg å være hard kodet bomber på samme sted akkurat som egg 1.
@@ -1489,6 +1536,8 @@ XOR
 ```
 EGG{bomber_og_flagg}
 ```
+
+<a name="bonus"/>
 
 ## Bonus
 
