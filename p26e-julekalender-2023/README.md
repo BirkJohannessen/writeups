@@ -5,7 +5,7 @@ Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personli
 
 <img alt="scoreboard" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/scoreboard.png">
 
-Julen ringer inn og den hjelpene halvalven, helf lander på 191 poeng. 
+Julen ringer inn og den hjelpene halvalven, helf lander på 194 poeng. 
 
 ## 1. Desember - mobil-detektiven
 
@@ -1223,7 +1223,48 @@ Etter nærmere titt på Cashflow.xlsx.encrypted er dette Base64url encodet (med 
 $ cat Cashflow.xlsx | basenc --base64url -d > Cashflow.xlsx.enc
 ```
 
-Dette var så langt jeg klarte å løse oppgaven. Ble ikke noe flagg på lille julaften.
+etter endel leting viser det seg at det er en hemmelighet i selve .wim filen.
+
+```
+$ strings Cashflow.xlsx.encrypted
+from cryptography.fernet import Fernet
+import base64
+B3 = input("Skriv inn n
+kkelord: ")
+source_file = 'Cashflow.xlsx.encrypted'
+key = base64.urlsafe_b64encode(bytes(B3, encoding='ascii'))
+def decrypt_file(encrypted_filename, key):
+    cipher_suite = Fernet(key)
+    with open(encrypted_filename, 'rb') as encrypted_file:
+        encrypted_data = encrypted_file.read()
+    decrypted_data = cipher_suite.decrypt(encrypted_data)
+    decrypted_filename = encrypted_filename.replace('.encrypted', '')
+    with open(decrypted_filename, 'wb') as decrypted_file:
+        decrypted_file.write(decrypted_data)
+decrypt_file(source_file, key)
+print(f'{source_file} decrypted.')
+```
+limer dette inn i unlock.py
+```
+$ python3 unlock.py Cashflow.xlsx.encrypted
+Skriv inn nøkkelord: e24f52497bcf4c332f1283ec925f77a1
+Cashflow.xlsx.encrypted decrypted.
+```
+
+Når vi åpner xlxs dokumentet i google drive finner vi flagget.
+
+FLAGG
+```
+PST{alternativ_pengestrøm}
+```
+
+```
+Takk, det var bra du fant dette!
+
+For å ha godtatt dette tilbudet måtte vi uansett ha pådratt oss gjeld med ugunstige vilkår, og som vi alle vet er det kun Nissetinget som har lov til å pådra seg gjeld på vegne av den Nordpolarske stat.
+Greit å unngå noen problemer der.
+
+```
 
 ## 24. Desember
 ```
