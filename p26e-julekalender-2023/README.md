@@ -8,8 +8,7 @@ Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personli
 Resultat for 2023.
  
 
-Table of Contents
-=================
+# Table of Contents
 
   * [1. Desember - Mobil-detektiven](#luke1)
   * [2. Desember - Scrambled](#luke2)
@@ -37,10 +36,11 @@ Table of Contents
   * [24. Desember - Stopp robot-armadaen!](#luke24)
   * [Egg](#egg)
     * [Egg 1 - Minesveiper, Ufødt pingvin](#egg1)
-    * [Egg 2 - stego + nonogram](#egg1)
-    * [Egg 3 - git dangling blob](#egg1)
-    * [Egg 4 - Minesveiper, Pen GWYN](#egg1)
+    * [Egg 2 - stego + nonogram](#egg2)
+    * [Egg 3 - git dangling blob](#egg3)
+    * [Egg 4 - Minesveiper, Pen GWYN](#egg4)
   * [Bonus](#bonus)
+
 
 <a name="luke1"/>
 
