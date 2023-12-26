@@ -1283,4 +1283,4 @@ Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/
 
 Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden.
 
-<img alt="egg2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png">
+<img alt="egg2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2.png">
