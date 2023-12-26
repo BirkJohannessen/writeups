@@ -112,7 +112,28 @@ Algoritmen som er brukt for kryptering kan vi se fordi forfatteren har bare visu
 <img alt="utpressingsbrev" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/03redacted/doc.png" width="600" height="600">
 
 ```
-$ openssl placeholder
+$ openssl enc -aes-192-ctr -nosalt -d -in huskeliste.txt.enc  -out huskeliste.txt \
+-K 'dda2846b010a6185b5e76aca4144069f88dc7a6ba49bf128' \
+-iv '4867746E617466497278676265313233'
+```
+
+huskeliste.txt
+```
+Nissing 101:
+
+Snille barn: Morosaker, spenstigheter og snurrepiperier
+Slemme barn: Ukomprimerte diamanter
+Nissebetjenter: Flagg
+
+Forslag til morosaker, spenstigheter og snurrepiperier:
+Dukker
+Lekebiler
+Sokker
+
+Forslag til flagg:
+Norsk
+Nordpolsk
+KRIPOS{Husk  se etter spor i snen!}
 ```
 
 FLAGG
@@ -377,7 +398,7 @@ Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på den
 ```
 
 
-## 8. Desember - ransomware
+## 8. Desember - Ransomware
 
 
 ```
@@ -388,7 +409,7 @@ Skjermen på en av datamaskinene på NISSENS verksted ble plutselig dekket av ma
 📎mistenkelig_beslag.zip
 ```
 ```
-red@red:~/personal/writeups/p26e-julekalender-2023/08ransomware$ 7z e mistenkelig_beslag.zip
+$ 7z e mistenkelig_beslag.zip
 
 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
 p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,16 CPUs AMD Ryzen 7 5800X 8-Core Processor              (A20F12),ASM,AES-NI)
@@ -402,28 +423,14 @@ Path = mistenkelig_beslag.zip
 Type = zip
 Physical Size = 923323
 
-
-Would you like to replace the existing file:
-  Path:     ./flagg.kryptert
-  Size:     1538 bytes (2 KiB)
-  Modified: 2023-11-09 14:44:04
-with the file from archive:
-  Path:     flagg.kryptert
-  Size:     1538 bytes (2 KiB)
-  Modified: 2023-11-09 14:44:03
-? (Y)es / (N)o / (A)lways / (S)kip all / A(u)to rename all / (Q)uit? y
-
-
 Enter password (will not be echoed):
 Everything is Ok
 
 Files: 2
 Size:       1873410
 Compressed: 923323
-red@red:~/personal/writeups/p26e-julekalender-2023/08ransomware$ ls
+$ ls
 flagg.kryptert  mistenkelig_beslag.zip  wuauclt.exe
-
-
 ```
 
 Krevende reverseringsoppgave. Klarte ikke denne..
@@ -1314,15 +1321,10 @@ Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. 
 ```
 Jula ringer inn, dette er tilsynelatene en veldig krevende oppgave. igjen med reversering, som ikke er min sterke side. Blir ikke julaftenpoeng av dette. merryxmas.
 
-## Bonus & Egg
+## Egg
+Egg er verdt 1 poeng, det ser ut fra scoretavla at det var totalt 7 egg. Eggene er tallgitt etter rekkefølgen jeg fant dem i.
 
-### Fun
-Dag 13 kom det ut en Minesveiper spill i dashbordet. Der var det en "Berømmelsestavle". Etter en nærmere titt i nettverkstrafikken når vi leverte et minesveiper spill, går det en postrequest med tiden vår som blir registrert på tavlen.
-Dette er svakt mot et klientside http manipulasjon angrep.
-
-Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet er bare at JSON ikke encoder Infinity. Men siden JavaScript er veldig ivrig til å gjøre artimatiske kalkulasjoner med strenger kan vi sende med tidsparameter som strengen "-Infinity" og vi havner på 6. plass!
-
-<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/minesveiper-highscore.png">
+Dette var de jeg fant:
 
 ### Egg 1
 Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du treffer en bombe viser alle bombene seg, og de staver: EGG{retro}.
@@ -1452,3 +1454,14 @@ XOR
 ```
 EGG{bomber_og_flagg}
 ```
+
+## Bonus
+
+### Bonus 
+Dag 13 kom det ut en Minesveiper spill i dashbordet. Der var det en "Berømmelsestavle". Etter en nærmere titt i nettverkstrafikken når vi leverte et minesveiper spill, går det en postrequest med tiden vår som blir registrert på tavlen.
+Dette er svakt mot et klientside http manipulasjon angrep.
+
+Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet er bare at JSON ikke encoder Infinity. Men siden JavaScript er veldig ivrig til å gjøre artimatiske kalkulasjoner med strenger kan vi sende med tidsparameter som strengen "-Infinity" og vi havner på 6. plass!
+
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/minesveiper-highscore.png">
+
