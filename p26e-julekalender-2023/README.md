@@ -1274,6 +1274,11 @@ Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du tr
 
 <img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg1.png">
 
+EGG
+```
+egg{retro}
+```
+
 ### Egg 2
 Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
 
@@ -1284,3 +1289,92 @@ Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/
 Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden.
 
 <img alt="egg2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2.png">
+
+
+EGG
+```
+egg{ruter_overalt}
+```
+
+### Egg 3
+
+Dag 16 fant vi også en pre-commit script som kjørere:
+
+```
+$ ./pre-commit
+Har noen sett egget mitt? Jeg vet HELT sikkert at jeg la det inn i git, men klarer ikke finne det igjen noe sted...
+```
+Etter litt sjeleleting finner vi en hengende blob
+```
+$ git fsck --full
+Checking object directories: 100% (256/256), done.
+Checking objects: 100% (42/42), done.
+dangling blob fdfbb6ab8dda68e83853bf372a100e8ff6e8830f
+Verifying commits in commit graph: 100% (19/19), done.
+
+$ git show fdfbb6ab8dda68e83853bf372a100e8ff6e8830f
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,',,,,;:ldkO00000Okdoc;,,,,,,,,,,,,',,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:ldk0KXXXXXXXXXXXK0Oxoc;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;cdk0XXXXXXXXXXXXXXXXXXXXXKOxl:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:okKXXXXXXXXXXXXXXXXXXXXXXXXXXXKOdc;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,cx0XXXXXXXXXXXXXXXXXXXXXXXXXXXNXXXXXKkl;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,cx0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXKko;,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,cx0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXKkl;,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,:d0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXKXXXXXNXXXXKkc,,,',,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,;lOXXXXXNXXX0kk0XXXXXXXXXXXXXXXXXXXXXK0kOKXXXXXXXXXX0d:,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,',,,:xKXXXNXXXXKOxxxxOKXXNXXXXXXNNXXXXXXX0kxxxkOKXXXXXXXXXXOl,,,,,',,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,lOXXXXXXXXKOkxxxxxxkOKXXXXXXXXXXXXXXKOxxxxxxxk0XXXXXXXXXX0d;,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,;d0XXXXXXXX0kxxxxxxxxxxk0XXXXXXXXXXXK0kxxxxxxxxxxOKXXXXXXXXXKx:,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,;oOXXXXXXXKOkxxxxxxxxxxxxxOKXXXXXXXX0kxxxxxxxxxxxxxkOKXXXXXXX0ko:,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,:oxkOKXXXKOkxxxxxxxxxxxxxxxxkOKXXXXKOkxxxxxxxxxxxxxxxxk0XXXX0Oxxxdc,',,,,,,,,,,,,,,,
+,,,,,,,,,,,,,',:oxxxxk0K0kxxxxxxxxxxxxxxxxxxxxk0K0OkxxxxxxxxxxxxxxxxxxxxO0KOkxxxxxdc;,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,cdxxxxxxxkxxxxxxxxxxxxxxxxxxxxxxxxkxxxxxxxxxxxxxxxxxxxxxxxxkkxxxxxxxxdl;,,,,,,,,,,,,,,
+,,,,,,,,,,,,,cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;,,,,,,,,,,,,,
+,,,,,,,,,,,,cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;,,,,,,,,,,,,
+,,,,,,,,,,,cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;',,',,,,,,,
+,,,,,,,,,,:dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;',,,,,,,,,
+,,,,,,,,,:oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc,,,,,,,,,,
+,,,,',,,:oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc,,,,,,,,,
+,,,,,,,;lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd:,,,,,,,,
+,,,,,,,cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo;,,,,,,,
+,,,,,,:dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;,,,,,,
+,,,,,;oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc,,,,,,
+,,,,,lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo:,,,,,
+,,,,:dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;,,,,
+,,,;lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc,,,,
+,,,cdxxxxkO0kxxxxxxxxxxxxxxxxxxxxxk00kxxxxxxxxxxxxxxxxxxxxxxO0OkxxxxxxxxxxxxxxxxxxxxxO0Oxxxxxxxo;,,,
+,';lxxxxOKXXX0kxxxxxxxxxxxxxxxxxkOKXXKOxxxxxxxxxxxxxxxxxxxk0XXXKOxxxxxxxxxxxxxxxxxxk0XXX0kxxxxxdc,',
+,,cdxxk0XXXXXXKOxxxxxxxxxxxxxxxOKXXXXXXKOxxxxxxxxxxxxxxxxOKXXXXXX0kxxxxxxxxxxxxxxk0XXXXXXK0kxxxxo;,'
+,;lxkOKXXXXXXXXXKkxxxxxxxxxxxk0XXXXXXXXXX0kxxxxxxxxxxxxk0XXXXXXXXXKOkxxxxxxxxxxxOKXNXXXXXXXKOxxxdc,,
+,:dOKXXXXXXXXXXXXX0kxxxxxxxkOKXXXXXXXXXXXXKOxxxxxxxxxk0XXXXXXXXXXXXXKOxxxxxxxxk0XXXXXXXXXXXXX0kxxl;,
+,l0XXXXXXXXXXXXXXXXKOxxxxxOKXXXXXXXXXXXXXXXXKkxxxxxxOKXXXXXXXXXXXXXXXX0kxxxxk0KXXXXXXXXXXXXXXXKOkd:,
+:kXXXXXXXXXXXXXXXXXXX0kxk0XXXXXXXXXXXXXXXXXXXX0kxkO0XXXXXXXXXXXXXXXXXXXKOkxOKXXXXXXXXXXXXXXXXXXXKkl,
+l0XXXXXXXXKKXXXXXXNXXXXKKXXXXXXXXXXKKXXXXXXXXXXKKXXXXXXXXXXXXKKXXXXXXXXXXKKXXXXXXXXXXKKKXXXXXXXXXXk:
+oKXXXXXXX0kxkKXXXXXXXXXXXXXXXXXXXKOxxOKXXXXXXXXXXXXXXNXXXXXKkxk0XXXXXXXXXXXXXXXXXXXX0kxk0XXXXXXXXX0l
+xXXXXXX0kxxxxkOKXNXXXXXXXXXXXXXX0kxxxxk0XXXXXXXXXXXXXXXXXKOxxxxxk0XXXXXXXXXXXXXXXXKOxxxxxOKXXXXXXXKo
+kXXXXKOxxxxxxxxk0XXXXXXXXXXXXX0kxxxxxxxxOKXXXXXXXXXXXXNX0kxxxxxxxxOKXXXXXXXXXXXXKOkxxxxxxxk0KXXXXXXx
+OXXX0kxxxxxxxxxxxOKXXXXXXXXXKOxxxxxxxxxxxxOKXXXXXXXXXXKOxxxxxxxxxxxk0XXXXXXXXXX0kxxxxxxxxxxxk0XXXXXk
+0X0kxxxxxxxxxxxxxxkOKXXXXXX0kxxxxxxxxxxxxxxk0XXXXXXXKOxxxxxxxxxxxxxxxkKXXXXXXKOxxxxxxxxxxxxxxxOKXXXO
+0Oxxxxxxxxxxxxxxxxxxk0XXXKkxxxxxxxxxxxxxxxxxxOKXXXK0kxxxxxxxxxxxxxxxxxxOKXXKOkxxxxxxxxxxxxxxxxxk0KX0
+xxxxxxxxxxxxxxxxxxxxxxO0OxxxxxxxxxxxxxxxxxxxxxkO0Okxxxxxxxxxxxxxxxxxxxxxk00kxxxxxxxxxxxxxxxxxxxxxk0k
+dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd
+dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd
+oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo
+oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo
+lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl
+:dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx EGG{h3ng3r 0g d1ngl3r} xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc
+;oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo:
+,cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;
+,;oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd:,
+',cdxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl;,
+,,;lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd:,,
+,,,;oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdc,,,
+,,,,:oxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxdl;,,,
+,,,,,:dxxxkkxxxxxxxxxxxxxxxxxxxxxxxkkxxxxxxxxxxxxxxxxxxxxxxxxkkxxxxxxxxxxxxxxxxxxxxxxkkxxxxxxxo;,,,,
+,,,,,,:dxk0KOkxxxxxxxxxxxxxxxxxxxkOKKOkxxxxxxxxxxxxxxxxxxxxk0K0Oxxxxxxxxxxxxxxxxxxxxk0K0kxxxxo:,,,,,
+,,,,,,,cxKXXXKOxxxxxxxxxxxxxxxxxk0XXXX0kxxxxxxxxxxxxxxxxxxOKXXXK0kxxxxxxxxxxxxxxxxkOKXXXKOkxo:,,,,,,
+```
+EGG
+```
+EGG{h3ng3r 0g d1ngl3r}
+```
