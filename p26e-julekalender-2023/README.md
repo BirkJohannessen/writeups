@@ -101,7 +101,19 @@ Det er ubeskrivelig viktig at vi får åpnet denne filen igjen umiddelbart, da J
 📎 huskeliste.txt.enc 
 ```
 
-placeholder
+Hvis vi åpner 'Mitt utpressingsbrev.docx' i google docs kan vi for se hvor mange svakheter som er i utpressingsbrevet..
+
+Nøkkelen til den krypterte filen som egentlig er skjult, kan flyttes på og vi ser den tilgjengelig (hex encodet).
+
+IV'en kan vi hente fra historien i dokumentet som "Utgangsvektor123"
+
+Algoritmen som er brukt for kryptering kan vi se fordi forfatteren har bare visuelt croppet bildet, der ser vi det er AES-CTR. Vi ser også at IVen har blitt kjørt rot13 på.
+
+<img alt="utpressingsbrev" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/03redacted/doc.png">
+
+```
+$ openssl placeholder
+```
 
 FLAGG
 ```
@@ -1261,3 +1273,14 @@ Vi kan modifiserere forespørselen i Postman med den tiden vi ønsker. Problemet
 Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du treffer en bombe viser alle bombene seg, og de staver: EGG{retro}.
 
 <img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg1.png">
+
+### Egg 2
+Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
+
+<img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png">
+
+<img alt="geojettr stego2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png">
+
+Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden.
+
+<img alt="egg2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png">
