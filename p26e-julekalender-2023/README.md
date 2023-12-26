@@ -109,7 +109,7 @@ IV'en kan vi hente fra historien i dokumentet som "Utgangsvektor123"
 
 Algoritmen som er brukt for kryptering kan vi se fordi forfatteren har bare visuelt croppet bildet, der ser vi det er AES-CTR. Vi ser også at IVen har blitt kjørt rot13 på.
 
-<img alt="utpressingsbrev" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/03redacted/doc.png">
+<img alt="utpressingsbrev" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/03redacted/doc.png" width="200" height="200">
 
 ```
 $ openssl placeholder
@@ -447,7 +447,7 @@ Bilde som er vedlagt i meldingen er i lav kvalitet og er vanskelig å tyde hva s
 
 Men med et reverse image google søk finner man fort ut dette er Interpol HQ i Haag, Nederland.
 
-<img alt="høyre fremre side av bygingen er hvor bildet er tatt" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/09kronolokalisering/overview.png">
+<img alt="høyre fremre side av bygingen er hvor bildet er tatt" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/09kronolokalisering/overview.png" width="200" height="200">
 
 Solen er nøkkelen for å finne ut hva klokka var da bildet ble tatt. Da kan vi bruke vinkelen venstre bygning beskygger høyre for å finne hvor sola stod på himmelen den 23. November.
 
@@ -659,7 +659,7 @@ Svar meg med KRIPOS{navn på by}.
 📎bilde.jpg
 ```
 
-<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13geogjettr/bilde.png">
+<img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/13geogjettr/bilde.png" width="200" height="200">
 
 QR-koden ser veldig interessant ut, men det er noe i veien for "Finder pattern" nede til venstre.
 Her kan man bruke verktøy som Figma til å fylle den manglende "Finder pattern" for å så scanne QR koden med mobilen.
@@ -1092,12 +1092,12 @@ Del 2:
 Jeg hoerte at en del av flagget ligger i VRAM!
 ```
 
-<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png">
+<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png" width="200" height="200">
 
 
 Del 4:
 
-<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png">
+<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png" width="200" height="200">
 
 Oversatt fra taktilt blir dette:
 
@@ -1105,8 +1105,6 @@ Oversatt fra taktilt blir dette:
 Del4
 EDDE
 ```
-
-<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png">
 
 Den ene alven sitter på en hemmelighet hvis vi vinner et myntkast 100 ganger på rad. ved å bruke et minneverktøy for å se på verdier som endrer seg mens vi kaster mynt finner vi ut at addresse 0x03007b04 lagrer antall kast vi har vunnet. vi bytter den om til 0x63 (99) og gjør et nytt kast med alven.
 
@@ -1126,16 +1124,19 @@ la!}
 ```
 NSM{rudo????edde????la!}
 ```
-Her kan vi se en klart mønster i flagget. ved litt bruteforce gjetter vi riktig flagg
+Her kan vi se en klart mønster i flagget selv om vi mangler to biter. Ved litt bruteforce gjetter vi riktig flagg
 
 FLAGG
 ```
-NSM{rudolf_reddet_jula!}
+NSM{rudolf_redder_jula!}
 ```
+
 ```
 For en rebus! Tror du slo tiden min på å løse den også!
 - Tastefinger
 ```
+
+Imponerende oppgave, NSM!
 
 ## 21. Desember - Rudolf "The Stag"'s Pepperkaker
 
@@ -1327,9 +1328,9 @@ egg{retro}
 ### Egg 2
 Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
 
-<img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png">
+<img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png"  width="200" height="200">
 
-<img alt="geojettr stego2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png">
+<img alt="geojettr stego2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png"  width="200" height="200">
 
 Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden.
 
