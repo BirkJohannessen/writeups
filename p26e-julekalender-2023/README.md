@@ -5,10 +5,44 @@ Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personli
 
 <img alt="scoreboard" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/scoreboard.png">
 
-Julen ringer inn og den hjelpene halvalven, helf lander på 214 poeng. 
+Resultat for 2023.
+ 
 
-## 1. Desember - mobil-detektiven
+Table of Contents
+=================
 
+  * [1. Desember - Mobil-detektiven](#luke1)
+  * [2. Desember - Scrambled](#luke2)
+  * [3. Desember - Redacted](#luke3)
+  * [4. Desember - Pinneved](#luke4)
+  * [5. Desember - Mulvarpjakt](#luke5)
+  * [6. Desember - KAKER-kontroll](#luke6)
+  * [7. Desember - Alle gode ting er tre](#luke7)
+  * [8. Desember - Ransomware](#luke8)
+  * [9. Desember - Kronolokalisering](#luke9)
+  * [10. Desember - Alvesortering](#luke10)
+  * [11. Desember - Informasjonsdeling](#luke11)
+  * [12. Desember - Pakkestorm](#luke12)
+  * [13. Desember - GeoJettr](#luke13)
+  * [14. Desember - 📖 Bokorm](#luke14)
+  * [15. Desember - Bit-Råte](#luke15)
+  * [16. Desember - Invasjon](#luke16)
+  * [17. Desember - Innebygde ord ](#luke17)
+  * [18. Desember - Melding fra antikken](#luke18)
+  * [19. Desember - Hide and Seek](#luke19)
+  * [20. Desember - Rudolfs Eventyr](#luke20)
+  * [21. Desember - Rudolf "The Stag"'s Pepperkaker](#luke21)
+  * [22. Desember - Gaveliste endring](#luke22)
+  * [23. Desember - KVU-dokumenter](#luke23)
+  * [24. Desember - Stopp robot-armadaen!](#luke24)
+  * [Egg](#egg)
+    * [Egg 1 - Minesveiper, Ufødt pingvin](#egg1)
+    * [Egg 2 - stego + nonogram](#egg1)
+    * [Egg 3 - git dangling blob](#egg1)
+    * [Egg 4 - Minesveiper, Pen GWYN](#egg1)
+  * [Bonus](#bonus)
+
+## 1. Desember - Mobil-detektiven
 ```
 Her får du den første oppgaven!
 
@@ -47,7 +81,7 @@ Over natten har det vært store utfordringer knyttet til en av maskinene i verks
 📎Bilde
 ```
 
-<img alt="pinneved reversert" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/02scrambled/oedelagte_leker.png">
+<img alt="odelagte leker" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/02scrambled/oedelagte_leker.png">
 
 Bildet viser noen ødelagte leketøy, men det som stikker seg ut er bokstaver på firkantet fargebakgrunn. Det viser seg å være en "åpnet" rubikskube. Strategien var da å finne ut hvordan denne kuben så ut som "løst". Jeg har aldri løst en rubiks kube med strategi, men jeg vet fra barndommen at det går ann å demontere en og så "pusle" de tilbake. Med tunga rett i munnen la jeg ut seks post-it lapper og manuelt løste kuben, samlet de på en stor firkantet matboks og løsningen kunne man lese fra { til }, og Rød side hadde PST (og litt blank data):
 
@@ -141,9 +175,6 @@ FLAGG
 KRIPOS{Husk å se etter spor i snøen!}
 ```
 
-da landet vi 10p med 30 totalt.
-
-
 ```
 Flott!
 
@@ -151,7 +182,7 @@ Jeg kaller inn til et møte med Jule NISSEN og de andre påvirkede så vi kan f�
 - Mellomleder
 ```
 
-## 4. Desember - pinneved
+## 4. Desember - Pinneved
 
 ```
 Alvebetjentene på Jule NISSEN sitt verksted våknet i dag til et fryktelig syn; Julenissens slede er sprengt i fillebiter. Vi har satt folk på saken for å finne ut av hvem som er ansvarlig for ødeleggelsen, men det er kritisk at sleden blir reparert slik at vi får testet den før Jule NISSEN skal levere pakkene.
@@ -281,25 +312,23 @@ node(around:90)[amenity=fountain];
 node(around:50)[amenity=library];
 out;
 ```
-logikken i løsningen er å filtere på norge, siden busstoppet var rett med resturant (30 meter magic guess), titalls meter til fontenen (90m med litt slark fra resturanten) som igjen var 50m unna biblioteket.
+Logikken i løsningen over er først å filtere på norge (linje 1-4). Vi starter med å så hente alle busstopp noder (innenfor norge filteret, linje 6). Vi kan bruke "around" operatoren for å si finne alle resturanter innen 30 meter fra busstoppene (30 meter magic guess). Så titalls meter til fontenen (90m med litt slark fra resturanten, linje 8) som igjen var 50m unna biblioteket (linje 9).
 
 <img alt="Resultat over norge" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo2.png">
 
 <img alt="Drøbak sentrum" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/05mulvarpjakt/turbo1.png">
 
-Nøyaktig på frogn bibliotek.
+Det gir oss to biblioteker, vi ser noden i drøbak også stemmer med begravelsesbyrå, og svaret er at skal møtes på frogn bibliotek.
 
 FLAGG
 ```
 PST{FROGN BIBLIOTEK}
 ```
 
-
 ```
 Ypperlig! Nå har vi dem! :)
 - Tastefinger
 ```
-
 
 ## 6. Desember - KAKER-kontroll
 
@@ -347,7 +376,7 @@ PE‍PPERKAKER {
 }
 ```
 
-Som en stolt vim entuiast limte jeg denne oppskriften inn i et buffer jeg hadde åpent - Og der var svaret umiddelbart. Vim encoder ikke spesialbytes som andre teksteditorer, men printer de i <> format. Svaret var samlingen av bokstaven etter <200d> byten som vist på bilde.
+Som en stolt vim entuiast limte jeg denne oppskriften inn i et nytt vim buffer - Og der var svaret umiddelbart. Vim encoder ikke spesialbytes som andre teksteditorer, men printer de i [caret notation](https://en.wikipedia.org/wiki/Caret_notation). Svaret var samlingen av bokstaven etter <200d> byten som vist på bilde.
 
 <img alt="200d" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/06kaker/kake.png">
 
@@ -355,7 +384,6 @@ FLAGG
 ```
 PST{pepperkakerermotbydelige}
 ```
-
 
 ```
 Hvordan kan man ikke like pepperkaker?!
@@ -379,6 +407,7 @@ e = 3
 C = 0x755040806d1d699c76cf2b3fffc28ad8831a8667e1b064297a43733b89f6272483a5a728b725d02b069f8fc65eb51d89ce9133df8f5f2d5e13f63c5423021eb2b56eeb91b11d78717528dfce169450a08d40f5ab451c8ac1f8c6875cffbd4d70259d436ed70baeae37b9bdafc5965
 ```
 Med litt hint fra meldingen (Ronny, Shahana og Ada - RSA) er dette verdier i RSA algoritmen.\
+
 Min løsning for dekryptering var med [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool) med N og E som parametere, og C som ciphertext.
 ```
 ./RsaCtfTool.py -n 0x5993c05eac819aa17ae7e4e4b9f75b2d6fdbaec913e0b2d6f4ba585a991b62279ed9ac53aeadee3327321e02c0c06ecda184952df5d1cc8b3024643c0afdd9bbd52bf2d830f54d6e59e76844394eb0ffc498995dd270b9b95bf1614984472a3ef12d8c1bad64529be7b638c5d0fccf61c5ac2ab4564e5215748eb2533d4d949afd9486426dbf0c06a07c2c0f6d482e4f8cf3052e6ab9df20878b747936d590c3b8bb0219a378cbec03baee4ea8d0641c57bcc18706bbe92c3f2d7569c424062d9b79464958419b4000e3e31c077bba27ef2fc6ed15b7ebdcdb41d1cbf7708737e200904015d341ef94c537a916f1fec61e0b1bf64762e5a97bafdde290b939c3 \
@@ -1196,7 +1225,7 @@ Hm, det er noen som ikke liker Mindflex her, altså.
 Takk for hjelpen!
 ```
 
-## 23. Desember
+## 23. Desember - KVU-dokumenter
 
 ```
 Hei helf,
@@ -1287,7 +1316,7 @@ Greit å unngå noen problemer der.
 ```
 PST skyter fra hoften. [NSM ulovlig lån.](https://www.nrk.no/nyheter/nsm-tok-opp-ulovlige-lan-1.16670810) 
 
-## 24. Desember
+## 24. Desember - Stopp robot-armadaen!
 ```
 Hei helf,
 
@@ -1326,7 +1355,7 @@ Egg er verdt 1 poeng, det ser ut fra scoretavla at det var totalt 7 egg. Eggene 
 
 Dette var de jeg fant:
 
-### Egg 1
+### Egg 1 - Minesveiper, Ufødt pingvin
 Dag 14 Kom det et nytt nivå i minesveiper spillet, "ufødt pengvin". Når du treffer en bombe viser alle bombene seg, og de staver: EGG{retro}.
 
 <img alt="GeoJettr" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg1.png">
@@ -1336,7 +1365,7 @@ EGG
 egg{retro}
 ```
 
-### Egg 2
+### Egg 2 - stego + nonogram
 Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
 
 <img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png"  width="600" height="600">
@@ -1353,7 +1382,7 @@ EGG
 egg{ruter_overalt}
 ```
 
-### Egg 3
+### Egg 3 - git dangling blob
 
 Dag 16 fant vi også en pre-commit script som kjørere:
 
@@ -1436,7 +1465,7 @@ EGG
 EGG{h3ng3r 0g d1ngl3r}
 ```
 
-### EGG 4
+### Egg 4 - Minesveiper, Pen GWYN
 Minesveiper spillet PEN GWYN kommer med en ekstrem langt (2x160) spill.
 Når du spillte viser det seg å være hard kodet bomber på samme sted akkurat som egg 1.
 Hvis vi konverterer begge radene binært, gjør en xor operasjon på de og dropper den siste (trailing) bit'en får vi:
