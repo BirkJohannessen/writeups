@@ -5,7 +5,7 @@ Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personli
 
 <img alt="scoreboard" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/scoreboard.png">
 
-Julen ringer inn og den hjelpene halvalven, helf lander på 194 poeng. 
+Julen ringer inn og den hjelpene halvalven, helf lander på 214 poeng. 
 
 ## 1. Desember - mobil-detektiven
 
@@ -1118,32 +1118,24 @@ Den ene alven sitter på en hemmelighet hvis vi vinner et myntkast 100 ganger p�
 
 <img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5b.png">
 
-
 ```
-NSM{RUDO????EDDE????????
-```
-Forslag
-```
---NSM{RUDOlf rEDDEr dagen}
---NSM{RUDOlf_rEDDEr_dagen}
---NSM{RUDOlf rEDDEr jula}
---NSM{RUDOlf_rEDDEr_jula}
---NSM{RUDOlf_rEDDEr_julen}
---NSM{RUDOlf rEDDEr julen}
---NSM{RUDOlf_rEDDEr_jul}
---NSM{RUDOlf rEDDEr jul}
-
---NSM{RUDOlf rEDDEt dagen}
---NSM{RUDOlf_rEDDEt_dagen}
---NSM{RUDOlf rEDDEt julen}
---NSM{RUDOlf rEDDEt jula}
---NSM{RUDOlf_rEDDEt_jula}
---NSM{RUDOlf_rEDDEt_julen}
---NSM{RUDOlf_rEDDEt_jul}
---NSM{RUDOlf rEDDEt jul}
+Del 6
+la!}
 ```
 
-No lucky. God jul rudolf.
+```
+NSM{rudo????edde????la!}
+```
+Her kan vi se en klart mønster i flagget. ved litt bruteforce gjetter vi riktig flagg
+
+FLAGG
+```
+NSM{rudolf_reddet_jula!}
+```
+```
+For en rebus! Tror du slo tiden min på å løse den også!
+- Tastefinger
+```
 
 ## 21. Desember - Rudolf "The Stag"'s Pepperkaker
 
