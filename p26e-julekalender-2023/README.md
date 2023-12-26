@@ -1226,7 +1226,7 @@ $ cat Cashflow.xlsx | basenc --base64url -d > Cashflow.xlsx.enc
 etter endel leting viser det seg at det er en hemmelighet i selve .wim filen.
 
 ```
-$ strings Cashflow.xlsx.encrypted
+$ strings juxxOgFauxtneri.wim
 from cryptography.fernet import Fernet
 import base64
 B3 = input("Skriv inn n
