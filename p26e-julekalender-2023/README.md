@@ -1265,6 +1265,7 @@ For å ha godtatt dette tilbudet måtte vi uansett ha pådratt oss gjeld med ugu
 Greit å unngå noen problemer der.
 
 ```
+PST skyter fra hoften. [NSM ulovlig lån.](https://www.nrk.no/nyheter/nsm-tok-opp-ulovlige-lan-1.16670810) 
 
 ## 24. Desember
 ```
