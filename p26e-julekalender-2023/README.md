@@ -152,6 +152,8 @@ Algoritmen som er brukt for kryptering kan vi se fordi forfatteren har bare visu
 
 <img alt="utpressingsbrev" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/03redacted/doc.png" width="600" height="600">
 
+iven må kjøres [rot13](https://rot13.com/) på, og konverteres til hex for openssl kommandoen.
+
 ```
 $ openssl enc -aes-192-ctr -nosalt -d -in huskeliste.txt.enc  -out huskeliste.txt \
 -K 'dda2846b010a6185b5e76aca4144069f88dc7a6ba49bf128' \
@@ -207,7 +209,7 @@ Vi trenger at du rekonstruerer sleden så fort som mulig!
 
 Her får vi to filer, et python script og en fil med pinneved - uleslig data.
 
-pinneved.py:
+[pinneved.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/pinneved.py):
 
 ```
 """TEMMELIG HEMMELIG"""
@@ -244,6 +246,7 @@ pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i fi
 
 strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier ned. nøkkelen her er å mappe otp listen til indexen av den originale rekkefølgen (range(0, 24)) for å få riktig rekkefølge på de 24 bitene.
 
+[slede.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/slede.py):
 ```
 otp = [23, 2, 0, 5, 13, 16, 22, 7, 9, 4, 19, 21, 18, 10, 20, 11, 12, 14, 6, 1, 3, 8, 17, 15]
 otp.reverse();
@@ -440,7 +443,6 @@ Jeg tror jeg trenger hele alvdelingen for kryptografi for å forstå meg på den
 
 ## 8. Desember - Ransomware
 
-
 ```
 Skjermen på en av datamaskinene på NISSENS verksted ble plutselig dekket av mange meldinger om at viktige filer var blitt kryptert. Et team av alver klarte å finne igjen denne filen sammen med en høyst mistenkelig fil, men klarer ikke å dekryptere filen. De har delt filene i et ZIP-arkiv med infected som passord. Klarer du å få tilbake den viktige filen?
 
@@ -553,10 +555,11 @@ $ xxd -p random_text.bin | fold -w 2 | sort | uniq -c | sort -nr
       1 7b
 ```
 
-viser det er ganske likt fordelt mengder med [a-zA-Z0-9], inkludert endel NULL bytes. men bare en "{" og "}" vist som ascii verdier i hex (7d, 7b) 
+Det viser det er ganske likt fordelt mengder med \[a-zA-Z0-9\], inkludert endel NULL bytes (00). men bare en "{" og "}" vist som ascii verdier i hex (7d, 7b) 
 
 litt frem og tilbake ender vi på dette python scripet, med god hjelp fra meldingen som "sortere", "null", "langt ord": (litt synd på de som gikk på "rot" som "ROT-13")
 
+[solver_randomtext.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/10alvesortering/solver_randomtext.py):
 ```
 with open("random_text.bin", "rb") as f:
     splits = f.read().split(b'\x00')
@@ -730,6 +733,8 @@ Haha! Nå leder jeg!
 - Mellomleder
 ```
 
+Bildet i dagens oppgave hadde også ett [Egg](#egg2) når vi så på stegografiske hemmeligheter.
+
 <a name="luke14"/>
 
 ## 14. Desember - 📖 Bokorm
@@ -753,7 +758,7 @@ Send svar til meg om du finner ut av det.
 ```
 
 Alle disse bøkene er tilgjengelig på nasjonal biblioteket's nettsider, men kun "Om den yngre Jernalder i Norge : 1. afdeling" er tilgjegelig uten å sende inn søknad.
-Et raskt skjekk om det går opp for PST, bekrefter teknikken her: (sidetall, linje, ord, ordnummer med startindex 1)
+Et raskt skjekk om det går opp for PST, bekrefter nøkkelen: (sidetall, linje på siden, ord nummer på linjen, bokstav i ordet)
 
 blir til:
 ```
@@ -788,7 +793,7 @@ Bitråte vil påvirke noen bits i en karakter, så i backups er det usannsynlig 
 
 Løst med python
 
-rot.py
+[rot.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/15bitrot/rot.py)
 ```
 import re
 import numpy as np
@@ -828,87 +833,9 @@ for list in manual_matrix:
 with open("manual.txt", "w") as file:
     file.write(b''.join(manualfile).decode("utf-8"))
 ```
-Vi får ut manual.txt:
-```
-Nordpolen Leketo Skapar Maskin Notendahandbok
-Innihald
+Vi får ut [manual.txt](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/15bitrot/manual.txt):
 
-    Inngangur
-    Øryggidiltakan
-    Maskínuskyring
-    Adalnotkun
-    Vidhald og Vandrædaleysingar
-
-1. Inngangur
-
-Velkominn a verkstædi Olafs å Nordurpolinu! Dessi notendahandbok leidir dig i gegnum notkun å vårri gagnryni leikja-skapar maskinar. Dessi maskin er hønnud til ad hjålpa Olafi og hans alfum ad skapa leiki sem skulu færa gledi til barna um allan heim. Lesid dessa handbok varsamlega til ad tryggja ørugga og hagkvæma notkun.
-2. Øryggisreglur
-
-Øryggi ditt er okkar helsta markmid å verkstædi Olafs. Vinsamlegast fylgdu eftir eftirfarandi øryggisreglum:
-
-    Ekki snertu hreyfanlegar hluta: Halda hendurnar og føtun dinar i burtu frå hreyfanlegum dåttum maskinunnar til ad koma i veg fyrir slikarhåttar åverkanir.
-    Eftirlit: Adeins djålfud ålfar hafa heimild til ad vinna vid maskinuna.
-    Nota videigandi flikur: Ålfar ættu ad nota vidbuna vørnartæki, dar å medal gleraugu og vettlinga.
-    Neysluønn: Kynntu der stadsetningu neysluønnar og hvernig henni er styrt.
-
-3. Maskinuskyring
-
-Leikja-skapar maskinan å verkstædi Olafs er flokin tæki. Her er yfirlit yfir helstu dåttum hennar:
-
-    Flutningabelti: Flytja hråefni og samsett leiki å milli mismunandi verkfæra.
-    Leikjasamsettari: Dar breytast hråefnin i leiki.
-    Gædaeftirlitstød: Ålfar skoda leikina eftir galla og gæta dess ad deir uppfylli krøfur Olafs.
-    Gjafapakkadarstød: Degar leikirnar hafa farid i gegnum gædaeftirlitid, verda dær pakkadar inn i skrautlegan pappir og undirbunar fyrir afhendingu.
-
-4. Adalnotkun
-
-Fylgdu dessum skrefum til ad nota leikja-skapar maskinina:
-
-Skref 1: Upphaf
-
-    Athugadu ad allar øryggisreglur seu fylgdar.
-    Slådu å maskinuna med adalhnappinum.
-    Fylgdu med stjorntøflunni eftir møøgulegum villuskilabodum.
-
-Skref 2: Hlada inn hråefnum
-
-    Hlada hråefnum å flutningabeltid.
-    Tryggja ad hråefnin seu jøfnlega dreifd til ad få jøfn leikjaaframleidslu.
-
-Skref 3: Samsetning leikja
-
-    Maskinan mun sjålfkrafa byrja samsetningu leikjanna.
-    Hlyja samsetningarferlid eftir møøgulegum stoppum eda oregluleikum.
-    Nota neysluønnina ef naudsyn ber.
-
-Skref 4: Gædaeftirlit
-
-    Skodadu leikina vid gædaeftirlitsstødina.
-    Fjarlægja leiki med galla og setja då i tiltekna kistu.
-    Yta å "Samdykkt" hnappinn fyrir leiki sem uppfylla krøfur Olafs.
-
-Skref 5: Gjafapøkkun
-
-    Leikir sem komast fram hjå gædaeftirlitinu verda fluttir å gjafapakkadarstødina.
-    Tryggja rett pøkkun og merkingu hvers leiks.
-    Setja pakkanadu leikina å serstakt flutningabelt fyrir dreifingu.
-
-Skref 6: Lokun
-
-    Degar vinnan er lokid, sløkkva å maskinunni med adalhnappinum.
-    Hreinsa burt ohreinindi frå flutningabeltinu og verkfærunum.
-
-5. Vidhald og Vandrædaleysing
-
-Reglulegt vidhald er naudsynlegt til ad halda leikja-skapar maskinina i bestu åstandi. Skodadu vidhaldsåætlanina sem Olafs Verkstædi bydur upp å.
-
-Vandrædaleysing:
-
-Ef du hittir å vandamål vid maskinuna, skodadu vandamålaleysinguna sem gefin er i serskildri vandamålaleggi sem fylgir.
-
-Takk fyrir ad nota leikja-skapar maskina å Nordurpolinu! Vid vonumst til ad dessi handbok hjålpi der ad nota maskinuna å skilvirkan og øruggan hått.
-```
-Kjører md5sum og leverer flagg
+Kjører md5sum på filen og leverer flagg på formatet vi er bedt om.
 ```
 $ python3 rot.py
 $ md5sum manual.txt 
@@ -939,9 +866,13 @@ I mellomtiden iverksetter vi umiddelbare mottiltak for å stanse invasjonen.
 
 📎aksjon_2023.zip
 ```
-I aksjon_2023 ligger det en pre-merge-commit hook (git) med endel interessante sed kommandoer.
+i zip filen ligger det en notat for å invandere nordpolen, og en git folder.
 
-De hemmelige kodene i commiten er base64 encodet og kan kjøres rett i terminalen med ```echo BASE64STRING | base64 -d```.
+Det mest interessante er nok branchen ikke-merge-før-julaften, der vi har personellister og kode for å kommunisere med dem.
+
+Det viser seg at det er en pre-merge-commit hook (git) med endel interessante sed kommandoer for å selvdestruere disse kodene fra "ikke-merge-før-julaften" før de blir merget inn i fks master (derav pre-merge-commit).
+
+De hemmelige kodene i pre-merge-commiten er base64 encodet og kan kjøres rett i terminalen med ```echo BASE64STRING | base64 -d```.
 
 FLAGG
 ```
@@ -952,6 +883,8 @@ KRIPOS{Flagg i alle kriker og kroker}
 Jeg tenker vi skal vagge ned til fiskeforhandleren og se hva vi ser jeg!
 - Tastefinger
 ```
+
+Dagens oppgave hadde også ett [Egg](#egg3)
 
 <a name="luke17"/>
 
@@ -966,7 +899,7 @@ Den første meldingen som ble sendt var en merkelig tekst om å telle, mens meld
 📎melding_1.txt
 📎melding_2.txt
 ```
-Denne oppgaven kommer med en tekst om telling 
+Denne oppgaven kommer med en kryptisk tekst om telling 
 
 melding_1.txt
 ```
@@ -979,17 +912,18 @@ en rekkefølge man må se.
 oversikt og sekvens, en viktig oppgave i alle fall,
 hva ellers er vel vitsen med tall?
 ```
-og endel tall
+og en annen fil med endel tall
 
 melding_2.txt
 ```
 26, 6, 3, 0, 16, 4, 8, 4, 7, 21, 19, 14, 7, 3, 4, 5, 5, 25, 16, 11, 1
 ```
-Nøkkelen her er å sortere på forekomst av karakterer, omgjøre det til en liste og hente ut med index tallene som er vedlagt.
+
+Løsningen her er å sortere på forekomst av karakterer, omgjøre det til en liste og hente ut med index tallene som er vedlagt.
 
 Løst med python script
 
-solver.py
+[solver.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/17innebygde-ord/solver.py)
 ```
 sol = []
 with open("melding 1.txt", "r") as file:
@@ -1006,6 +940,7 @@ with open("melding 2.txt", "r") as file:
     for key in keyArray:
         print(sol[key], end="")
 ```
+
 ```
 $ python3 solver-py
 pst{nede for telling}
@@ -1042,7 +977,7 @@ Imidlertid er det ingen av Alvene som aner hvordan denne gamle meldingen skal le
 melding.txt inneholder rundt 4000 [a-z#%&_!\?\[\]\{\}] karakterer i cipheret.
 Krypteringsmetoden som er brukt er en [Scytale](https://en.wikipedia.org/wiki/Scytale). Med litt bruteforce finner vi 128 som "hoppet" som passer i cipherteksten. løst da med python:
 
-read.py
+[read.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/18meldingFraAntikken/read.py)
 ```
 with open("melding.txt", "r") as file:
     melding = file.read()
@@ -1076,8 +1011,10 @@ JULESOC har nylig mottatt en speilkopi av en arbeidsstasjon lokalisert på Julen
 
 📎image.raw.gz
 ```
+Første utfordringen er å extrahere partisjonene fra image.raw
 
 ```
+$ gunzip image.raw.gz
 $ file image.raw
 image.raw: DOS/MBR boot sector; partition 1 : ID=0x83, start-CHS (0x0,32,33), end-CHS (0x19,159,6), startsector 2048, 409600 sectors; partition 2 : ID=0x83, start-CHS (0x19,159,7), end-CHS (0x4c,157,17), startsector 411648, 819200 sectors; partition 3 : ID=0x83, start-CHS (0x4c,157,18), end-CHS (0x66,28,54), startsector 1230848, 409600 sectors
 $ fdisk -l image.raw
@@ -1100,10 +1037,10 @@ $ sudo umount /mnt/p26e23/
 $ sudo mount -o loop,offset=630194176 image.raw /mnt/p26e23/
 ```
 
-offsettene er kalkulert ved start * 512 units for hver partition.
+Offsettene i kommandoene er kalkulert ved start * 512 units for hver partition.
 det vi finner i partisjonene er blant annet en nissetekst og en kode. PTSen kicker inn fra dag 17, men viser seg å være en mye snillere utgave. dette er direkte indekser i filen og vi får flagget ved dette python scriptet.
 
-solution.py
+[solution.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/19lostandfound/solution.py)
 ```
 pubTxt = ""
 with open("nissetekst", "r") as file:
@@ -1120,11 +1057,9 @@ with open("code", "r") as file:
 ```
 
 FLAGG
-
 ```
 PST{TheGrinchWouldHateThis}
 ```
-
 
 ```
 Det er alltid noen som skal snike seg inn og ødelegge jula. Heldigvis har vi deg til å stoppe disse grinchene!
@@ -1144,9 +1079,7 @@ Et lite avbrekk i julestria må da være lov?
 
 📎rudolfs_eventyr.gba
 ```
-Dagens oppgave kan åpnes i en gameboy advanced emulator for å spille selveste rudolf på eventyr.
-
-Funnet delflagg:
+Dagens oppgave kan åpnes i en gameboy advanced emulator for å spille selveste rudolf på eventyr med flere julerelaterte elementer, som jule 8bit sanger, alver og godønsker.
 
 Del 1:
 ```
@@ -1160,12 +1093,11 @@ NSM{
 ```
 
 Del 2:
-
 ```
 Jeg hoerte at en del av flagget ligger i VRAM!
 ```
 
-<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png" width="600" height="600">
+<img alt="vram" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del2.png" width="600" height="600">
 
 DELFLAGG
 ```
@@ -1174,10 +1106,13 @@ rudo
 
 Del 4:
 
-<img alt="RUDO" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png" width="600" height="600">
+<img alt="taktilt" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/del4.png" width="600" height="600">
 
-Oversatt fra taktilt blir dette:
+Dette er kodet taktilt 
 
+```
+Del 4 av flagget
+```
 DELFLAGG
 ```
 edde
@@ -1185,14 +1120,15 @@ edde
 Del 6:
 
 Den ene alven sitter på en hemmelighet hvis vi vinner et myntkast 100 ganger på rad. ved å bruke et minneverktøy for å se på verdier som endrer seg mens vi kaster mynt finner vi ut at addresse 0x03007b04 lagrer antall kast vi har vunnet. vi bytter den om til 0x63 (99) og gjør et nytt kast med alven.
+Dette løste jeg med mGMA emulator.
 
 <img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5e1.png">
 
-<img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5e2.png">
+<img alt="sisebit2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5e2.png">
 
-<img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5a.png">
+<img alt="sisebit3" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5a.png">
 
-<img alt="sisebit" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5b.png">
+<img alt="sisebit4" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/20rudolfseventyr/5b.png">
 
 DELFLAGG
 ```
@@ -1225,11 +1161,14 @@ Nasjonens sikkerhetsalver leter febrilsk etter sin temmelig hemmelige pepperkake
 - Mellomleder
 ```
 
-Ser ut som alle sliter med å få løst denne oppgaven på discord kanalen. Klarte noen i det hele tatt å løse hemmeligheten bak the stag?
+Ser ut som alle sliter med å få løst denne oppgaven på discord kanalen. Klarte noen i det hele tatt å løse hemmeligheten bak the stag? 
+
+Ettersom jeg enda ikke har løst oppgave 8, eggene fra 24 og 8, havner denne på bunnen av prioriteringslista.
 
 <a name="luke22"/>
 
 ## 22. Desember - Gaveliste endring
+
 ```
 Hei helf,
 
@@ -1245,10 +1184,10 @@ Returner UUID til den modifiserte raden, f.eks. PST{6eab374e-735f-416e-bcc6-81b4
 Databasefilen kommer med en WAL fil og en SHM fil. WAL fil er en loggtype som logger endringer som kommer inn i databasen. Problemet er at den logger hele "chunken" med data som en endring har forekommet i. dvs den kommer med ca 56 potensielle kandidater som flagg. Men ved litt graving kan vi kjøre
 
 ```
-PRAGMA wal_checkpoint
+sqlite3 inventory.db
+> PRAGMA wal_checkpoint
 ```
-
-i databasen for å rulle tilbake "staten" den var før walfilen ble laget.
+i databasen for å rulle tilbake "staten" den var før walfilen ble skrevet til.
 
 ved å kjøre en git diff --text og lime forskjellen i et [tekst sammenligningsverktøy](https://text-compare.com/) finner vi at det er "Nano Jade Mindflex" raden som har blitt endret.
 
@@ -1332,7 +1271,7 @@ decrypted_file.write(decrypted_data)
 decrypt_file(source_file, key)
 print(f'{source_file} decrypted.')
 ```
-limer dette inn i unlock.py
+limer dette inn i [unlock.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/23kvudokumenter/unlock.py)
 ```
 $ python3 unlock.py Cashflow.xlsx.encrypted
 Skriv inn nøkkelord: e24f52497bcf4c332f1283ec925f77a1
@@ -1346,13 +1285,15 @@ FLAGG
 PST{alternativ_pengestrøm}
 ```
 
+Dokumentet inneholder også endel vittige penge prioriteringer, blant annet "champange og kaviar".
+
 ```
 Takk, det var bra du fant dette!
 
 For å ha godtatt dette tilbudet måtte vi uansett ha pådratt oss gjeld med ugunstige vilkår, og som vi alle vet er det kun Nissetinget som har lov til å pådra seg gjeld på vegne av den Nordpolarske stat.
 Greit å unngå noen problemer der.
-
 ```
+
 PST skyter fra hoften. [NSM ulovlig lån.](https://www.nrk.no/nyheter/nsm-tok-opp-ulovlige-lan-1.16670810) 
 
 <a name="luke24"/>
@@ -1389,15 +1330,24 @@ Vi fikk også denne beskjeden sammen med filene:
 
 Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. Eventuelt har vel dere teknikere kommunikasjon på tvers av etatene på discord? OBS! Ikke stol blindt på filer du mottar fra andre; dobbeltsjekk hashen i md5sum.txt og bruk gjerne en VM.
 ```
-Veldig kult exploit Kripos! Vi er dypt nede i fysisk hacking for å "hoppe" over instruksjoner. Jeg kommer aldri til å matche forklaringen som [Kripos]() gjorde, men her er hva jeg fant ut.
+Veldig kult exploit Kripos! Vi er dypt nede i fysisk hacking for å "hoppe" over instruksjoner med "voltage fault injection". Jeg kommer aldri til å matche forklaringen om hvordan man kan utnytte dette som [Kripos](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/kriapos/help.html) gjorde, men her er hva jeg fant ut:
 
-Ettesom mykepakkevare.bin er en endret versjon av fastepakkevare, er addressene til instruksjonene noe flyttet lenger ned. Det som ble target addressen var 0x800099e som er en passord skjekk mot systemet sitt "override". Disse verdiene fant jeg fra ghidra ved å bruke ARM v8 32-bit hentet fra instruksjonsmanualen.
+Oppgaven kom da med en lab (nettside) der den infiserte maskinvaren kunne ta imot diverse parametere til exploiten, samt diverse kommandoer nevnt i [manualen](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/datasheet.pdf)
+
+Ettesom mykepakkevare.bin er en endret versjon av fastepakkevare, er addressene til instruksjonene noe flyttet lenger ned. Det som ble target addressen er 0x800099e som er en passord skjekk mot systemet sitt "override". Disse verdiene fant jeg fra ghidra ved å bruke ARM v8 32-bit hentet fra instruksjonsmanualen. Forskjellen var bare at original varen startet på 0x8000000, mens .bin filen startetpå 0x00000000.
+
+Ghidra generert c kode for det aktuelle område. vi vil skippe if skjekken som er highlightet, selv om vi ikke kan passordet.
+<img alt="c" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/c.png">
+
+ASM med highlight på instruksjonen vi vil skippe for å dumpe flash data - som har et override passord.
+<img alt="asm" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/asm.png">
+
 Dette var parameterene jeg kjørte med:
 bredde: 27 ns
 delay: 4761 * 10 * 4 ns (4 instruksjoner for 100MHz klokkefrekvens - 10 ns)
 kommando: dump_flash HoHoHo123!
 
-Her har ikke passordet noe å si (HoHoHo123), siden vi gjør en exploit for å skippe det, men kjørte det fordi det er det factory resettet passordet fra originalvaren.
+Her har ikke passordet noe å si (HoHoHo123), ettersom vi gjør en exploit for å skippe det, men valgte det fordi det er det factory resettet passordet fra originalvaren.
 
 ```
 Entering command handler
@@ -1411,6 +1361,7 @@ FLAGG
 
 KRIPOS{Zipp Zapp, endelig napp!}
 ```
+Julen er iallefall reddet - selv om ikke alle oppgaver i år ble løst.
 ```
 Tusen takk!
 
@@ -1440,13 +1391,14 @@ egg{retro}
 <a name="egg2"/>
 
 ### Egg 2 - stego + nonogram
-Dag 13 GeoJettr bilde kan vi finne [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blå og grønn filter:
 
-<img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png"  width="600" height="600">
+[Dag 13's](#luke13) bilde er det [stegografi](https://stegonline.georgeom.net/) hemmeligheter i blått og grønt filter:
 
-<img alt="geojettr stego2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png"  width="600" height="600">
+<img alt="geojettr stego" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2A.png"  width="600" height="400">
 
-Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden.
+<img alt="geojettr stego2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2B.png"  width="600" height="400">
+
+Dette viser seg å være et [nonogram](https://en.wikipedia.org/wiki/Nonogram) som vi kan løse på [denne](https://www.peter.com.au/projects/nonograms.html) nettsiden ved å lime inn tallene fra bildene over.
 
 <img alt="egg2" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/egg2.png">
 
@@ -1460,13 +1412,13 @@ egg{ruter_overalt}
 
 ### Egg 3 - git dangling blob
 
-Dag 16 fant vi også en pre-commit script som kjørere:
+[Dag 16](#luke16) fant vi også en pre-commit script som kjørere:
 
 ```
 $ ./pre-commit
 Har noen sett egget mitt? Jeg vet HELT sikkert at jeg la det inn i git, men klarer ikke finne det igjen noe sted...
 ```
-Etter litt sjeleleting finner vi en hengende blob
+Etter litt sjeleleting finner vi en hengende blob, en endring som aldri kom ut av staging område.
 ```
 $ git fsck --full
 Checking object directories: 100% (256/256), done.
