@@ -1340,12 +1340,12 @@ Ettesom mykepakkevare.bin er en endret versjon av fastepakkevare, er addressene 
 Ghidra generert c kode for det aktuelle område. vi vil skippe if skjekken som er highlightet, selv om vi ikke kan passordet.
 <img alt="c" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/c.png">
 
-ASM med highlight på instruksjonen vi vil skippe for å dumpe flash data - som har et override passord.
+ASM med highlight på instruksjonen vi vil skippe for å dumpe flash data - som har et override passord på addresse 0x000099e (ghidra), som er 0x800099e i labben.
 <img alt="asm" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/asm.png">
 
-Dette var parameterene jeg kjørte med:
-bredde: 27 ns
-delay: 4761 * 10 * 4 ns (4 instruksjoner for 100MHz klokkefrekvens - 10 ns)
+Dette var parameterene jeg kjørte med:\
+bredde: 27 ns \
+delay: 4761 * 10 * 4 ns (4 instruksjoner for 100MHz klokkefrekvens - 10 ns)\
 kommando: dump_flash HoHoHo123!
 
 Her har ikke passordet noe å si (HoHoHo123), ettersom vi gjør en exploit for å skippe det, men valgte det fordi det er det factory resettet passordet fra originalvaren.
@@ -1359,7 +1359,6 @@ Start limb control sequence
 ```
 FLAGG
 ```
-
 KRIPOS{Zipp Zapp, endelig napp!}
 ```
 Julen er iallefall reddet - selv om ikke alle oppgaver i år ble løst.
@@ -1413,8 +1412,7 @@ egg{ruter_overalt}
 
 ### Egg 3 - git dangling blob
 
-[Dag 16](#luke16) fant vi også en pre-commit script som kjørere:
-
+[Dag 16](#luke16) fant vi også en pre-commit script.
 ```
 $ ./pre-commit
 Har noen sett egget mitt? Jeg vet HELT sikkert at jeg la det inn i git, men klarer ikke finne det igjen noe sted...
@@ -1497,10 +1495,9 @@ EGG{h3ng3r 0g d1ngl3r}
 <a name="egg4"/>
 
 ### Egg 4 - Minesveiper, Pen GWYN
-Minesveiper spillet PEN GWYN kommer med en ekstrem langt (2x160) spill.
-Når du spillte viser det seg å være hard kodet bomber på samme sted akkurat som egg 1.
+Minesveiper spillet PEN GWYN kommer med en ekstrem langt (2x160) spill.\
+Når du spillte viser det seg å være hardkodet bomber på samme sted hver runde, akkurat som [egg 1](#egg1).\
 Hvis vi konverterer begge radene binært, gjør en xor operasjon på de og dropper den siste (trailing) bit'en får vi:
-
 ```
 00111111 00101100 10011000 01110010 11111010 11001100 00011100 01011001 01000010 01011010 11111101 11001001 10100010 01011100 01011001 10011000	10101001 00000011 10111101 11111011
 XOR
