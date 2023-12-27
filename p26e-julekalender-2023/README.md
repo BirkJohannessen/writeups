@@ -2,11 +2,9 @@
 
 Julekalenderen til PST 2023, i samarbeid med Kripos og NSM. Dette er en personlig writeup.
 
-
 <img alt="scoreboard" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/fun/scoreboard.png">
 
-Resultat for 2023.
- 
+Resultat for 2023 (helf).
 
 # Table of Contents
 
@@ -33,7 +31,7 @@ Resultat for 2023.
   * [21. Desember - Rudolf "The Stag"'s Pepperkaker \[IKKE LØST\]](#luke21)
   * [22. Desember - Gaveliste endring](#luke22)
   * [23. Desember - KVU-dokumenter](#luke23)
-  * [24. Desember - Stopp robot-armadaen! \[IKKE LØST\]](#luke24)
+  * [24. Desember - Stopp robot-armadaen!](#luke24)
   * [Egg](#egg)
     * [Egg 1 - Minesveiper, Ufødt pingvin](#egg1)
     * [Egg 2 - stego + nonogram](#egg2)
@@ -1391,7 +1389,34 @@ Vi fikk også denne beskjeden sammen med filene:
 
 Jeg fikk noe pakketap da jeg lastet ned filene, men det har sikkert gått fint. Eventuelt har vel dere teknikere kommunikasjon på tvers av etatene på discord? OBS! Ikke stol blindt på filer du mottar fra andre; dobbeltsjekk hashen i md5sum.txt og bruk gjerne en VM.
 ```
-Jula ringer inn, dette er tilsynelatene en veldig krevende oppgave. igjen med reversering, som ikke er min sterke side. Blir ikke julaftenpoeng av dette. merryxmas.
+Veldig kult exploit Kripos! Vi er dypt nede i fysisk hacking for å "hoppe" over instruksjoner. Jeg kommer aldri til å matche forklaringen som [Kripos]() gjorde, men her er hva jeg fant ut.
+
+Ettesom mykepakkevare.bin er en endret versjon av fastepakkevare, er addressene til instruksjonene noe flyttet lenger ned. Det som ble target addressen var 0x800099e som er en passord skjekk mot systemet sitt "override". Disse verdiene fant jeg fra ghidra ved å bruke ARM v8 32-bit hentet fra instruksjonsmanualen.
+Dette var parameterene jeg kjørte med:
+bredde: 27 ns
+delay: 4761 * 10 * 4 ns (4 instruksjoner for 100MHz klokkefrekvens - 10 ns)
+kommando: dump_flash HoHoHo123!
+
+Her har ikke passordet noe å si (HoHoHo123), siden vi gjør en exploit for å skippe det, men kjørte det fordi det er det factory resettet passordet fra originalvaren.
+
+```
+Entering command handler
+Commencing flash dump:
+OVERRIDE_PASSWORD=KRIPOS{Zipp Zapp, endelig napp!}
+
+Start limb control sequence
+```
+FLAGG
+```
+
+KRIPOS{Zipp Zapp, endelig napp!}
+```
+```
+Tusen takk!
+
+Julen er reddet! Takk for fantastisk innsats både i dag og i hele desember. Det har vært bra å ha deg med på laget.
+God jul! 🎄🎁
+```
 
 <a name="egg"/>
 
