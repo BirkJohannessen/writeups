@@ -211,7 +211,7 @@ Her får vi to filer, et python script og en fil med pinneved - uleslig data.
 
 [pinneved.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/pinneved.py):
 
-```
+```python
 """TEMMELIG HEMMELIG"""
 """Sør-Polar Sikkerhetstjeneste"""
 """Høyeksplosivt script for tilintetgjørelse av Julenissens slede"""
@@ -247,7 +247,7 @@ pinneved.py deler slede.txt i 24 biter, gjøre en forflytning på hver tegn i fi
 strategien er da å dele i 24 biter, gjøre en forflytning på hvert tegn to ASCII verdier ned. nøkkelen her er å mappe otp listen til indexen av den originale rekkefølgen (range(0, 24)) for å få riktig rekkefølge på de 24 bitene.
 
 [slede.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/04pinneved/slede.py):
-```
+```python
 otp = [23, 2, 0, 5, 13, 16, 22, 7, 9, 4, 19, 21, 18, 10, 20, 11, 12, 14, 6, 1, 3, 8, 17, 15]
 otp.reverse();
 otpreversed = list(map(lambda x: otp.index(x), range(0, 24)))
@@ -310,7 +310,7 @@ Svar meg med navnet på møtestedet og på formen PST{BERGEN LUFTHAVN}
 Geolokasjon / OSINT verktøy er noe jeg aldri har tatt i bruk. Som hintet i vrevet fra Tastefinger kan man bruke Overpass Turbo til å finne en lokasjon som passer beskrivelsen i meldingen.
 
 Overpass Turbo "kodesnutten" her finner to lokasjoner, som er god nok filtrering til å se at Drøbak sentrum er hvor møte er.
-```
+```python
 area
   ["ISO3166-1"="NO"]
   ["admin_level"="2"];
@@ -560,7 +560,7 @@ Det viser det er ganske likt fordelt mengder med \[a-zA-Z0-9\], inkludert endel 
 litt frem og tilbake ender vi på dette python scripet, med god hjelp fra meldingen som "sortere", "null", "langt ord": (litt synd på de som gikk på "rot" som "ROT-13")
 
 [solver_randomtext.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/10alvesortering/solver_randomtext.py):
-```
+```python
 with open("random_text.bin", "rb") as f:
     splits = f.read().split(b'\x00')
 
@@ -617,7 +617,7 @@ Det kom et bud innom med en pakke som vi ikke klarer å finne ut av. Budet la ig
 Vi fikk to meldinger idag, en fra mellomleder om en fra sentralbordet til alle i NPST - skjoldet jeg valgte dag 4 (ut ifra NPST, KRIAPOS og NISM).
 Som tittelen hinter til må man samarbeide på tvers av (alv)delingene.
 
-Her bare lagde jeg noen dummy kontoer for å laste ned zipfilene til KRIAPOS og NISM. hver zip fil kommer med et passord angitt i meldingen, den er det bare å hive inn i z7 for å få hemmelighet filene:
+Her bare lagde jeg noen dummy kontoer for å laste ned zipfilene til KRIAPOS og NISM. hver zip fil kommer med et passord angitt i meldingen, den er det bare å hive inn i unzip for å få hemmelighet filene:
 ```
 npst.zip:
 Hemmelighet #1
@@ -633,7 +633,7 @@ fc78e6fee2138b798e1e51ed15e0a109
 ```
 
 fra filer.zip ligger melding_dekryptert.py:
-```
+```python
 from Crypto.Cipher import AES
 from base64 import b64decode
 import json
@@ -794,7 +794,7 @@ Bitråte vil påvirke noen bits i en karakter, så i backups er det usannsynlig 
 Løst med python
 
 [rot.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/15bitrot/rot.py)
-```
+```python
 import re
 import numpy as np
 
@@ -924,7 +924,7 @@ Løsningen her er å sortere på forekomst av karakterer, omgjøre det til en li
 Løst med python script
 
 [solver.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/17innebygde-ord/solver.py)
-```
+```python
 sol = []
 with open("melding 1.txt", "r") as file:
     bytearr = file.read()
@@ -978,7 +978,7 @@ melding.txt inneholder rundt 4000 [a-z#%&_!\?\[\]\{\}] karakterer i cipheret.
 Krypteringsmetoden som er brukt er en [Scytale](https://en.wikipedia.org/wiki/Scytale). Med litt bruteforce finner vi 128 som "hoppet" som passer i cipherteksten. løst da med python:
 
 [read.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/18meldingFraAntikken/read.py)
-```
+```python
 with open("melding.txt", "r") as file:
     melding = file.read()
     for idx in range(0, len(melding)):
@@ -1041,7 +1041,7 @@ Offsettene i kommandoene er kalkulert ved start * 512 units for hver partition.
 det vi finner i partisjonene er blant annet en nissetekst og en kode. PTSen kicker inn fra dag 17, men viser seg å være en mye snillere utgave. dette er direkte indekser i filen og vi får flagget ved dette python scriptet.
 
 [solution.py](https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/19lostandfound/solution.py)
-```
+```python
 pubTxt = ""
 with open("nissetekst", "r") as file:
     pubTxt = file.read()
@@ -1254,6 +1254,7 @@ etter endel leting viser det seg at det er en hemmelighet i selve .wim filen.
 
 ```
 $ strings juxxOgFauxtneri.wim
+...
 from cryptography.fernet import Fernet
 import base64
 B3 = input("Skriv inn n
