@@ -1338,9 +1338,11 @@ Oppgaven kom da med en lab (nettside) der den infiserte maskinvaren kunne ta imo
 Ettesom mykepakkevare.bin er en endret versjon av fastepakkevare, er addressene til instruksjonene noe flyttet lenger ned. Det som ble target addressen er 0x800099e som er en passord skjekk mot systemet sitt "override". Disse verdiene fant jeg fra ghidra ved å bruke ARM v8 32-bit hentet fra instruksjonsmanualen. Forskjellen var bare at original varen startet på 0x8000000, mens .bin filen startetpå 0x00000000.
 
 Ghidra generert c kode for det aktuelle område. vi vil skippe if skjekken som er highlightet, selv om vi ikke kan passordet.
+
 <img alt="c" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/c.png">
 
 ASM med highlight på instruksjonen vi vil skippe for å dumpe flash data - som har et override passord på addresse 0x000099e (ghidra), som er 0x800099e i labben.
+
 <img alt="asm" src="https://github.com/BirkJohannessen/writeups/blob/master/p26e-julekalender-2023/24stopprobotarmada/asm.png">
 
 Dette var parameterene jeg kjørte med:\

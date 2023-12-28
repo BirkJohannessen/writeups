@@ -375,6 +375,27 @@ Poeng:    10
 Bra jobba! Dette er trening som du kan trenge senere.
 ```
 
+### 2.0.2_anvilticket_1
+
+Nettsiden har IT-support tickets, denne har en ticket "share" knapp som genererer en url som gjør at du kan dele ticketen din med andre, eksempelvis:
+```
+Anyone with this url can view this ticket https://anvilticket.cybertalent.no/invite/c405dd5e-a505-11ee-8874-02420a0596ea
+```
+Det går en post request mot /share/{TICKET_ID}, etter en rask skjekk om det lar seg dele med andre tickets viser at det er svak mot permission checks. dvs vi kan dele en vilkårlig ticketid vi kan gjette for å kunne se innholdet.
+
+innholdet på ticket 6 gir flagg:
+
+<img alt="anvilticket1" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/anvilticket1.png">
+
+```
+Kategori: 2. Initiell aksess
+Oppgave:  2.0.2_anvilticket_1
+Svar:     d053d5c7331a06f3a88c3cc1b71af771
+Poeng:    10
+
+Godt jobbet!
+```
+
 ## Skjulte flagg
 
 ### 4_corax_dev_shm
