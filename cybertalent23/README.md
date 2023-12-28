@@ -396,6 +396,35 @@ Poeng:    10
 Godt jobbet!
 ```
 
+### 2.0.2_anvilticket_1
+
+Fra 2.0.2_anvilticket_1 har vi nå en login til en ny bruker, thenewguy med flagget som passord.
+
+Nå har vi tilgang til å lese alle tickets på nettsiden, ettersom "thenewguy" er under gruppen "IT", som har flere rettigheter enn "default" som brukeren vi registrete var.
+
+Det som også er nytt er en "update user" form, der man kan endre passord til en bruker, men den vil ikke la oss oppdatere andre brukere sine passord..
+
+Etter en nærmere titt på hvordan login cookien funker ser vi at det er en JWT token:
+
+```
+token: session=eyJhZG1pbiI6ZmFsc2UsImdyb3VwaWQiOjIsInVzZXJuYW1lIjoidGhlbmV3Z3V5In0.ZY1UQQ.mdURZPHj3D07k-YS4UE0hMnBUGY
+dekodet header: {"admin":false,"groupid":2,"username":"thenewguy"}
+```
+
+Hva hvis vi sender admin: true når vi oppdaterer brukeren vår i postman?
+
+<img alt="anvilticket2" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/anvilticket2.phg">
+
+```
+login@corax:~$ scoreboard f3d159a2f998eee7bf83ec5aaa1e88f8
+Kategori: 2. Initiell aksess
+Oppgave:  2.0.3_anvilticket_2
+Svar:     f3d159a2f998eee7bf83ec5aaa1e88f8
+Poeng:    10
+```
+
+Veldig bra! Kan du bruke dette til noe mer?
+
 ## Skjulte flagg
 
 ### 4_corax_dev_shm
