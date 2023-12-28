@@ -421,9 +421,48 @@ Kategori: 2. Initiell aksess
 Oppgave:  2.0.3_anvilticket_2
 Svar:     f3d159a2f998eee7bf83ec5aaa1e88f8
 Poeng:    10
-```
 
 Veldig bra! Kan du bruke dette til noe mer?
+```
+
+### 2.0.5_pcap
+
+Når vi fikk admin rettigheter på anvilticket fant vi en ticket:
+
+<img alt="pcap ticket" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/pcapticket.png">
+
+Ser at det er endel HTTP trakfikk fra en win98 maskin som ikke kryptert. Det som er intressant er en zip fil, og txt fil overføring mellom to parter:
+
+<img alt="pcap wireshark" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/wireshark.png">
+
+Her kan man bruke WireShark sin "extract objects" over "http" som dumper en passordbeskyttet zip fil package.zip, og en passord fil package.txt
+```
+$ cat package.txt
+pbq5cdr1ymk6mrh_GKT
+$ unzip package.zip
+Archive:  package.zip
+[package.zip] config password:pbq5cdr1ymk6mrh_GKT
+  inflating: config
+$ cat config
+Host gw
+    HostName dep-gw.utl
+    User preyz
+    IdentityFile ~/.ssh/id_ed25519.key
+
+# FLAG{ffd232792c966fe54d841e7e42c64fea}
+```
+
+```
+login@corax:~$ scoreboard FLAG{ffd232792c966fe54d841e7e42c64fea}
+Kategori: 2. Initiell aksess
+Oppgave:  2.0.5_pcap
+Svar:     ffd232792c966fe54d841e7e42c64fea
+Poeng:    10
+
+Veldig bra!
+
+Ny fil: /home/login/.ssh/config
+```
 
 ## Skjulte flagg
 

@@ -1,0 +1,6 @@
+Host gw
+    HostName dep-gw.utl
+    User preyz
+    IdentityFile ~/.ssh/id_ed25519.key
+
+# FLAG{ffd232792c966fe54d841e7e42c64fea}
