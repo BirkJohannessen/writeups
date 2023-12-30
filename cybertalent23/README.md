@@ -503,7 +503,7 @@ dekodet header: {"admin":false,"groupid":2,"username":"thenewguy"}
 Hva hvis vi kan bruke noen av disse parameterene når vi oppdaterer brukeren vår? 
 Prøver med: admin: true i postman:
 
-<img alt="anvilticket2" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/anvilticket2.phg">
+<img alt="anvilticket2" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/anvilticket2.png">
 
 ```
 login@corax:~$ scoreboard f3d159a2f998eee7bf83ec5aaa1e88f8
