@@ -505,6 +505,8 @@ Prøver med: admin: true i postman:
 
 <img alt="anvilticket2" src="https://github.com/BirkJohannessen/writeups/blob/master/cybertalent23/imgs/anvilticket2.png">
 
+Brukeren vår får adminrettigheter og flagget blir vist i HTML.
+
 ```
 login@corax:~$ scoreboard f3d159a2f998eee7bf83ec5aaa1e88f8
 Kategori: 2. Initiell aksess
