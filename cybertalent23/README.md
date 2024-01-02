@@ -618,6 +618,40 @@ Bra jobba, vi har n책 kommet inn i infrastrukturen deres igjen! Vi begynte 책 f�
 Nye filer i /home/login/2_oppdrag/
 ```
 
+### 2.5.1_passftp
+
+Vi kobler p책 passftp og f책r et shell med nc
+```
+login@corax:~/2_oppdrag/5_department_of_security$ nc passftp 1024
+Welcome to passFTP Server v1.0
+Please login to continue
+Username: sadf
+Password: asdf
+Invalid username or password
+Login failed setting account level to anonymous
+passFTP> ls
+total 12
+-rw-r--r-- 1 admin admin   40 Dec 30 13:06 FLAGG
+drwxr-xr-x 1 admin admin 4096 Dec 12 14:41 passFTP_shared
+passFTP> get
+Usage: get <filename>
+passFTP> get FLAGG
+Downloading file FLAGG
+FLAGG: 1562068e1ec9a0e15743f6adb5e18192
+```
+Serveren er feilkonfiguerert og er svak for anonymous FTP p책logging. dvs vi f책r et "anonymous" shell ved feil brukernavn og passord.
+
+Vi kan bruke ftp kommndoen get til 책 lese flagget.
+
+```
+Kategori: 2.5. Department of Security
+Oppgave:  2.5.1_passftp
+Svar:     1562068e1ec9a0e15743f6adb5e18192
+Poeng:    10
+
+Veldig bra!
+```
+
 ## Skjulte flagg
 
 ### 4_corax_dev_shm
