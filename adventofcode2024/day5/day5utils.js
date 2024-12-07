@@ -105,7 +105,7 @@ class NTreeWrapper {
                 const vParent = this.findParent(value);
                 if (cParent.value === vParent.value) {
                     this.findParent(constraint).removeChild(constraint);
-                    vNode._children.push(cNode);
+                    vNode.pushChild(cNode);
                 } else {
                     this.stash.push([value, constraint]);
                 }
@@ -118,7 +118,7 @@ class NTreeWrapper {
             vNode.pushChild(constraint);
         } else if (!vNode && cNode) {
             const newnode = new Nnode(value);
-            newnode._children.push(cNode);
+            newnode.pushChild(cNode);
             if (this.node.value === constraint) {
                 this.node = newnode;
             } else {
@@ -139,7 +139,11 @@ class Nnode {
     get value() { return this._value; }
 
     pushChild(constraint) {
-        this._children.push(new Nnode(constraint));
+        if (constraint.value !== undefined) {
+            this._children.push(constraint);
+        } else {
+            this._children.push(new Nnode(constraint));
+        }
     }
 
     removeChild(childValue) {
