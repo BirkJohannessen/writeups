@@ -1,5 +1,5 @@
 function parseLists(input, minLength) {
-    const rows = parseRows(input);
+    let rows = parseRows(input);
     const cols = parseCols(rows);
     return rows.concat(cols).concat(parseDiagonals(rows, cols, minLength));
 }
@@ -17,22 +17,23 @@ function range(elems) {
 }
 
 function parseDiagonals(rows, _, _2) {
-    rows=[['a','b','c']
-         ,['d','f','g']
-         ,['h','i','j']]
-
-    const magicActual = range(rows.length - 1).map(i => range(i + 1))
+    const magicActualPartOne = range(rows.length - 1).map(i => range(i + 1))
         .concat([range(rows.length)])
-        .concat(range(rows.length - 1).map(i => range(i + 1).map(r => rows.length - 1 - r)).map(o => o.reverse()).reverse())
         .map(o => o.reverse());
-    console.log(magicActual);
+    const magicActualPartTwo = range(rows.length - 1).map(i => range(i + 1).map(r => rows.length - 1 - r)).map(o => o.reverse()).reverse();
+    const res = magicActualPartOne.map(diagonal => range(diagonal.length).map(idx => rows[idx][diagonal[idx]]))
+    const res2 = magicActualPartTwo.map(diagonal => range(diagonal.length).map(i => rows.length - 1 - i).map((i, idx) => rows[i][diagonal[idx]]))
 
     // [[0],[0,1],[0,1,2],[1, 2],[2]].map(o => o.reverse())
     // const magic2Actual = magicActual.reverse().map(o => o.reverse());
-    const res = magicActual.map(diagonal => range(diagonal.length).map(idx => rows[idx][diagonal[idx]]))
-    console.log(res);
-
-    return [];
+    const magic2ActualPartOne = magicActualPartOne.map(o => o.map(i => rows.length - 1 - i));
+    const res3 = magic2ActualPartOne.map(diagonal => range(diagonal.length).map(idx => rows[idx][diagonal[idx]]))
+    // console.log(res3);
+    const magic2ActualPartTwo = range(rows.length - 1).map(i => range(i + 1).map(r => rows.length - 1 - r)).map(o => o.reverse()).reverse();
+    const res4 = magic2ActualPartTwo.map(diagonal => range(diagonal.length).map(idx => rows[diagonal[idx]][idx]))
+    // console.log(magic2ActualPartTwo);
+    // console.log(res4);
+    return res.concat(res2).concat(res3).concat(res4);
 
     // [[0],[0,1],[0,1,2],[1,2],[2]].map(o => o.reverse())
     // magic.reverse().map(o => o.reverse());
@@ -45,29 +46,29 @@ function countOccurances(list, word) {
     let wordIdx = 0;
 
     let count = 0;
-    for (let i = 0 ; i < list.length - 1 ; i++) {
+    for (let i = 0 ; i < list.length ; i++) {
         if (word[wordIdx] === list[i]) {
-            wordIdx++;
-            if (wordIdx === word.length - 1) {
-                count++;
+            wordIdx += 1;
+            if (wordIdx === word.length) {
+                count += 1;
                 wordIdx = 0;
             }
         } else {
             wordIdx = 0;
             if (word[wordIdx] === list[i]) {
-                wordIdx++;
+                wordIdx += 1;
             }
         }
         if (reverseWord[wordReverseIdx] === list[i]) {
-            wordReverseIdx++;
-            if (wordReverseIdx === word.length - 1) {
-                count++;
+            wordReverseIdx += 1;
+            if (wordReverseIdx === word.length) {
+                count += 1;
                 wordReverseIdx = 0;
             }
         } else {
             wordReverseIdx = 0;
             if (reverseWord[wordReverseIdx] === list[i]) {
-                wordReverseIdx++;
+                wordReverseIdx += 1;
             }
         }
     }

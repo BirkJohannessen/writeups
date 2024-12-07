@@ -76,4 +76,3 @@ export function solve(input) {
 function drawMap(map) {
     console.log(map.map(row => row.map(tile => reverseMapSymbol(tile)).join('')).join('\n'));
 }
-
