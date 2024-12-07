@@ -12,7 +12,6 @@ function parseRules(input) {
         .split(/\r?\n/g).map(line => line.split('|').map(mapNumber))
 }
 
-
 function isIncreasing(list) {
     return eachElemApplies(list, 0, 9999999999, isElemIncreasingBounded);
 }
@@ -21,10 +20,20 @@ function mapMiddleElem(list) {
     return list[parseInt(list.length / 2)]
 }
 
+function getRelevantRules(list, rules) {
+    const map = list.reduce((acc, next) => {
+        acc[next] = true;
+        return acc;
+    }, {});
+    return rules.filter(([value, constraint]) => {
+        return map[`${value}`] && map[`${constraint}`];
+    });
+}
+
 export function solve(input) {
-    const tree = new NTreeWrapper(parseRules(input));
+    const rules = parseRules(input);
     return parseRecords(input)
-        .filter(records => isIncreasing(records.map(e => tree.level(e))))
+        .filter(records => isIncreasing(records.map(e => new NTreeWrapper(getRelevantRules(records, rules)).level(e))))
         .map(mapMiddleElem)
         .reduce((a,b) => a += b, 0)
 }
@@ -32,8 +41,11 @@ export function solve(input) {
 class NTreeWrapper {
     constructor(rules) {
         this.stash = [];
-        this.applyRules(rules);
-        this.deepprint(this.node);
+        rules.forEach(([value, constraint]) => {
+            this.put(value, constraint);
+        });
+        this.buildStash();
+        // this.deepprint(this.node);
     }
 
     deepprint(node) {
@@ -43,19 +55,9 @@ class NTreeWrapper {
         console.log(' '.repeat(lvl) + '</', node._value)
     }
 
-    applyRules(rules) {
-        rules.forEach(([value, constraint]) => {
-            this.put(value, constraint);
-        });
-        this.deepprint(this.node);
-        this.buildStash();
-    }
-
     buildStash() {
-        console.log('building stash', this.stash);
-        let asdf = 0;
         while (this.stash.length > 0) {
-            const stashlocal = deepCopy(this.stash.reverse());
+            const stashlocal = deepCopy(this.stash);
             this.stash = [];
             let stashLocalLen = stashlocal.length;
             while(stashLocalLen > 0) {
@@ -63,15 +65,7 @@ class NTreeWrapper {
                 this.put(value, constraint);
                 stashLocalLen--;
             }
-            asdf += 1;
-            console.log(asdf)
-            console.log('rebuilding stash', this.stash);
-            if (asdf === 2) {
-                throw new Error();
-            }
         }
-        console.log('done with stash');
-        return this;
     }
 
     level(value) {
@@ -84,8 +78,12 @@ class NTreeWrapper {
         return this.node.walkTo(value);
     }
 
+    findParent(value) {
+        if (this.node.value === value) return this.node;
+        return this.node.walkToParent(value);
+    }
+
     killChild(value) {
-        // console.log('killing', value)
         if (this.node.value === value) {
             this.node.removeChild(value);
         } else {
@@ -97,25 +95,33 @@ class NTreeWrapper {
         if (!this.node) {
             this.node = new Nnode(value);
             this.node.pushChild(constraint);
-            this.deepprint(this.node);
             return;
         }
         const vNode = this.find(value);
         const cNode = this.find(constraint);
-        console.log(value, constraint, !!vNode,  !!cNode);
-        if (value === 34) {
-            console.log('34', vNode);
-        }
         if (vNode && cNode) {
             const vlvl = this.level(value);
             const clvl = this.level(constraint);
-            if (vlvl < clvl) {
-                console.log('stashed', vlvl, clvl);
-                this.stash.push([value, constraint]);
-                return;
-            };
-            this.killChild(constraint);
-            vNode._children.push(cNode);
+            if (vlvl > clvl) {
+                if (cNode.walkToParent(value)) {
+                    throw new Error('illegal rule state');
+                } else {
+                    this.stash.push([value, constraint]);
+                }
+            } else if (vlvl === clvl) {
+                const cParent = this.findParent(constraint);
+                const vParent = this.findParent(value);
+                if (cParent.value === vParent.value) {
+                    this.killChild(constraint);
+                    vNode._children.push(cNode);
+                } else {
+                    this.stash.push([value, constraint]);
+                }
+            } else if (vlvl < clvl) {
+                if (!vNode.walkToParent(constraint)) {
+                    this.stash.push([value, constraint]);
+                }
+            }
         } else if (vNode && !cNode) {
             vNode.pushChild(constraint);
         } else if (!vNode && cNode) {
@@ -124,19 +130,11 @@ class NTreeWrapper {
             if (this.node.value === constraint) {
                 this.node = newnode;
             } else {
-                const _parent = this.node.walkToParent(constraint);
-                const idx = _parent._children.findIndex(o => o.value === constraint);
-                if (idx > -1) {
-                    _parent._children.splice(idx, 1)
-                } else {
-                    throw new Error();
-                }
-                _parent._children.push(newnode);
+                this.stash.push([value, constraint]);
             }
         } else if (!vNode && !cNode) {
             this.stash.push([value, constraint]);
         }
-        this.deepprint(this.node);
     }
 }
 
