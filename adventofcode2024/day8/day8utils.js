@@ -22,23 +22,19 @@ function isWithinBounds(x, y, map) {
         && y < map[0].length && y >= 0;
 }
 
-function getAntiNodeTuples(tupleA, tupleB, map) {
-    const [ax, ay] = tupleA;
-    const [bx, by] = tupleB;
-    const [dx, dy] = [bx - ax, by - ay];
-    const antiTupleA = [ay - dy, ax - dx];
-    const antiTupleB = [by + dy, bx + dx];
-    const [axA, ayA] = antiTupleA;
-    const [axB, ayB] = antiTupleB;
-    const result = [];
-    if (isWithinBounds(axA, ayA, map)) result.push(antiTupleA);
-    if (isWithinBounds(axB, ayB, map)) result.push(antiTupleB);
-    return result;
+function getAntiNodeTuples([ax, ay], [bx, by], map) {
+    return [
+        [ay - (by - ay), ax - (bx - ax)],
+        [by + (by - ay), bx + (bx - ax)]
+    ]
+    .filter(([x, y]) => isWithinBounds(x, y, map));
 }
 
 function drawAntiNodes(antiNodes, map) {
-    antiNodes.forEach(([x, y]) => map[x][y] = '#');
-    return map;
+    return antiNodes.reduce((mapAcc, [x, y]) => {
+        mapAcc[x][y] = '#';
+        return mapAcc;
+    }, map);
 }
 
 export function solve(input) {
@@ -46,14 +42,13 @@ export function solve(input) {
         row.forEach(tile => rowAcc.add(tile));
         return rowAcc;
     }, new Set())]
-    .filter(antenna => antenna !== '.') // definition of absent antenna
-    .map(antenna => mapAntennaTuples(antenna, parseMap(input))) // mapAntennaTuples('a', map) => [[x,y],[x2,y2],[x3,y3]]
-    .filter(tuples => tuples.length > 1) // single point makes no line
-    .map(combinations)
-    .flat()
+    .filter(antenna => antenna !== '.') // absent antenna
+    .map(antenna => mapAntennaTuples(antenna, parseMap(input))) // mapAntennaTuples(antennasymbol, map) => [tuple, tuple1, tuple2]
+    .filter(tuples => tuples.length > 1) // single point makes no antinodes 
+    .map(combinations).flat() // flat() since we dont need antenna context from now on.
     .map(([tupleA, tupbleB]) => getAntiNodeTuples(tupleA, tupbleB, parseMap(input))) // getAntiNodes(tupleA1, tupleA2) => [] eller [tuple1] eller [tuple1,tuple2]
     .reduce((map, antiNodes) => drawAntiNodes(antiNodes, map), parseMap(input)) // drawAntiNodes(map, [tuple1,tuple2]) => map
-    .reduce((total, row) =>  // count all unique antinodes
+    .reduce((total, row) =>  // count all unique antinodes noted # on the map
         total += row.reduce((acc, tile) => acc += tile === '#' ? 1 : 0, 0)
-    , 0)
+    , 0);
 }
