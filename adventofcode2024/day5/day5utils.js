@@ -38,6 +38,20 @@ export function solve(input) {
         .reduce((a,b) => a += b, 0)
 }
 
+export function bonus(input) {
+    const rules = parseRules(input);
+    return parseRecords(input)
+        .filter(records => !isIncreasing(records.map(e => new NTreeWrapper(getRelevantRules(records, rules)).level(e))))
+        .map(records => 
+            records.sort((a,b) => {
+                const tree = new NTreeWrapper(getRelevantRules(records, rules));
+                return tree.level(a) - tree.level(b)
+            })
+        )
+        .map(mapMiddleElem)
+        .reduce((a,b) => a += b, 0)
+}
+
 class NTreeWrapper {
     constructor(rules) {
         this.stash = [];
