@@ -11,14 +11,14 @@ import * as day8utils from './day8/day8utils.js';
 main();
 
 async function main() {
-    const fun = day8;
+    const fun = day1;
     const result = await fun();
     console.log('Output:\n', result);
 }
 
 export async function day1() {
     const ipt = await read('./day1/input.txt');
-    return dayWrapper(day1utils.solve, ipt);
+    return dayWrapper(day1utils.bonus, ipt);
 }
 
 export async function day2() {
