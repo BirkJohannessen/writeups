@@ -27,3 +27,7 @@ export function deepCopy(model) {
     return JSON.parse(JSON.stringify(model));
 }
 
+export function range(elems) {
+    return [...Array(elems).keys()];
+}
+

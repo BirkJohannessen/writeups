@@ -1,3 +1,5 @@
+import { range } from '../utils.js';
+
 function parseLists(input, minLength) {
     let rows = parseRows(input);
     const cols = parseCols(rows);
@@ -10,10 +12,6 @@ function parseRows(input) {
 
 function parseCols(rows) {
     return [...Array(rows[0].length).keys()].map(colKey => [...Array(rows.length).keys()].map(rowKey => rows[rowKey][colKey]));
-}
-
-function range(elems) {
-    return [...Array(elems).keys()];
 }
 
 function parseDiagonals(rows, _, _2) {
