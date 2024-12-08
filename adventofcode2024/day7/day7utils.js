@@ -16,9 +16,23 @@ function isValidEq(result, accumilator, elems) {
     return isValidEq(result, accumilator + val, cpy) || isValidEq(result, accumilator * val, cpy);
 }
 
+function isValidEqBonus(result, accumilator, elems) {
+    if (!elems.length) {
+        return  accumilator === result;
+    }
+    const cpy = deepCopy(elems);
+    const val = cpy.shift();
+    return isValidEqBonus(result, accumilator + val, cpy) || isValidEqBonus(result, accumilator * val, cpy) || isValidEqBonus(result, parseInt(`${accumilator}${val}`), cpy);
+}
+
 export function solve(input) {
     return  parseEquation(input)
         .filter(([res, input]) => isValidEq(res, 0, input))
         .reduce((acc, [res, _]) => acc += res, 0)
 }
 
+export function bonus(input) {
+    return  parseEquation(input)
+        .filter(([res, input]) => isValidEqBonus(res, 0, input))
+        .reduce((acc, [res, _]) => acc += res, 0)
+}
