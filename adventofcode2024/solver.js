@@ -58,6 +58,6 @@ export async function day8() {
 }
 
 export async function day9() {
-    const ipt = await read('./day9/mockinput.txt');
+    const ipt = await read('./day9/input.txt');
     return dayWrapper(day9utils.solve, ipt);
 }
