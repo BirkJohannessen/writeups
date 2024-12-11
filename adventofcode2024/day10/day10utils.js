@@ -29,16 +29,24 @@ function trailscore([a,b], boundedTuple, previousValue, map) {
 }
 */
 
-function trailscore([a,b], boundedTuple, previousValue, map, visitedTuples) {
-    if (!isWithinMapBounds(a, b, map)) return 0;
-    if (visitedTuples.find(([tupA, tupB]) => tupA === a && tupB === b)) return 0;
+function trailTops([a,b], boundedTuple, previousValue, map, visitedTuples) {
+    if (!isWithinMapBounds(a, b, map)) return [];
+    if (visitedTuples.find(([tupA, tupB]) => tupA === a && tupB === b)) return [];
     const currentValue = map[a][b];
-    if (!isWithinValueBounds(currentValue, previousValue, boundedTuple)) return 0;
-    if (currentValue === 9) return 1;
-    return trailscore([a, b - 1], boundedTuple, currentValue, map, [...visitedTuples, [a,b]])
-        + trailscore([a, b + 1], boundedTuple, currentValue, map, [...visitedTuples, [a,b]])
-        + trailscore([a + 1, b], boundedTuple, currentValue, map, [...visitedTuples, [a,b]])
-        + trailscore([a - 1, b], boundedTuple, currentValue, map, [...visitedTuples, [a,b]]);
+    if (!isWithinValueBounds(currentValue, previousValue, boundedTuple)) return [];
+    if (currentValue === 9) return [[a,b]];
+    return trailTops([a, b - 1], boundedTuple, currentValue, map, [...visitedTuples, [a,b]])
+        .concat(trailTops([a, b + 1], boundedTuple, currentValue, map, [...visitedTuples, [a,b]]))
+        .concat(trailTops([a + 1, b], boundedTuple, currentValue, map, [...visitedTuples, [a,b]]))
+        .concat(trailTops([a - 1, b], boundedTuple, currentValue, map, [...visitedTuples, [a,b]]));
+}
+
+function uniqueTrailTops(tops) {
+    const map = {}
+    tops.forEach(([a,b]) => {
+        map[`${a},${b}`] = [a,b];
+    });
+    return Object.values(map);
 }
 
 export function solve(input) {
@@ -47,7 +55,8 @@ export function solve(input) {
         .map((row, idx) => row.map(((topography, jdx) => topography === 0 ? [idx, jdx] : null)))
         .map(row => row.filter(o => o))
         .reduce((acc, row) => acc.concat(row), [])
-        .map(tuple => trailscore(tuple, [0,2], -1, map, []))
-        .forEach(o => console.log(o))
+        .map(tuple => trailTops(tuple, [0,2], -1, map, []))
+        .map(uniqueTrailTops)
+        .map(o => o.length)
         .reduce((acc, val) => acc += val, 0)
 }
