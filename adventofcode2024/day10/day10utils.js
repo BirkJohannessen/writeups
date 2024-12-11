@@ -16,19 +16,6 @@ function isWithinMapBounds(x, y, map) {
         && y < map[0].length && y >= 0;
 }
 
-/*
-function trailscore([a,b], boundedTuple, previousValue, map) {
-    if (!isWithinMapBounds(a, b, map)) return 0;
-    const currentValue = map[a][b];
-    if (!isWithinValueBounds(currentValue, previousValue, boundedTuple)) return 0;
-    if (currentValue === 9) return 1;
-    return trailscore([a, b - 1], boundedTuple, currentValue, map)
-        + trailscore([a, b + 1], boundedTuple, currentValue, map)
-        + trailscore([a + 1, b], boundedTuple, currentValue, map)
-        + trailscore([a - 1, b], boundedTuple, currentValue, map);
-}
-*/
-
 function trailTops([a,b], boundedTuple, previousValue, map, visitedTuples) {
     if (!isWithinMapBounds(a, b, map)) return [];
     if (visitedTuples.find(([tupA, tupB]) => tupA === a && tupB === b)) return [];
@@ -57,6 +44,17 @@ export function solve(input) {
         .reduce((acc, row) => acc.concat(row), [])
         .map(tuple => trailTops(tuple, [0,2], -1, map, []))
         .map(uniqueTrailTops)
+        .map(o => o.length)
+        .reduce((acc, val) => acc += val, 0)
+}
+
+export function bonus(input) {
+    const map = parse(input);
+    return map
+        .map((row, idx) => row.map(((topography, jdx) => topography === 0 ? [idx, jdx] : null)))
+        .map(row => row.filter(o => o))
+        .reduce((acc, row) => acc.concat(row), [])
+        .map(tuple => trailTops(tuple, [0,2], -1, map, []))
         .map(o => o.length)
         .reduce((acc, val) => acc += val, 0)
 }
