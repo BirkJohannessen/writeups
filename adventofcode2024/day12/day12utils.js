@@ -4,6 +4,20 @@ function parse(input) {
         .map(line => line.split(''));
 }
 
+function areaAndSides(map) {
+    const included = [];
+    const result = [];
+    map.forEach((row, i) => {
+        row.forEach((val, j) => {
+            if (!isIncluded([i, j], included)) {
+                const flowerMap = getFlowerMap([i,j], [0, 0], val, included, [], map)
+                result.push([area(flowerMap), sides(flowerMap)]);
+            }
+        });
+    });
+    return result;
+}
+
 function areaAndPerimiter(map) {
     const included = [];
     const result = [];
@@ -36,13 +50,17 @@ function area(map) {
 }
 
 function perimiter(map) {
-    return map.reduce((acc, tuple) => acc += allPerims(tuple, map), 0);
+    return map.reduce((acc, tuple) => acc += tuplePerims(tuple, map), 0);
 }
 
-function allPerims([x, y], map) {
+function tuplePerims([x, y], map) {
     return [[0,1],[1,0],[0, -1],[-1, 0]]
         .filter(([dirX, dirY]) => !isIncluded([x - dirX, y - dirY], map))
         .length;
+}
+
+function sides(map) {
+    return 0; // todo;
 }
 
 function isIncluded([inX, inY], included) {
@@ -55,9 +73,14 @@ function isBounded([x, y], map) {
 
 export function solve(input) {
     return areaAndPerimiter(parse(input))
+        .reduce((acc, [area, perimiter]) => acc += area * perimiter, 0)
+}
+
+export function bonus(input) {
+    return areaAndSides(parse(input))
         .map(o => {
             console.log(o);
             return o;
         })
-        .reduce((acc, [area, perimiter]) => acc += area * perimiter, 0)
+        .reduce((acc, [area, sides]) => acc += area * sides, 0)
 }
