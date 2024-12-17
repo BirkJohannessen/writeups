@@ -18,7 +18,7 @@ import * as day15utils from './day15/day15utils.js';
 main();
 
 async function main() {
-    const fun = day15;
+    const fun = day9;
     const result = await fun();
     console.log('Output:\n', result);
 }
@@ -65,7 +65,7 @@ export async function day8() {
 
 export async function day9() {
     const ipt = await read('./day9/input.txt');
-    return dayWrapper(day9utils.solve, ipt);
+    return dayWrapper(day9utils.bonus, ipt);
 }
 
 export async function day10() {
@@ -94,6 +94,6 @@ export async function day14() {
 }
 
 export async function day15() {
-    const ipt = await read('./day15/mockinput.txt');
+    const ipt = await read('./day15/input.txt');
     return dayWrapper(day15utils.solve, ipt);
 }

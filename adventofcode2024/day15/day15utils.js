@@ -1,4 +1,4 @@
-import { mapNumber, range } from '../utils.js';
+import { range } from '../utils.js';
 
 const player = 8;
 const freeSpace = 0;
@@ -48,8 +48,6 @@ function findPlayerTuple(map) {
 
 function executeInstruction(instruction, map) {
     const dir = instructionDirectionTuples(findPlayerTuple(map), instruction, map);
-    console.log(dir);
-    console.log(dir.map(([x,y]) =>  map[x][y]).map(reverseMapSymbol));
     const [px, py] = dir[0];
     const [tx, ty] = dir[1];
     if (map[tx][ty] === wall) return;
@@ -58,20 +56,17 @@ function executeInstruction(instruction, map) {
         map[tx][ty] = player;
         return;
     }
-
-    if (map[tx][ty] === box && dir.map(([x,y]) => map[x][y]).find(o => o === freeSpace) !== null) {
-        let holdVal = freeSpace;
-        let swap = null;
-        for (let i = 0 ; i < dir.length - 1 ; i++) {
+    const dirValues = dir.map(([x,y]) => map[x][y]); 
+    if (map[tx][ty] === box && dirValues.find(o => o === freeSpace) === 0 && dirValues.findIndex(o => o === wall) > dirValues.findIndex(o => o === freeSpace)) {
+        let holdval = map[px][py];
+        for (let i = 1 ; i < dir.length ; i++) {
             const [x, y] = dir[i];
-            const [nx, ny] = dir[i + 1];
-            swap = map[x][y];
-            map[x][y] = holdVal;
-            holdVal = map[nx][ny];
-            map[nx][ny] = swap;
-            swap = null
-            if (holdVal === freeSpace) break;
+            const swap = holdval;
+            holdval = map[nx][ny];
+            map[x][y] = swap;
+            if (holdval === freeSpace) break;
         }
+        map[px][py] = freeSpace;
     }
 }
 
@@ -88,9 +83,6 @@ export function solve(input) {
     drawMap(map);
     parseInstructions(input).forEach(instruction => {
         executeInstruction(instruction, map);
-        console.log(reverseMapSymbol(instruction));
-        drawMap(map);
-
     });
     return map
         .reduce((acc, row, i) => acc + row.reduce((sAcc, tile, j)=> sAcc + (tile === box ? 100 * i + j : 0), 0), 0);
