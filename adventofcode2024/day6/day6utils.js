@@ -45,20 +45,46 @@ function cursorTuple(map) {
     return [idxRow, idxCol];
 }
 
+function isWithinMapBounds(x, y, map) {
+    return x < map.length && x >= 0
+        && y < map[0].length && y >= 0;
+}
+
 function moveAlong(map) {
     const [x, y] = cursorTuple(map);
     const cursor = map[x][y];
-    try {
-        const [nextX, nextY] = nextTuple(x, y, cursor)
-        if (map[nextX][nextY] === 2) {
-            map[x][y] = rotate(cursor);
-        } else {
-            map[nextX][nextY] = cursor;
-            map[x][y] = 1;
-        }
-    } catch(err) {
+    const [nextX, nextY] = nextTuple(x, y, cursor)
+    if (!isWithinMapBounds(nextX, nextY, map)) {
         map[x][y] = 1;
         return true;
+    }
+    if (map[nextX][nextY] === 2) {
+        map[x][y] = rotate(cursor);
+    } else {
+        map[nextX][nextY] = cursor;
+        map[x][y] = 1;
+    }
+    return false;
+}
+
+function moveAlongThrowIfLoop(map, visited) {
+    const [x, y] = cursorTuple(map);
+    if (visited.has(`${x},${y},${map[x][y]}`)) {
+        throw new Error();
+    } else {
+        visited.add(`${x},${y},${map[x][y]}`);
+    }
+    const cursor = map[x][y];
+    const [nextX, nextY] = nextTuple(x, y, cursor)
+    if (!isWithinMapBounds(nextX, nextY, map)) {
+        map[x][y] = 1;
+        return true;
+    }
+    if (map[nextX][nextY] === 2) {
+        map[x][y] = rotate(cursor);
+    } else {
+        map[nextX][nextY] = cursor;
+        map[x][y] = 1;
     }
     return false;
 }
@@ -68,6 +94,16 @@ function resolve(map) {
     return map;
 }
 
+function isLoop([x, y], map) {
+    map[x][y] = 2;
+    try {
+        while (!moveAlongThrowIfLoop(map, new Set())) {};
+    } catch(_) {
+        return true;
+    }
+    return false;
+}
+
 export function solve(input) {
     return resolve(parseMap(input))
         .reduce((acc, row) => acc + row.reduce((sAcc, tile)=> sAcc + (tile === 1 ? 1 : 0), 0), 0);
@@ -75,4 +111,16 @@ export function solve(input) {
 
 function drawMap(map) {
     console.log(map.map(row => row.map(tile => reverseMapSymbol(tile)).join('')).join('\n'));
+}
+
+export function bonus(input) {
+    const startMap = parseMap(input);
+    const resolvedMap = resolve(parseMap(input));
+    return parseMap(input)
+        .map((row, rowdx) => row.map((_, coldx) => [rowdx, coldx]))
+        .reduce((acc, row) => acc.concat(row.reduce((sAcc, tuple) => sAcc.concat([tuple]), [])), [])
+        .filter(([x, y]) => startMap[x][y] === 0)
+        .filter(([x, y]) => resolvedMap[x][y] === 1)
+        .filter((tuple) => isLoop(tuple, parseMap(input)))
+        .length;
 }
