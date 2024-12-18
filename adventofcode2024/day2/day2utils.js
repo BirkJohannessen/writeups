@@ -1,4 +1,4 @@
-import { mapNumber } from '../utils.js';
+import { mapNumber, range } from '../utils.js';
 
 function parseLines(input) {
     return input.split(/\r?\n/g)
@@ -12,8 +12,10 @@ function isReportSafe(list, minJump, maxJump) {
 }
 
 function isReportSafeBonus(list, minJump, maxJump) {
-    return applyEachElem(list, minJump, maxJump, isElemDecreasingBounded)
-        || applyEachElem(list, minJump, maxJump, isElemIncreasingBounded);
+    return range(list.length)
+        .map((_, idx) => list.filter((_2, jdx) => jdx !== idx))
+        .map(l => isReportSafe(l, minJump, maxJump))
+        .some(o => o);
 }
 
 export function isElemIncreasingBounded(a, b, minJump, maxJump) {
@@ -48,6 +50,7 @@ export function solve(input) {
 
 export function bonus(input) {
     return parseLines(input)
+        .filter(report => !isReportSafe(report, 1, 3))
         .filter(report => isReportSafeBonus(report, 1, 3))
-        .length;
+        .length + solve(input);
 }
