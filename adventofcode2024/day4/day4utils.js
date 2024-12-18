@@ -6,6 +6,12 @@ function parseLists(input, minLength) {
     return rows.concat(cols).concat(parseDiagonals(rows, cols, minLength));
 }
 
+function parseMap(input) {
+    return input.split(/\n/g)
+        .slice(0, -1)
+        .map(row => row.split(''));
+}
+
 function parseRows(input) {
     return input.split(/\r?\n/g).map(line => line.split('')).slice(0, -1);
 }
@@ -78,4 +84,27 @@ export function solve(input) {
     return parseLists(input, word.length)
         .map(list => countOccurances(list, word))
         .reduce((a, b) => a += b, 0);
+}
+
+function isXmas(map, x, y) {
+    return ['MAS', 'SAM'].includes([[x - 1, y - 1], [x, y], [x + 1, y + 1]] 
+        .filter(([wx, wy]) => isWithinMapBounds(wx, wy, map))
+        .map(([wx, wy]) => map[wx][wy])
+        .join(''))
+        && ['MAS', 'SAM'].includes([[x + 1, y - 1], [x, y], [x - 1, y + 1]] 
+        .filter(([wx, wy]) => isWithinMapBounds(wx, wy, map))
+        .map(([wx, wy]) => map[wx][wy])
+        .join(''));
+}
+
+function isWithinMapBounds(x, y, map) {
+    return x < map.length && x >= 0
+        && y < map[0].length && y >= 0;
+}
+
+export function bonus(input) {
+    const map = parseMap(input);
+    return map
+        .map((row, rowdx) => row.map((_, coldx) => isXmas(map, rowdx, coldx) ? 1 : 0))
+        .reduce((acc, row) => acc += row.reduce((sAcc, val) => sAcc += val, 0), 0);
 }
