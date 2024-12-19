@@ -63,23 +63,48 @@ function transformQuadrant(quadrant, my) {
     return quadrant.map(([x, y]) => [x, y - ((my + 1) / 2)]);
 }
 
+function filterDuplicateTuple(poss) {
+    const set = new Set();
+    poss.forEach(([x, y]) => {
+        set.add(`${x},${y}`);
+    });
+    return Array.from(set, value => value).map((item) => item.split(",").map(mapNumber));
+    return set.entries().map((item) => item.split(",").map(mapNumber));
+}
+
+function within(a, b, diff) {
+    if (a > b) {
+        return a > (b + diff);
+    } else if (b > a) {
+        return (a + diff) < b;
+    } 
+    return true;
+}
+
 export function bonus(input) {
+    console.log(within(50, 55, 5), false);
+    console.log(within(50, 55, 2), true);
+    console.log(within(55, 50, 2), true);
+    console.log(within(55, 50, 5), false);
+    console.log(within(50, 50, 5), true);
     const mapSize = [101, 103];
     const [mx, my] = mapSize;
-    for (let i = 0; i < 70000 ; i++) {
+    for (let i = 28580; i < 28581 ; i++) {
+
         const pos =  parse(input)
             .map(([pos, vel]) => calcPos(pos, vel, i, mapSize));
 
-        const [a, b] = pos 
-            .reduce(([q1, q2], [x, y]) => {
-                if (x < (mx - 1) / 2 && y < (my - 1) / 2) q1.push([x,y]);
-                if (x > (mx - 1) / 2 && y < (my - 1) / 2) q2.push([x,y]);
-                return [q1, q2];
-            }, [[], []]);
+        const [a, b, c, d] = filterDuplicateTuple(pos)
+            .reduce(([q1, q2, q3, q4], [x, y]) => {
+                if (x < (mx - 1) / 2 && y < (my - 1) / 2) q1 +=1;
+                if (x > (mx - 1) / 2 && y < (my - 1) / 2) q2 +=1;
+                if (x < (mx - 1) / 2 && y > (my - 1) / 2) q3 +=1;
+                if (x > (mx - 1) / 2 && y > (my - 1) / 2) q4 +=1;
+                return [q1, q2, q3, q4];
+            }, [0,0,0,0])
 
-        if (a.length !== b.length) continue;
-
-        if (positionEquals(a, transformQuadrant(b, my))) {
+        const margin = 20;
+        if (within(28580, i, 5)) {
             const map = pos
                 .reduce((acc, [x,y]) => {
                     acc[y][x] += 1;
@@ -88,8 +113,28 @@ export function bonus(input) {
 
             console.log(map.map(row => row.map(val => val === 0 ? '.' : val).join('')).join('\n'));
             console.log(i);
-            return i;
+        }
+        /*
+        const [a, b, c, d] = pos
+            .reduce(([q1, q2, q3, q4], [x, y]) => {
+                if (x < (mx - 1) / 2 && y < (my - 1) / 2) q1 +=1;
+                if (x > (mx - 1) / 2 && y < (my - 1) / 2) q2 +=1;
+                if (x < (mx - 1) / 2 && y > (my - 1) / 2) q3 +=1;
+                if (x > (mx - 1) / 2 && y > (my - 1) / 2) q4 +=1;
+                return [q1, q2, q3, q4];
+            }, [0,0,0,0])
+
+        if (a  < c + 40 && a < d + 40 && b < d + 40 && b < c + 40) {
+            const map = pos
+                .reduce((acc, [x,y]) => {
+                    acc[y][x] += 1;
+                    return acc;
+                }, range(my).map(_ => range(mx).map(__ => 0)));
+
+            console.log(map.map(row => row.map(val => val === 0 ? '.' : val).join('')).join('\n'));
+            console.log(i);
         }
         console.log(i);
+        */
     }
 }
