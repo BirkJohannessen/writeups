@@ -72,7 +72,7 @@ export function solve(input) {
 }
 
 export function bonus(input) {
-    const res = [...parseMap(input).reduce((rowAcc, row) => {
+    return [...parseMap(input).reduce((rowAcc, row) => {
         row.forEach(tile => rowAcc.add(tile));
         return rowAcc;
     }, new Set())]
@@ -82,10 +82,6 @@ export function bonus(input) {
     .map(combinations).flat() // flat() since we dont need antenna context from now on.
     .map(([tupleA, tupbleB]) => getAntiNodeTuplesBonus(tupleA, tupbleB, parseMap(input))) // getAntiNodes(tupleA1, tupleA2) => [...tuple]
     .reduce((map, antiNodes) => drawAntiNodes(antiNodes, map), parseMap(input)) // drawAntiNodes(map, [tuple1,tuple2]) => map
-
-    console.log(res.map(o => o.join('')).join('\n'));
-    
-    return res
     .reduce((total, row) =>  // count all unique antinodes noted # on the map
         total += row.reduce((acc, tile) => acc += tile === '#' ? 1 : 0, 0)
     , 0);
