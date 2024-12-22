@@ -1,9 +1,8 @@
-import { mapNumber } from '../utils.js';
+import { mapNumber, range } from '../utils.js';
 
 function parse(input) {
     return input.split(' ')
         .map(mapNumber);
-        //.slice(0, -1)
 }
 
 function digits(value) {
@@ -29,6 +28,37 @@ function multiplyStones(round, stones) {
     return multiplyStones(--round, nextStones)
 }
 
+function calculateLength(round, stones, lookup) {
+    if (round === 0) return stones.length;
+    const leftovers = [];
+    const nextStones = stones.reduce((acc, value) => {
+        transform(value).forEach(val => {
+            if (range(10).includes(val)) {
+                leftovers.push(val);
+            } else {
+                acc.push(val)
+            }
+        });
+        return acc;
+    }, []);
+    return calculateLength(--round, nextStones, lookup) + calculateLeftOvers(round, leftovers, lookup);
+}
+
+function calculateLeftOvers(round, stones, lookup) {
+    if (round === 0) return stones.length;
+    return stones.map(val => {
+        if (!lookup.has(`${val},${round}`)) {
+            lookup.set(`${val},${round}`, calculateLength(round, [val], lookup));
+        }
+        return lookup.get(`${val},${round}`);
+    })
+    .reduce((acc, val) => acc += val, 0)
+}
+
 export function solve(input) {
-    return multiplyStones(75, parse(input)).length;
+    return multiplyStones(25, parse(input)).length;
+}
+
+export function bonus(input) {
+    return calculateLength(75, parse(input), new Map());
 }
