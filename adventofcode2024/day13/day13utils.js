@@ -1,5 +1,4 @@
-import { eachElemApplies, isElemIncreasingBounded } from '../day2/day2utils.js'
-import { mapNumber, deepCopy } from '../utils.js'
+import { mapNumber } from '../utils.js'
 
 function parseGames(input) {
     return input.split('\n\n');
@@ -17,20 +16,12 @@ function parsePrizeTuple(game) {
     return game.split(/\n/g)[2].match(/\d+/g).map(mapNumber);
 }
 
-function minTokensBonus([tupleA, _a], [tupleB, _], prizeTuple) {
-    const [xTotal, yTotal] = [prizeTuple[0] + 10000000000000, prizeTuple[1] + 10000000000000];
-    for (let i = 0 ; i < 100 ; i++) {
-        const [accX, accY] = [tupleB[0] * i, tupleB[1] * i];
-        for (let j = 0 ; j < 100 ; j++) {
-            const [accExpX, accExpY] = [tupleA[0] * j, tupleA[1] * j];
-            const resultX = xTotal - accX - accExpX;
-            const resultY = yTotal - accY - accExpY;
-            if (resultX < 0 || resultY < 0) {
-                break;
-            } else if (resultY === 0 && resultX === 0) {
-                return [j, i];
-            }
-        }
+function minTokensBonus([[ax, ay], _a], [[bx, by], _], prizeTuple) {
+    const [px, py] = [prizeTuple[0] + 10000000000000, prizeTuple[1] + 10000000000000];
+    const xPress = (px * by - py * bx) / (ax * by - ay * bx);
+    const yPress = (px - ax * xPress) / bx;
+    if (xPress % 1 === 0 && yPress % 1 === 0) {
+        return [xPress, yPress];
     }
     return null;
 }

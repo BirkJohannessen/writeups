@@ -20,7 +20,7 @@ import * as day25utils from './day25/day25utils.js';
 main();
 
 async function main() {
-    const fun = day25;
+    const fun = day13;
     const result = await fun();
     console.log('Output:\n', result);
 }
