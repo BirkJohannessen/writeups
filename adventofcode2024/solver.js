@@ -15,11 +15,12 @@ import * as day13utils from './day13/day13utils.js';
 import * as day14utils from './day14/day14utils.js';
 import * as day15utils from './day15/day15utils.js';
 import * as day17utils from './day17/day17utils.js';
+import * as day25utils from './day25/day25utils.js';
 
 main();
 
 async function main() {
-    const fun = day11;
+    const fun = day25;
     const result = await fun();
     console.log('Output:\n', result);
 }
@@ -102,4 +103,9 @@ export async function day15() {
 export async function day17() {
     const ipt = await read('./day17/input.txt');
     return dayWrapper(day17utils.solve, ipt);
+}
+
+export async function day25() {
+    const ipt = await read('./day25/input.txt');
+    return dayWrapper(day25utils.solve, ipt);
 }
