@@ -93,7 +93,6 @@ Antinoder forekommer kun av samme antennetype, her et kart vist med antennetype 
 .........A..
 ..........#.
 ..........#.
-(her er noen av antennene skrevet over av antinoder)
 ```
 Til slutt summerer man alle antinoder (#) som er tegnet på kartet.
 
