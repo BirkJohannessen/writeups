@@ -82,7 +82,7 @@ export async function day11() {
 
 export async function day12() {
     const ipt = await read('./day12/input.txt');
-    return dayWrapper(day12utils.solve, ipt);
+    return dayWrapper(day12utils.bonus, ipt);
 }
 
 export async function day13() {

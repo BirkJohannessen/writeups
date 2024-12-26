@@ -60,7 +60,14 @@ function tuplePerims([x, y], map) {
 }
 
 function sides(map) {
-    return 0; // todo;
+    return map.reduce((acc, [x,y]) => {
+        const isNeighbor = ([nx,ny]) => !!map.find(([mx,my]) => nx === mx && my === ny); 
+        const l = !isNeighbor([x, y - 1]) && !(isNeighbor([x - 1, y]) && !isNeighbor([x - 1, y - 1]));
+        const t = !isNeighbor([x - 1, y]) && !(isNeighbor([x, y - 1]) && !isNeighbor([x - 1, y - 1]));
+        const r = !isNeighbor([x, y + 1]) && !(isNeighbor([x + 1, y]) && !isNeighbor([x + 1, y + 1]));
+        const b = !isNeighbor([x + 1, y]) && !(isNeighbor([x, y - 1]) && !isNeighbor([x + 1, y - 1]));
+        return acc += [l,t,r,b].reduce((acc, val) => val ? acc += val : acc, 0);
+    }, 0);
 }
 
 function isIncluded([inX, inY], included) {
@@ -78,9 +85,5 @@ export function solve(input) {
 
 export function bonus(input) {
     return areaAndSides(parse(input))
-        .map(o => {
-            console.log(o);
-            return o;
-        })
         .reduce((acc, [area, sides]) => acc += area * sides, 0)
 }
