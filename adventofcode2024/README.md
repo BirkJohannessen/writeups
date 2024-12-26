@@ -10,9 +10,10 @@ Noen highlights:
 
 ### Day 8: Resonant Collinearity
 
-Oppgaveteksen kan nesten bare ses vekk fra, og kun se på eksemplene:
+Trekker frem denne oppgave siden jeg fikk tid til å løse den nesten 100% funksjonelt. Det er et par metoder som har sideeffekter, som jeg ikke fant en vei rundt.\
+Skal oppsummere problemstillingen til oppgaven, ved å kun vise eksempel på input/output.
 ```
-Dette 2D kartet, med antennetype "a".
+Dette 2D kartet, med antennetype "a" (input).
 ..........
 ..........
 ..........
@@ -23,10 +24,11 @@ Dette 2D kartet, med antennetype "a".
 ..........
 ..........
 .......... 
+```
 
-Skal gi det oppgaveteksten kaller "antinoder" (#).
-
-Som har lik avstand som avstanden mellom antennene (a).
+Skal gi det oppgaveteksten kaller "antinoder" (#).\
+Som har lik avstand som avstanden mellom antennene (a) (output).
+```
 ..........
 ...#......
 ..........
@@ -37,8 +39,10 @@ Som har lik avstand som avstanden mellom antennene (a).
 ......#...
 ..........
 ..........
+```
 
-flere av samme antennetype (a) resonerer i par:
+Nytt eksempel, flere av samme antennetype (a) resonerer i par:
+```
 ..........
 ..........
 ..........
@@ -60,8 +64,10 @@ flere av samme antennetype (a) resonerer i par:
 ......#...
 ..........
 ..........
+```
 
-resonering skjer kun av samme type, her vist med antennetype 0 og A:
+antinoder forekommer kun av samme antenntype, her et kart vist med antennetype 0 og A:
+```
 ............
 ........0...
 .....0......
@@ -75,7 +81,6 @@ resonering skjer kun av samme type, her vist med antennetype 0 og A:
 ............
 ............
 =>
-her resonerer noen antenner over andre antenner:
 ......#....#
 ...#....0...
 ....#0....#.
@@ -89,8 +94,10 @@ her resonerer noen antenner over andre antenner:
 ..........#.
 ..........#.
 
-Til slutt summerer man alle antinoder (#) som er tegnet på kartet.
 ```
+(her resonerer noen antenner over andre antenner)\
+
+\Til slutt summerer man alle antinoder (#) som er tegnet på kartet.
 
 Løsning:
 ```
@@ -154,10 +161,11 @@ export function solve(input) {
 }
 ```
 
-Bonus:
-```
+### Day 8: Bonus
+
 Et antennepar resonerer nå flere ganger
 
+```
 T.........
 ...T......
 .T........
@@ -181,7 +189,7 @@ T....#....
 ..........
 ```
 
-Løsning:
+Skriver om "getAntiNodeTuples" til å håndtere flere antinoder. "bonus"-funksjonen er make som "solve"-funksjonen, bare den kaller "getAntiNodeTuplesBonus".
 ```
 // ny metode for å regne ut alle XY til antinoder. "50" grunnet det er lengden på inputkartet.
 function getAntiNodeTuplesBonus(tupleA, tupleB, map) {
@@ -218,3 +226,4 @@ export function bonus(input) {
     , 0);
 }
 ```
+
