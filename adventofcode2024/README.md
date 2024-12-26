@@ -10,7 +10,7 @@ Noen highlights:
 
 ### Day 8: Resonant Collinearity
 
-Trekker frem denne oppgave siden jeg fikk tid til å løse den nesten 100% funksjonelt. Det er et par metoder som har sideeffekter, som jeg ikke fant en vei rundt.\
+Trekker frem denne oppgave siden jeg fikk tid til å løse den nesten 100% funksjonelt. Det er et par funksjoner som bruker sideeffekter som forEach() og push(), som jeg ikke fant en vei rundt.\
 Skal oppsummere problemstillingen til oppgaven, ved å kun vise eksempel på input/output.
 ```
 Dette 2D kartet, med antennetype "a" (input).
@@ -41,7 +41,7 @@ Som har lik avstand som avstanden mellom antennene (a) (output).
 ..........
 ```
 
-Nytt eksempel, flere av samme antennetype (a) resonerer i par:
+Nytt eksempel, flere av samme antennetype (a) som gir antinoder i par:
 ```
 ..........
 ..........
@@ -66,7 +66,7 @@ Nytt eksempel, flere av samme antennetype (a) resonerer i par:
 ..........
 ```
 
-antinoder forekommer kun av samme antenntype, her et kart vist med antennetype 0 og A:
+Antinoder forekommer kun av samme antennetype, her et kart vist med antennetype 0 og A:
 ```
 ............
 ........0...
@@ -93,11 +93,9 @@ antinoder forekommer kun av samme antenntype, her et kart vist med antennetype 0
 .........A..
 ..........#.
 ..........#.
-
+(her er noen av antennene skrevet over av antinoder)
 ```
-(her resonerer noen antenner over andre antenner)\
-
-\Til slutt summerer man alle antinoder (#) som er tegnet på kartet.
+Til slutt summerer man alle antinoder (#) som er tegnet på kartet.
 
 Løsning:
 ```
@@ -163,7 +161,7 @@ export function solve(input) {
 
 ### Day 8: Bonus
 
-Et antennepar resonerer nå flere ganger
+Et antennepar gir nå flere antinoder med samme avstand. 
 
 ```
 T.........
@@ -187,6 +185,7 @@ T....#....
 ..........
 ....#.....
 ..........
+(Her er det også antinoder på selve antennene)
 ```
 
 Skriver om "getAntiNodeTuples" til å håndtere flere antinoder. "bonus"-funksjonen er make som "solve"-funksjonen, bare den kaller "getAntiNodeTuplesBonus".
