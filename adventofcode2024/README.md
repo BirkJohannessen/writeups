@@ -5,4 +5,4 @@ Da ble første forsøkene på Advent of code.
 
 Her er resultat fra [2024](https://github.com/BirkJohannessen/writeups/), gjort med Javascript, og så funksjonelt som mulig.
 
-<img alt="result" src="https://github.com/BirkJohannessen/writeups/blob/master/adventofcode2024/img/result.png">
+<img alt="result" src="https://github.com/BirkJohannessen/writeups/blob/master/adventofcode2024/img/front.png">
