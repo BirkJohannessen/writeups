@@ -52,7 +52,7 @@ export function solve(input) {
 export function bonus(input) {
     const avaiableSet = parseAvailableTowelSet(input);
     return parseDesigns(input)
-        .map(design =>countPossibleDesigns(design, avaiableSet))
+        .map(design => countPossibleDesigns(design, avaiableSet))
         .reduce((acc, val) => acc += val, 0);
 }
 
