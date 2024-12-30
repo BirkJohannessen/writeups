@@ -1,3 +1,5 @@
+import { range } from '../utils.js';
+
 function parseAvailableTowelSet(input) {
     const set = new Set();
     input
@@ -24,44 +26,15 @@ function isPossibleDesign(design, avaiableSet, maxBatchLength) {
     return false;
 }
 
-function countPossibleDesigns(design, avaiableSet, maxBatchLength) {
-    if (design === '') return 1;
-    let count = 0;
-    for (let i = 1; i <= Math.min(design.length, maxBatchLength) ; i++) {
-        if (avaiableSet.has(design.substring(0, i))) {
-            count += countPossibleDesigns(design.slice(i), avaiableSet, maxBatchLength);
-        }
-    }
-    return count;
-}
-
-function countPossibleDesignsOptimized(design, avaiableSet) {
-    const combosDown = [];
+function countPossibleDesigns(design, avaiableSet) {
+    const combosDown = range(design.length).map(_ => 0);
     for (let i = 0 ; i < design.length ; i++) {
-        if (i !== 0 && combosDown.length <= i - 1) {
-            combosDown.push(0);
-        }
         for (let j = i ; j >= 0 ; j--) {
-            if (avaiableSet.has(design.substring(j, i + 1))) {
-                if (combosDown.length <= i && j === i) {
-                    if (i - 1 < 0) {
-                        combosDown.push(1);
-                    } else {
-                        combosDown.push(combosDown[i - 1]);
-                    }
-                } else if (combosDown.length <= i && j !== i) {
-                    if (j === 0) {
-                        combosDown.push(1);
-                    } else {
-                        combosDown.push(combosDown[j - 1]);
-                    }
-                } else {
-                    if (j === 0) {
-                        combosDown[i] += 1;
-                    } else {
-                        combosDown[i] += combosDown[j - 1];
-                    }
-                }
+            if (!avaiableSet.has(design.substring(j, i + 1))) continue;
+            if (j === 0) {
+                combosDown[i] += 1;
+            } else {
+                combosDown[i] += combosDown[j - 1];
             }
         }
     }
@@ -72,20 +45,14 @@ export function solve(input) {
     const avaiableSet = parseAvailableTowelSet(input);
     const maxBatchLength = [...avaiableSet].reduce((acc, val) => val.length > acc.length ? val : acc, '').length;
     return parseDesigns(input)
-        .filter(design => {
-            return isPossibleDesign(design, avaiableSet, maxBatchLength)
-        })
+        .filter(design => isPossibleDesign(design, avaiableSet, maxBatchLength))
         .length;
 }
 
 export function bonus(input) {
     const avaiableSet = parseAvailableTowelSet(input);
-    const maxBatchLength = [...avaiableSet].reduce((acc, val) => val.length > acc.length ? val : acc, '').length;
     return parseDesigns(input)
-        .map(design => {
-            const res = countPossibleDesignsOptimized(design, avaiableSet, maxBatchLength)
-            return res;
-        })
+        .map(design =>countPossibleDesigns(design, avaiableSet))
         .reduce((acc, val) => acc += val, 0);
 }
 
