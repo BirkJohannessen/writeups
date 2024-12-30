@@ -35,13 +35,13 @@ function countPossibleDesigns(design, avaiableSet, maxBatchLength) {
     return count;
 }
 
-function countPossibleDesignsOptimized(design, avaiableSet, maxBatchLength) {
+function countPossibleDesignsOptimized(design, avaiableSet) {
     const combosDown = [];
     for (let i = 0 ; i < design.length ; i++) {
         if (i !== 0 && combosDown.length <= i - 1) {
             combosDown.push(0);
         }
-        for (let j = i ; j >= 0 && j > (i - maxBatchLength) ; j--) {
+        for (let j = i ; j >= 0 ; j--) {
             if (avaiableSet.has(design.substring(j, i + 1))) {
                 if (combosDown.length <= i && j === i) {
                     if (i - 1 < 0) {
@@ -53,7 +53,7 @@ function countPossibleDesignsOptimized(design, avaiableSet, maxBatchLength) {
                     if (j === 0) {
                         combosDown.push(1);
                     } else {
-                        combosDown.push(combosDown[j]);
+                        combosDown.push(combosDown[j - 1]);
                     }
                 } else {
                     if (j === 0) {
@@ -83,47 +83,9 @@ export function bonus(input) {
     const maxBatchLength = [...avaiableSet].reduce((acc, val) => val.length > acc.length ? val : acc, '').length;
     return parseDesigns(input)
         .map(design => {
-            console.log(design);
             const res = countPossibleDesignsOptimized(design, avaiableSet, maxBatchLength)
-            console.log(res);
             return res;
         })
         .reduce((acc, val) => acc += val, 0);
 }
-/*
- *
-12022
-brwrr
 
-b
-br
-
- r
-  wr
-    r
-
-11226(12)(12)(24)
-rrbgbr    w  r
-
-r
-
- r
-
-  b
- rb
-
-   g
-
-    b
-   gb
-  bgb
-     
-     r
-    br
-
-      w
-       
-       r
-      wr
-      
-*/
