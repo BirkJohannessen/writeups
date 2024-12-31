@@ -4,7 +4,7 @@ function parseMap(input) {
         .map(line => line.split(''));
 }
 
-function combinations(tuples) {
+export function combinations(tuples) {
     return tuples.reduce((acc, tupleA, idx) => 
         acc.concat(tuples.slice(idx + 1).map(tupleB => [tupleA, tupleB]))
     , []);

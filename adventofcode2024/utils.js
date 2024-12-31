@@ -31,3 +31,8 @@ export function range(elems) {
     return [...Array(elems).keys()];
 }
 
+export function combinations(tuples) {
+    return tuples.reduce((acc, tupleA, idx) => 
+        acc.concat(tuples.slice(idx + 1).map(tupleB => [tupleA, tupleB]))
+    , []);
+}
