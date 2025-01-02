@@ -49,6 +49,9 @@ export function solve(input) {
     return binArr.reverse().reduce((acc, bit, index) => acc + bit * Math.pow(2, binArr.length - 1 - index), 0);
 }
 
+function toBinArr() {
+}
+
 export function bonus(input) {
     return 0;
 }

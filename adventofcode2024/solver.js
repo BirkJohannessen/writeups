@@ -24,7 +24,7 @@ import * as day25utils from './day25/day25utils.js';
 main();
 
 async function main() {
-    const fun = day22;
+    const fun = day24;
     const result = await fun();
     console.log('Output:\n', result);
 }
@@ -115,7 +115,7 @@ export async function day19() {
 }
 
 export async function day22() {
-    const ipt = await read('./day22/mockinput.txt');
+    const ipt = await read('./day22/input.txt');
     return dayWrapper(day22utils.bonus, ipt);
 }
 
