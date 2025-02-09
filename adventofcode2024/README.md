@@ -2,11 +2,13 @@
 
 2024 var året ingen av de typiske CTF'ene jeg har deltatt i vært arrangert. Da ble 2024 året jeg debuterte på Advent of code!
 
-[Her er resultat fra 2024](https://github.com/BirkJohannessen/writeups/), utført med funksjonell programmering i Javascript, der det har latt seg gjøre. 
+Her er resultat fra 2024, utført med funksjonell programmering i Javascript, der det har latt seg gjøre.
+
+[github](https://github.com/BirkJohannessen/writeups/)
 
 <img alt="result" src="https://github.com/BirkJohannessen/writeups/blob/master/adventofcode2024/img/front.png">
 
-Noen highlights:
+En liten highlight, fra luke 8:
 
 ### Day 8: Resonant Collinearity
 
