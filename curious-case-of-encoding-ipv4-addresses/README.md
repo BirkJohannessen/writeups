@@ -1,4 +1,4 @@
-# The curious cases of encoding ipv4 addresses
+# The curious case of encoding ipv4 addresses
 
 Written by birkj
 
@@ -59,7 +59,7 @@ Ipv4 is really just a number, zero through 4,294,967,296 (2^32) or 32 bits.
 Therefore, like the hex format, it also will accept a dotless decimal number:
 
 ```
-bravo@bravo:~/personal/writeups$ ping 2130706433
+$ ping 2130706433
 PING 2130706433 (127.0.0.1) 56(84) bytes of data.
 64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.068 ms
 ```
